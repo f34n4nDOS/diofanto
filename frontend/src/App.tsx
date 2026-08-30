@@ -1,0 +1,42 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import FunctionLab from "./pages/FunctionLab";
+import LimitLab from "./pages/LimitLab";
+import IntegralLab from "./pages/IntegralLab";
+function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route
+  path="/functions"
+  element={
+    <ProtectedRoute>
+      <FunctionLab />
+    </ProtectedRoute>
+  }
+/>
+<Route path="/limits" element={<ProtectedRoute><LimitLab /></ProtectedRoute>} />
+<Route path="/integrals" element={<ProtectedRoute><IntegralLab /></ProtectedRoute>} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
