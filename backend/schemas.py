@@ -90,3 +90,72 @@ class PlotResponse(BaseModel):
     expression: str
     points: list[PlotPoint]
     domain_note: str | None = None
+
+
+# ==================== ALGEBRA SCHEMAS ====================
+
+class EquationRequest(BaseModel):
+    equation: str  # "x**2 - 5*x + 6 = 0"
+    variable: str = "x"
+
+
+class EquationResponse(BaseModel):
+    original: str
+    original_latex: str
+    variable: str
+    solutions: list[str]
+    solutions_latex: list[str]
+    is_quadratic: bool
+    num_solutions: int
+
+
+class SystemRequest(BaseModel):
+    equations: list[str]  # ["x + y = 5", "2*x - y = 1"]
+    variables: list[str] = ["x", "y"]
+
+
+class SystemResponse(BaseModel):
+    equations: list[str]
+    equations_latex: list[str]
+    variables: list[str]
+    solution: dict  # {"x": "3", "y": "2"}
+    solution_latex: dict
+    is_solvable: bool
+
+
+class FactorRequest(BaseModel):
+    expression: str
+    variable: str = "x"
+
+
+class FactorResponse(BaseModel):
+    original: str
+    original_latex: str
+    factored: str
+    factored_latex: str
+    factors: list[str]  # Lista de factores individuales
+    factors_latex: list[str]
+
+
+class SimplifyRequest(BaseModel):
+    expression: str
+
+
+class SimplifyResponse(BaseModel):
+    original: str
+    original_latex: str
+    simplified: str
+    simplified_latex: str
+    steps: list[dict]  # pasos de simplificación
+
+
+class ExpandRequest(BaseModel):
+    expression: str
+    variable: str = "x"
+
+
+class ExpandResponse(BaseModel):
+    original: str
+    original_latex: str
+    expanded: str
+    expanded_latex: str

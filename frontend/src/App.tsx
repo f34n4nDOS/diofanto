@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import FunctionLab from "./pages/FunctionLab";
 import LimitLab from "./pages/LimitLab";
 import IntegralLab from "./pages/IntegralLab";
+import AlgebraLab from "./pages/AlgebraLab";
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +34,7 @@ function App() {
 />
 <Route path="/limits" element={<ProtectedRoute><LimitLab /></ProtectedRoute>} />
 <Route path="/integrals" element={<ProtectedRoute><IntegralLab /></ProtectedRoute>} />
+<Route path="/algebra" element={<ProtectedRoute><AlgebraLab /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -65,7 +65,10 @@ export default function FunctionLab() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="x" type="number" domain={["dataMin", "dataMax"]} />
               <YAxis />
-              <Tooltip formatter={(value: number) => value.toFixed(3)} />
+              <Tooltip formatter={(value) => {
+                if (typeof value === 'number') return value.toFixed(3);
+                return value;
+              }} />
               <ReferenceLine y={0} stroke="#888" />
               <ReferenceLine x={0} stroke="#888" />
               <Line type="monotone" dataKey="y" stroke="#2563eb" dot={false} isAnimationActive={false} />

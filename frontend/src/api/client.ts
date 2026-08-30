@@ -48,6 +48,94 @@ export interface LimitResponse {
   exists: boolean;
 }
 
+// ==================== ALGEBRA TYPES ====================
+
+export interface EquationResponse {
+  original: string;
+  original_latex: string;
+  variable: string;
+  solutions: string[];
+  solutions_latex: string[];
+  is_quadratic: boolean;
+  num_solutions: number;
+}
+
+export interface SystemResponse {
+  equations: string[];
+  equations_latex: string[];
+  variables: string[];
+  solution: Record<string, string>;
+  solution_latex: Record<string, string>;
+  is_solvable: boolean;
+}
+
+export interface FactorResponse {
+  original: string;
+  original_latex: string;
+  factored: string;
+  factored_latex: string;
+  factors: string[];
+  factors_latex: string[];
+}
+
+export interface SimplifyResponse {
+  original: string;
+  original_latex: string;
+  simplified: string;
+  simplified_latex: string;
+  steps: Array<{ step: string; expression: string }>;
+}
+
+export interface ExpandResponse {
+  original: string;
+  original_latex: string;
+  expanded: string;
+  expanded_latex: string;
+}
+
+// ==================== ALGEBRA API FUNCTIONS ====================
+
+export const algebraAPI = {
+  solveEquation: async (equation: string, variable: string = "x") => {
+    const response = await api.post<EquationResponse>("/algebra/solve-equation", {
+      equation,
+      variable,
+    });
+    return response.data;
+  },
+
+  solveSystem: async (equations: string[], variables: string[] = ["x", "y"]) => {
+    const response = await api.post<SystemResponse>("/algebra/solve-system", {
+      equations,
+      variables,
+    });
+    return response.data;
+  },
+
+  factor: async (expression: string, variable: string = "x") => {
+    const response = await api.post<FactorResponse>("/algebra/factor", {
+      expression,
+      variable,
+    });
+    return response.data;
+  },
+
+  simplify: async (expression: string) => {
+    const response = await api.post<SimplifyResponse>("/algebra/simplify", {
+      expression,
+    });
+    return response.data;
+  },
+
+  expand: async (expression: string, variable: string = "x") => {
+    const response = await api.post<ExpandResponse>("/algebra/expand", {
+      expression,
+      variable,
+    });
+    return response.data;
+  },
+};
+
 export interface IntegralResponse {
   original: string;
   original_latex: string;
