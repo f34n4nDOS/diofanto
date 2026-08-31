@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-
+from typing import Any
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
@@ -28,12 +28,6 @@ class DerivativeRequest(BaseModel):
     expression: str
     respect_to: str = "x"
 
-
-class DerivativeStep(BaseModel):
-    description: str
-    expression: str
-
-
 class DerivativeResponse(BaseModel):
     original: str
     original_latex: str
@@ -42,6 +36,29 @@ class DerivativeResponse(BaseModel):
     result_simplified: str
     result_simplified_latex: str
     steps: list[DerivativeStep]
+    critical_points: list[CriticalPoint] = []
+
+class DerivativeStep(BaseModel):
+    description: str
+    expression: str
+
+
+class CriticalPoint(BaseModel):
+    x: float
+    y: float
+    kind: str
+
+
+class TangentLineRequest(BaseModel):
+    expression: str
+    point_x: float
+
+
+class TangentLineResponse(BaseModel):
+    point_x: float
+    point_y: float
+    slope: float
+    tangent_expression: str
 
 
 class LimitRequest(BaseModel):
@@ -159,3 +176,137 @@ class ExpandResponse(BaseModel):
     original_latex: str
     expanded: str
     expanded_latex: str
+
+class TriangleRequest(BaseModel):
+    side_a: float
+    side_b: float
+    side_c: float
+
+
+class TriangleResponse(BaseModel):
+    valid: bool
+    sides: list[float] | None = None
+    angles: list[float] | None = None  # en grados
+    perimeter: float | None = None
+    area: float | None = None
+    type_sides: str | None = None
+    type_angles: str | None = None
+
+
+class CircleRequest(BaseModel):
+    radius: float
+
+
+class CircleResponse(BaseModel):
+    radius: float
+    diameter: float
+    area: float
+    circumference: float
+
+
+class RegularPolygonRequest(BaseModel):
+    num_sides: int
+    side_length: float
+
+
+class RegularPolygonResponse(BaseModel):
+    num_sides: int
+    side_length: float
+    perimeter: float
+    area: float
+    interior_angle: float
+    exterior_angle: float
+
+class DescriptiveStatsRequest(BaseModel):
+    data: list[float]
+
+
+class FrequencyRow(BaseModel):
+    value: float
+    absolute: int
+    relative: float
+
+
+class DescriptiveStatsResponse(BaseModel):
+    count: int
+    mean: float
+    median: float
+    mode: float | None
+    variance: float
+    std_dev: float
+    min_value: float
+    max_value: float
+    frequency_table: list[FrequencyRow]
+
+
+class CoinFlipRequest(BaseModel):
+    num_flips: int = 100
+
+
+class ConvergencePoint(BaseModel):
+    trial: int
+    relative_frequency: float
+
+
+class CoinFlipResponse(BaseModel):
+    num_flips: int
+    heads_count: int
+    tails_count: int
+    heads_relative_frequency: float
+    theoretical_probability: float
+    convergence: list[ConvergencePoint]
+
+
+class DiceRollRequest(BaseModel):
+    num_rolls: int = 100
+    num_sides: int = 6
+
+
+class DiceFrequencyRow(BaseModel):
+    value: int
+    absolute: int
+    relative: float
+    theoretical: float
+
+
+class DiceRollResponse(BaseModel):
+    num_rolls: int
+    num_sides: int
+    frequency_table: list[DiceFrequencyRow]
+    mean_result: float
+
+class ExerciseOut(BaseModel):
+    id: int
+    area: str
+    topic: str
+    level: str
+    difficulty: str
+    statement: str
+    exercise_type: str
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class ExerciseSubmit(BaseModel):
+    answer: Any  # la forma depende de exercise_type: string, número, lista, etc.
+
+
+class ExerciseSubmitResponse(BaseModel):
+    is_correct: bool
+    correct_answer: Any | None = None  # solo se revela si la respuesta fue incorrecta o ya se agotaron intentos
+    explanation: str | None = None
+    attempt_number: int
+
+
+class ExerciseListResponse(BaseModel):
+    total: int
+    items: list[ExerciseOut]
+
+
+class FavoriteOut(BaseModel):
+    exercise: ExerciseOut
+
+    class Config:
+        from_attributes = True

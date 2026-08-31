@@ -8,6 +8,8 @@ import schemas
 router = APIRouter(prefix="/api/math", tags=["math"])
 
 
+from sympy import solve, Eq
+
 @router.post("/derivative", response_model=schemas.DerivativeResponse)
 def derivative(req: schemas.DerivativeRequest):
     try:
@@ -19,15 +21,29 @@ def derivative(req: schemas.DerivativeRequest):
         raise HTTPException(status_code=400, detail=f"Expresión inválida: {e}")
 
     steps = [
-        schemas.DerivativeStep(
-            description=f"Derivamos la expresión respecto a {req.respect_to}",
-            expression=str(result),
-        ),
-        schemas.DerivativeStep(
-            description="Simplificamos el resultado",
-            expression=str(result_simplified),
-        ),
+        schemas.DerivativeStep(description=f"Derivamos la expresión respecto a {req.respect_to}", expression=str(result)),
+        schemas.DerivativeStep(description="Simplificamos el resultado", expression=str(result_simplified)),
     ]
+
+    # Puntos críticos: donde la derivada se anula
+    critical_points = []
+    try:
+        crit_solutions = solve(Eq(result_simplified, 0), var)
+        for sol in crit_solutions:
+            if sol.is_real:
+                x_val = float(sol)
+                y_val = float(expr.subs(var, sol))
+                second_deriv = diff(result_simplified, var)
+                second_val = float(second_deriv.subs(var, sol))
+                if second_val > 0:
+                    kind = "mínimo local"
+                elif second_val < 0:
+                    kind = "máximo local"
+                else:
+                    kind = "punto de inflexión (a confirmar)"
+                critical_points.append(schemas.CriticalPoint(x=x_val, y=y_val, kind=kind))
+    except Exception:
+        pass  # si no se puede resolver simbólicamente, seguimos sin puntos críticos
 
     return schemas.DerivativeResponse(
         original=str(expr),
@@ -37,6 +53,33 @@ def derivative(req: schemas.DerivativeRequest):
         result_simplified=str(result_simplified),
         result_simplified_latex=to_latex(result_simplified),
         steps=steps,
+        critical_points=critical_points,
+    )
+
+
+@router.post("/tangent-line", response_model=schemas.TangentLineResponse)
+def tangent_line(req: schemas.TangentLineRequest):
+    try:
+        expr = parse_expression(req.expression)
+        var = symbols("x")
+        point_x = req.point_x
+
+        y_val = float(expr.subs(var, point_x))
+        deriv = diff(expr, var)
+        slope = float(deriv.subs(var, point_x))
+
+        # y - y0 = m(x - x0)  ->  y = m*x + (y0 - m*x0)
+        intercept = y_val - slope * point_x
+        tangent_expr_str = f"{slope}*x + {intercept}"
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"No se pudo calcular la tangente: {e}")
+
+    return schemas.TangentLineResponse(
+        point_x=point_x,
+        point_y=round(y_val, 4),
+        slope=round(slope, 4),
+        tangent_expression=tangent_expr_str,
     )
 
 

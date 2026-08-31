@@ -12,6 +12,9 @@ export default function Dashboard() {
       <p><Link to="/limits">Laboratorio de Límites →</Link></p>
       <p><Link to="/integrals">Laboratorio de Integrales →</Link></p>
       <p><Link to="/algebra">Laboratorio de Álgebra →</Link></p>
+      <p><Link to="/geometry">Laboratorio de Geometría →</Link></p>
+      <p><Link to="/derivatives">Laboratorio de Derivadas →</Link></p>
+      <p><Link to="/statistics">Laboratorio de Probabilidad y Estadística →</Link></p>
       <button onClick={logout}>Cerrar sesión</button>
     </div>
   );

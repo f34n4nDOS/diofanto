@@ -38,6 +38,7 @@ export interface DerivativeResponse {
   result_simplified: string;
   result_simplified_latex: string;
   steps: DerivativeStep[];
+  critical_points: CriticalPoint[];
 }
 
 export interface LimitResponse {
@@ -185,3 +186,134 @@ export async function getDerivative(expression: string, respectTo = "x") {
   });
   return res.data;
 }
+export interface TriangleResponse {
+  valid: boolean;
+  sides?: number[];
+  angles?: number[];
+  perimeter?: number;
+  area?: number;
+  type_sides?: string;
+  type_angles?: string;
+}
+
+export interface CircleResponse {
+  radius: number;
+  diameter: number;
+  area: number;
+  circumference: number;
+}
+
+export interface RegularPolygonResponse {
+  num_sides: number;
+  side_length: number;
+  perimeter: number;
+  area: number;
+  interior_angle: number;
+  exterior_angle: number;
+}
+
+export const geometryAPI = {
+  triangle: async (sideA: number, sideB: number, sideC: number) => {
+    const res = await api.post<TriangleResponse>("/api/geometry/triangle", {
+      side_a: sideA,
+      side_b: sideB,
+      side_c: sideC,
+    });
+    return res.data;
+  },
+  circle: async (radius: number) => {
+    const res = await api.post<CircleResponse>("/api/geometry/circle", { radius });
+    return res.data;
+  },
+  regularPolygon: async (numSides: number, sideLength: number) => {
+    const res = await api.post<RegularPolygonResponse>("/api/geometry/regular-polygon", {
+      num_sides: numSides,
+      side_length: sideLength,
+    });
+    return res.data;
+  },
+};
+export interface CriticalPoint {
+  x: number;
+  y: number;
+  kind: string;
+}
+
+export interface TangentLineResponse {
+  point_x: number;
+  point_y: number;
+  slope: number;
+  tangent_expression: string;
+}
+
+export async function calculateTangentLine(expression: string, pointX: number) {
+  const res = await api.post<TangentLineResponse>("/api/math/tangent-line", {
+    expression,
+    point_x: pointX,
+  });
+  return res.data;
+}
+
+export interface FrequencyRow {
+  value: number;
+  absolute: number;
+  relative: number;
+}
+
+export interface DescriptiveStatsResponse {
+  count: number;
+  mean: number;
+  median: number;
+  mode: number | null;
+  variance: number;
+  std_dev: number;
+  min_value: number;
+  max_value: number;
+  frequency_table: FrequencyRow[];
+}
+
+export interface ConvergencePoint {
+  trial: number;
+  relative_frequency: number;
+}
+
+export interface CoinFlipResponse {
+  num_flips: number;
+  heads_count: number;
+  tails_count: number;
+  heads_relative_frequency: number;
+  theoretical_probability: number;
+  convergence: ConvergencePoint[];
+}
+
+export interface DiceFrequencyRow {
+  value: number;
+  absolute: number;
+  relative: number;
+  theoretical: number;
+}
+
+export interface DiceRollResponse {
+  num_rolls: number;
+  num_sides: number;
+  frequency_table: DiceFrequencyRow[];
+  mean_result: number;
+}
+
+export const statsAPI = {
+  descriptive: async (data: number[]) => {
+    const res = await api.post<DescriptiveStatsResponse>("/api/stats/descriptive", { data });
+    return res.data;
+  },
+  simulateCoin: async (numFlips: number) => {
+    const res = await api.post<CoinFlipResponse>("/api/stats/simulate-coin", { num_flips: numFlips });
+    return res.data;
+  },
+  simulateDice: async (numRolls: number, numSides: number = 6) => {
+    const res = await api.post<DiceRollResponse>("/api/stats/simulate-dice", {
+      num_rolls: numRolls,
+      num_sides: numSides,
+    });
+    return res.data;
+  },
+};

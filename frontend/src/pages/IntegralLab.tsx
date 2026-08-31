@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { calculateIntegral, type IntegralResponse } from "../api/client";
 import MathDisplay from "../components/MathDisplay";
+import "../styles/IntegralLab.css";
 
 export default function IntegralLab() {
   const [expression, setExpression] = useState("x**2");
@@ -26,49 +27,96 @@ export default function IntegralLab() {
     }
   }
 
+  const isDefinite = lower.trim() !== "" && upper.trim() !== "";
+
   return (
-    <div style={{ maxWidth: 640, margin: "40px auto", padding: "0 16px" }}>
-      <Link to="/dashboard">&larr; Volver al dashboard</Link>
+    <div className="integral-lab">
+      <Link to="/dashboard" className="back-link">
+        <span>←</span> Volver al dashboard
+      </Link>
       <h1>Laboratorio de Integrales</h1>
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" }}>
-        <input
-          value={expression}
-          onChange={(e) => setExpression(e.target.value)}
-          placeholder="Ej: x**2"
-          style={{ flex: 1, padding: 8, minWidth: 200 }}
-        />
-        <input
-          value={lower}
-          onChange={(e) => setLower(e.target.value)}
-          placeholder="límite inf. (opcional)"
-          style={{ width: 150, padding: 8 }}
-        />
-        <input
-          value={upper}
-          onChange={(e) => setUpper(e.target.value)}
-          placeholder="límite sup. (opcional)"
-          style={{ width: 150, padding: 8 }}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Calculando..." : "Integrar"}
-        </button>
+      <form className="input-form" onSubmit={handleSubmit}>
+        <div className="form-section">
+          <div className="form-field">
+            <label htmlFor="expression">Función (f(x))</label>
+            <input
+              id="expression"
+              value={expression}
+              onChange={(e) => setExpression(e.target.value)}
+              placeholder="Ej: x**2, sin(x), exp(x)"
+              type="text"
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="lower">Límite Inferior (opcional)</label>
+            <input
+              id="lower"
+              value={lower}
+              onChange={(e) => setLower(e.target.value)}
+              placeholder="Ej: 0"
+              type="text"
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="upper">Límite Superior (opcional)</label>
+            <input
+              id="upper"
+              value={upper}
+              onChange={(e) => setUpper(e.target.value)}
+              placeholder="Ej: 5"
+              type="text"
+            />
+          </div>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            <span>{loading ? "⏳" : "∫"}</span>
+            {loading ? "Calculando..." : "Integrar"}
+          </button>
+        </div>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <div className="error">{error}</div>}
 
       {result && (
-        <div>
-          {result.is_definite ? (
-            <MathDisplay
-              latex={`\\int_{${lower}}^{${upper}} ${result.original_latex}\\, dx = ${result.result_latex}`}
-              block
-            />
-          ) : (
-            <MathDisplay
-              latex={`\\int ${result.original_latex}\\, dx = ${result.result_latex} + C`}
-              block
-            />
+        <div className={`result-card ${isDefinite ? "definite" : "indefinite"}`}>
+          <div className={`integral-type ${isDefinite ? "definite" : "indefinite"}`}>
+            <span>{isDefinite ? "✓ Integral Definida" : "✓ Integral Indefinida"}</span>
+          </div>
+          
+          <div className={`result-content ${isDefinite ? "definite" : "indefinite"}`}>
+            {isDefinite ? (
+              <MathDisplay
+                latex={`\\int_{${lower}}^{${upper}} ${result.original_latex}\\, dx = ${result.result_latex}`}
+                block
+              />
+            ) : (
+              <>
+                <MathDisplay
+                  latex={`\\int ${result.original_latex}\\, dx = ${result.result_latex} + C`}
+                  block
+                />
+                <div className="constant-note">
+                  📝 Nota: C es la constante de integración
+                </div>
+              </>
+            )}
+          </div>
+
+          {isDefinite && (
+            <div className="result-details" style={{ marginTop: "var(--spacing-lg)" }}>
+              <div className="detail-item">
+                <strong>Límite Inferior</strong>
+                <span>{lower}</span>
+              </div>
+              <div className="detail-item">
+                <strong>Límite Superior</strong>
+                <span>{upper}</span>
+              </div>
+              <div className="detail-item">
+                <strong>Tipo</strong>
+                <span>Integral Definida</span>
+              </div>
+            </div>
           )}
         </div>
       )}

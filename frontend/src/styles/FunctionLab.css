@@ -1,0 +1,220 @@
+.function-lab {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.function-lab .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.function-lab .back-link:hover {
+  transform: translateX(-4px);
+  color: var(--primary-dark);
+}
+
+.function-lab h1 {
+  margin-bottom: var(--spacing-lg);
+  font-size: 2.5rem;
+}
+
+/* Form */
+.function-lab .input-form {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+}
+
+.function-lab .input-form-group {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.function-lab .form-field {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.function-lab .form-field label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.function-lab .form-field input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.function-lab .form-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.function-lab .submit-btn {
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.function-lab .submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.function-lab .submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Chart */
+.function-lab .chart-container {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+}
+
+.function-lab .chart-container h2 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.function-lab .chart-wrapper {
+  width: 100%;
+  height: 400px;
+  margin: var(--spacing-md) 0;
+}
+
+.function-lab .domain-note {
+  font-size: 0.85rem;
+  color: var(--neutral-500);
+  font-style: italic;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--neutral-50);
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+}
+
+/* Derivative section */
+.function-lab .derivative-section {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+  border-left: 4px solid var(--secondary);
+}
+
+.function-lab .derivative-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary);
+  margin-top: 0;
+}
+
+.function-lab .derivative-formula {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(168, 85, 247, 0.05));
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-lg) 0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.function-lab .derivative-steps {
+  margin-top: var(--spacing-lg);
+}
+
+.function-lab .derivative-steps h3 {
+  font-size: 1rem;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.function-lab .derivative-steps ol {
+  list-style: decimal-leading-zero;
+  margin-left: var(--spacing-lg);
+  color: var(--neutral-600);
+}
+
+.function-lab .derivative-steps li {
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.function-lab .derivative-steps li::marker {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .function-lab {
+    padding: var(--spacing-md);
+  }
+
+  .function-lab h1 {
+    font-size: 1.75rem;
+  }
+
+  .function-lab .input-form {
+    padding: var(--spacing-md);
+  }
+
+  .function-lab .input-form-group {
+    flex-direction: column;
+  }
+
+  .function-lab .form-field {
+    min-width: 100%;
+  }
+
+  .function-lab .chart-wrapper {
+    height: 300px;
+  }
+}

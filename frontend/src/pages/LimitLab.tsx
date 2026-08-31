@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { calculateLimit, type LimitResponse } from "../api/client";
 import MathDisplay from "../components/MathDisplay";
+import "../styles/LimitLab.css";
 
 export default function LimitLab() {
   const [expression, setExpression] = useState("sin(x)/x");
@@ -25,40 +26,95 @@ export default function LimitLab() {
     }
   }
 
+  const getPointDisplay = (p: string) => {
+    if (p === "oo" || p === "∞") return "∞";
+    if (p === "-oo" || p === "-∞") return "-∞";
+    return p;
+  };
+
   return (
-    <div style={{ maxWidth: 640, margin: "40px auto", padding: "0 16px" }}>
-      <Link to="/dashboard">&larr; Volver al dashboard</Link>
+    <div className="limit-lab">
+      <Link to="/dashboard" className="back-link">
+        <span>←</span> Volver al dashboard
+      </Link>
       <h1>Laboratorio de Límites</h1>
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8, marginBottom: 24, flexWrap: "wrap" }}>
-        <input
-          value={expression}
-          onChange={(e) => setExpression(e.target.value)}
-          placeholder="Ej: sin(x)/x"
-          style={{ flex: 1, padding: 8, minWidth: 200 }}
-        />
-        <span style={{ alignSelf: "center" }}>cuando x →</span>
-        <input
-          value={point}
-          onChange={(e) => setPoint(e.target.value)}
-          placeholder="0, oo, -oo"
-          style={{ width: 100, padding: 8 }}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Calculando..." : "Calcular"}
-        </button>
+      <form className="input-form" onSubmit={handleSubmit}>
+        <div className="form-section">
+          <div className="form-field">
+            <label htmlFor="expression">Función (f(x))</label>
+            <input
+              id="expression"
+              value={expression}
+              onChange={(e) => setExpression(e.target.value)}
+              placeholder="Ej: sin(x)/x, (x**2 - 1)/(x - 1)"
+              type="text"
+            />
+          </div>
+          <div className="arrow-separator">lim</div>
+          <div className="form-field">
+            <label htmlFor="point">Cuando x → </label>
+            <input
+              id="point"
+              value={point}
+              onChange={(e) => setPoint(e.target.value)}
+              placeholder="0, oo, -oo"
+              type="text"
+            />
+            <div className="helper-text">Usa 'oo' para ∞</div>
+          </div>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            <span>{loading ? "⏳" : "📈"}</span>
+            {loading ? "Calculando..." : "Calcular"}
+          </button>
+        </div>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <div className="error">{error}</div>}
 
       {result && (
-        <div>
-          <MathDisplay
-            latex={`\\lim_{x \\to ${point}} ${result.original_latex} = ${result.result_latex}`}
-            block
-          />
-          {!result.exists && (
-            <p style={{ color: "#b45309" }}>Los límites laterales son distintos, el límite no existe.</p>
+        <div className={`result-card ${result.exists ? "exists" : "not-exists"}`}>
+          <div className="result-content">
+            <MathDisplay
+              latex={`\\lim_{x \\to ${getPointDisplay(point)}} ${result.original_latex} = ${result.result_latex}`}
+              block
+            />
+          </div>
+
+          {result.exists ? (
+            <div className="limit-exists-note">
+              ✓ El límite existe y es finito
+            </div>
+          ) : (
+            <div className="limit-not-exists-note">
+              ⚠️ Los límites laterales son distintos, el límite no existe en este punto.
+            </div>
+          )}
+
+          {result.left_limit !== undefined && result.right_limit !== undefined && (
+            <div className="limit-details">
+              <h3>Análisis de Límites Laterales</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--spacing-md)" }}>
+                <div>
+                  <strong>Límite por la izquierda</strong>
+                  <p>
+                    <MathDisplay
+                      latex={`\\lim_{x \\to ${getPointDisplay(point)}^-} f(x) = ${result.left_limit}`}
+                      block={false}
+                    />
+                  </p>
+                </div>
+                <div>
+                  <strong>Límite por la derecha</strong>
+                  <p>
+                    <MathDisplay
+                      latex={`\\lim_{x \\to ${getPointDisplay(point)}^+} f(x) = ${result.right_limit}`}
+                      block={false}
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       )}

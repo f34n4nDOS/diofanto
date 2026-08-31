@@ -1,284 +1,74 @@
 .algebra-lab {
-  padding: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  animation: fadeIn 0.3s ease-in;
+  padding: var(--spacing-lg);
 }
 
-.algebra-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.algebra-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.algebra-header p {
-  margin: 0.5rem 0 0 0;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.algebra-tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  border-bottom: 2px solid #e0e0e0;
-  overflow-x: auto;
-}
-
-.tab-btn {
-  padding: 0.75rem 1.5rem;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #666;
+.algebra-lab .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
   transition: all 0.3s ease;
+}
+
+.algebra-lab .back-link:hover {
+  transform: translateX(-4px);
+  color: var(--primary-dark);
+}
+
+.algebra-lab h1 {
+  margin-bottom: var(--spacing-lg);
+  font-size: 2.5rem;
+}
+
+/* Tab navigation */
+.algebra-lab .tab-nav {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  background: white;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+  flex-wrap: wrap;
+}
+
+.algebra-lab .tab-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  background: transparent;
+  color: var(--neutral-600);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
   white-space: nowrap;
 }
 
-.tab-btn:hover {
-  color: #667eea;
+.algebra-lab .tab-button:hover {
+  background: var(--neutral-100);
+  color: var(--primary);
 }
 
-.tab-btn.active {
-  color: #667eea;
-  border-bottom-color: #667eea;
-}
-
-.error-message {
-  background: #fee;
-  color: #c33;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border-left: 4px solid #c33;
-}
-
-.algebra-content {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-.algebra-section {
-  padding: 2rem;
-  animation: slideUp 0.3s ease-out;
-}
-
-.algebra-section h2 {
-  color: #667eea;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-}
-
-.input-group {
-  margin-bottom: 1.5rem;
-}
-
-.input-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #333;
-  font-size: 0.95rem;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Courier New', monospace;
-  transition: all 0.3s ease;
-}
-
-.input-group input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.input-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.solve-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.algebra-lab .tab-button.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
-.solve-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
-}
-
-.solve-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.result-box {
-  background: linear-gradient(135deg, #f5f7ff 0%, #f8f5ff 100%);
-  border: 2px solid #667eea;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 2rem;
-  animation: slideUp 0.3s ease-out;
-}
-
-.result-box h3 {
-  color: #667eea;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
-}
-
-.result-item {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #667eea;
-}
-
-.result-item strong {
-  color: #333;
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.result-item p {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #666;
-}
-
-.latex {
-  background: #f8f8f8;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  color: #667eea;
-  font-weight: 500;
-}
-
-.equation-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.equation-list p {
-  margin: 0;
-  font-size: 1.05rem;
-}
-
-.solution-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.solution-item {
-  background: white;
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid #667eea;
-  font-size: 1rem;
-}
-
-.solution-item span:first-child {
-  font-weight: 600;
-  color: #333;
-}
-
-.result-item ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
-}
-
-.result-item ul li {
-  padding: 0.5rem;
-  background: white;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  border-left: 3px solid #667eea;
-}
-
-.result-item ol {
-  padding-left: 1.5rem;
-}
-
-.result-item ol li {
-  margin-bottom: 0.75rem;
-  color: #555;
-}
-
-.examples {
-  background: #fff8e1;
-  border-left: 4px solid #ffc107;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-top: 2rem;
-}
-
-.examples h4 {
-  color: #f57f17;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.examples ul,
-.examples p {
-  margin: 0.5rem 0;
-  color: #666;
-  font-family: 'Courier New', monospace;
-}
-
-.examples ul {
-  list-style-position: inside;
+/* Tab content */
+.algebra-lab .tab-content {
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -289,37 +79,242 @@
   }
 }
 
+/* Form section */
+.algebra-lab .form-card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+}
+
+.algebra-lab .form-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.algebra-lab .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.algebra-lab .form-field label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.algebra-lab .form-field input,
+.algebra-lab .form-field textarea {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  font-family: 'Courier New', monospace;
+}
+
+.algebra-lab .form-field input:focus,
+.algebra-lab .form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.algebra-lab .form-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.algebra-lab .submit-btn {
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.algebra-lab .submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.algebra-lab .submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Result card */
+.algebra-lab .result-card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+  border-left: 4px solid var(--success);
+  animation: slideInUp 0.3s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.algebra-lab .result-card h3 {
+  color: var(--success);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.algebra-lab .result-content {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--neutral-800);
+  margin: var(--spacing-md) 0;
+}
+
+.algebra-lab .result-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.algebra-lab .detail-item {
+  background: var(--neutral-50);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--neutral-200);
+}
+
+.algebra-lab .detail-item strong {
+  color: var(--primary);
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.algebra-lab .detail-item span {
+  color: var(--neutral-700);
+  word-break: break-word;
+}
+
+/* Steps/explanation */
+.algebra-lab .steps-section {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--neutral-200);
+}
+
+.algebra-lab .steps-section h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-md);
+}
+
+.algebra-lab .steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.algebra-lab .steps-list li {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--neutral-50);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--secondary);
+}
+
+.algebra-lab .steps-list li::before {
+  content: "→";
+  color: var(--secondary);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+.algebra-lab .steps-list li span {
+  color: var(--neutral-700);
+  line-height: 1.6;
+}
+
+/* Error message */
+.algebra-lab .error-message {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  border-left: 4px solid var(--error);
+  color: #991b1b;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .algebra-lab {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
 
-  .algebra-header h1 {
-    font-size: 1.8rem;
+  .algebra-lab h1 {
+    font-size: 1.75rem;
   }
 
-  .algebra-tabs {
-    gap: 0.5rem;
+  .algebra-lab .tab-nav {
+    flex-direction: column;
   }
 
-  .tab-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+  .algebra-lab .tab-button {
+    width: 100%;
+    text-align: left;
   }
 
-  .algebra-section {
-    padding: 1rem;
-  }
-
-  .input-row {
+  .algebra-lab .form-group {
     grid-template-columns: 1fr;
   }
 
-  .solution-grid {
-    grid-template-columns: 1fr;
+  .algebra-lab .form-card {
+    padding: var(--spacing-md);
   }
 
-  .result-item {
-    padding: 0.75rem;
+  .algebra-lab .submit-btn {
+    width: 100%;
+  }
+
+  .algebra-lab .result-details {
+    grid-template-columns: 1fr;
   }
 }

@@ -8,6 +8,9 @@ import FunctionLab from "./pages/FunctionLab";
 import LimitLab from "./pages/LimitLab";
 import IntegralLab from "./pages/IntegralLab";
 import AlgebraLab from "./pages/AlgebraLab";
+import GeometryLab from "./pages/GeometryLab";
+import DerivativeLab from "./pages/DerivativeLab";
+import StatisticsLab from "./pages/StatisticsLab";
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +38,9 @@ function App() {
 <Route path="/limits" element={<ProtectedRoute><LimitLab /></ProtectedRoute>} />
 <Route path="/integrals" element={<ProtectedRoute><IntegralLab /></ProtectedRoute>} />
 <Route path="/algebra" element={<ProtectedRoute><AlgebraLab /></ProtectedRoute>} />
+<Route path="/geometry" element={<ProtectedRoute><GeometryLab /></ProtectedRoute>} />
+<Route path="/derivatives" element={<ProtectedRoute><DerivativeLab /></ProtectedRoute>} />
+<Route path="/statistics" element={<ProtectedRoute><StatisticsLab /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

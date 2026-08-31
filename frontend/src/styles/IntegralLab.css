@@ -1,0 +1,197 @@
+.integral-lab {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.integral-lab .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.integral-lab .back-link:hover {
+  transform: translateX(-4px);
+  color: var(--primary-dark);
+}
+
+.integral-lab h1 {
+  margin-bottom: var(--spacing-lg);
+  font-size: 2.5rem;
+}
+
+.integral-lab h2 {
+  font-size: 1.25rem;
+  color: var(--neutral-800);
+}
+
+/* Form */
+.integral-lab .input-form {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+}
+
+.integral-lab .form-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: var(--spacing-md);
+  align-items: flex-end;
+  margin-bottom: var(--spacing-md);
+}
+
+.integral-lab .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.integral-lab .form-field label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.integral-lab .form-field input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.integral-lab .form-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.integral-lab .submit-btn {
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.integral-lab .submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.integral-lab .submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Integral type indicator */
+.integral-lab .integral-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  margin-bottom: var(--spacing-md);
+}
+
+.integral-lab .integral-type.indefinite {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(139, 92, 246, 0.1));
+  color: var(--secondary);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+/* Result card */
+.integral-lab .result-card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--neutral-200);
+  border-left: 4px solid var(--success);
+}
+
+.integral-lab .result-card.indefinite {
+  border-left-color: var(--secondary);
+}
+
+.integral-lab .result-content {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--neutral-800);
+}
+
+.integral-lab .result-content.indefinite {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+.integral-lab .constant-note {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--neutral-50);
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  font-style: italic;
+  border-left: 3px solid var(--warning);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .integral-lab .form-section {
+    grid-template-columns: 1fr;
+  }
+
+  .integral-lab .submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .integral-lab {
+    padding: var(--spacing-md);
+  }
+
+  .integral-lab h1 {
+    font-size: 1.75rem;
+  }
+
+  .integral-lab .input-form {
+    padding: var(--spacing-md);
+  }
+
+  .integral-lab .form-section {
+    grid-template-columns: 1fr;
+  }
+
+  .integral-lab .form-field {
+    width: 100%;
+  }
+}

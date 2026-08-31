@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
-from backend.schemas import (
+from schemas import (
     EquationRequest,
     EquationResponse,
     SystemRequest,
@@ -11,14 +11,14 @@ from backend.schemas import (
     ExpandRequest,
     ExpandResponse,
 )
-from backend.math_utils import (
+from math_utils import (
     solve_equation,
     solve_system,
     factor_expression,
     simplify_expression,
     expand_expression,
 )
-from backend.dependencies import get_current_user
+from dependencies import get_current_user
 
 router = APIRouter(prefix="/algebra", tags=["algebra"])
 

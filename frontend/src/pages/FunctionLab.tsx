@@ -12,6 +12,8 @@ import {
 } from "recharts";
 import { plotFunction, getDerivative, type PlotResponse, type DerivativeResponse } from "../api/client";
 import MathDisplay from "../components/MathDisplay";
+import "../styles/FunctionLab.css";
+
 export default function FunctionLab() {
   const [expression, setExpression] = useState("x**2 - 4");
   const [plotData, setPlotData] = useState<PlotResponse | null>(null);
@@ -40,61 +42,112 @@ export default function FunctionLab() {
   }
 
   return (
-    <div style={{ maxWidth: 720, margin: "40px auto", padding: "0 16px" }}>
-      <Link to="/dashboard">&larr; Volver al dashboard</Link>
+    <div className="function-lab">
+      <Link to="/dashboard" className="back-link">
+        <span>←</span> Volver al dashboard
+      </Link>
       <h1>Laboratorio de Funciones</h1>
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-        <input
-          value={expression}
-          onChange={(e) => setExpression(e.target.value)}
-          placeholder="Ej: x**2 - 4, sin(x), 1/x"
-          style={{ flex: 1, padding: 8 }}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Calculando..." : "Graficar"}
-        </button>
+      <form className="input-form">
+        <div className="input-form-group">
+          <div className="form-field" style={{ flex: 1 }}>
+            <label htmlFor="expression">Función (f(x))</label>
+            <input
+              id="expression"
+              value={expression}
+              onChange={(e) => setExpression(e.target.value)}
+              placeholder="Ej: x**2 - 4, sin(x), 1/x, exp(x)"
+              type="text"
+            />
+          </div>
+          <button 
+            type="button" 
+            className="submit-btn" 
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            <span>{loading ? "⏳" : "📈"}</span>
+            {loading ? "Calculando..." : "Graficar"}
+          </button>
+        </div>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <div className="error">{error}</div>}
 
       {plotData && (
-        <div style={{ marginBottom: 24 }}>
-          <ResponsiveContainer width="100%" height={320}>
-            <LineChart data={plotData.points}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="x" type="number" domain={["dataMin", "dataMax"]} />
-              <YAxis />
-              <Tooltip formatter={(value) => {
-                if (typeof value === 'number') return value.toFixed(3);
-                return value;
-              }} />
-              <ReferenceLine y={0} stroke="#888" />
-              <ReferenceLine x={0} stroke="#888" />
-              <Line type="monotone" dataKey="y" stroke="#2563eb" dot={false} isAnimationActive={false} />
-            </LineChart>
-          </ResponsiveContainer>
+        <div className="chart-container">
+          <h2>📊 Gráfico de la Función</h2>
+          <div className="chart-wrapper">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={plotData.points}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis 
+                  dataKey="x" 
+                  type="number" 
+                  domain={["dataMin", "dataMax"]}
+                  stroke="#6b7280"
+                />
+                <YAxis stroke="#6b7280" />
+                <Tooltip 
+                  formatter={(value) => {
+                    if (typeof value === 'number') return value.toFixed(3);
+                    return value;
+                  }}
+                  contentStyle={{
+                    backgroundColor: "white",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
+                  }}
+                />
+                <ReferenceLine y={0} stroke="#d1d5db" strokeDasharray="5 5" />
+                <ReferenceLine x={0} stroke="#d1d5db" strokeDasharray="5 5" />
+                <Line 
+                  type="monotone" 
+                  dataKey="y" 
+                  stroke="#2563eb" 
+                  strokeWidth={2}
+                  dot={false} 
+                  isAnimationActive={false} 
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
           {plotData.domain_note && (
-            <p style={{ fontSize: 13, color: "#888" }}>{plotData.domain_note}</p>
+            <p className="domain-note">ℹ️ {plotData.domain_note}</p>
           )}
         </div>
       )}
 
       {derivative && (
-  <div>
-    <h2>Derivada</h2>
-    <p>
-      <MathDisplay latex={`f(x) = ${derivative.original_latex} \\Rightarrow f'(x) = ${derivative.result_simplified_latex}`} block />
-    </p>
-    <ol>
-      {derivative.steps.map((step, i) => (
-        <li key={i}>
-          {step.description}
-        </li>
-      ))}
-    </ol>
-  </div>
-)}
+        <div className="derivative-section">
+          <h2>📐 Derivada de la Función</h2>
+          <div className="derivative-formula">
+            <MathDisplay 
+              latex={`f(x) = ${derivative.original_latex}`}
+              block 
+            />
+            <div style={{ textAlign: "center", color: "#6b7280", margin: "12px 0" }}>↓</div>
+            <MathDisplay 
+              latex={`f'(x) = ${derivative.result_simplified_latex}`}
+              block 
+            />
+          </div>
+          
+          {derivative.steps.length > 0 && (
+            <div className="derivative-steps">
+              <h3>Pasos de la Derivación</h3>
+              <ol>
+                {derivative.steps.map((step, i) => (
+                  <li key={i}>
+                    {step.description}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
