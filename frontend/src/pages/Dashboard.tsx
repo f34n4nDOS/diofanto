@@ -76,7 +76,7 @@ export default function Dashboard() {
     <div className="dashboard">
       <header className="dashboard__hero grid-paper">
         <div className="dashboard__hero-content">
-          <h1 className="dashboard__greeting">Hola, {user?.name} 👋</h1>
+          <h1 className="dashboard__greeting">Hola, {user?.name} </h1>
           <p className="dashboard__subtitle">¿Qué querés resolver hoy?</p>
         </div>
         <button onClick={logout} className="button-ghost dashboard__logout">
