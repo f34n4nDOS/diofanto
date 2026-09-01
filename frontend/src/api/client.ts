@@ -317,3 +317,427 @@ export const statsAPI = {
     return res.data;
   },
 };
+
+// ==================== MODELING TYPES ====================
+
+export interface BuildModelResponse {
+  success: boolean;
+  message: string;
+  model_info: Record<string, any>;
+  equations: string[];
+  equations_latex: string[];
+}
+
+export interface PredictResponse {
+  expression: string;
+  expression_latex: string;
+  variable_values: Record<string, number>;
+  prediction: number;
+  prediction_rounded: number;
+}
+
+export interface ParameterChange {
+  parameter_value: number;
+  output: number;
+}
+
+export interface SensitivityResponse {
+  parameter: string;
+  base_values: Record<string, number>;
+  sensitivity_at_base: number;
+  sensitivity_interpretation: string;
+  parameter_changes: ParameterChange[];
+  derivative_expression: string;
+  derivative_latex: string;
+}
+
+export interface CriticalPointInfo {
+  x: number;
+  y: number;
+  type: string;
+  second_derivative: number;
+}
+
+export interface OptimizationResponse {
+  objective_function: string;
+  objective_latex: string;
+  variable: string;
+  first_derivative: string;
+  first_derivative_latex: string;
+  critical_points: CriticalPointInfo[];
+  optimization_type: string;
+}
+
+export interface PlotModelPoint {
+  x: number;
+  y: number;
+}
+
+export interface PlotModelResponse {
+  expression: string;
+  expression_latex: string;
+  points: PlotModelPoint[];
+  x_min: number;
+  x_max: number;
+  domain_note: string;
+}
+
+export const modelingAPI = {
+  buildModel: async (equations: string[], parameters: string[] = []) => {
+    const res = await api.post<BuildModelResponse>("/api/modeling/build-model", {
+      equations,
+      parameters,
+    });
+    return res.data;
+  },
+
+  predict: async (expression: string, variableValues: Record<string, number>) => {
+    const res = await api.post<PredictResponse>("/api/modeling/predict", {
+      expression,
+      variable_values: variableValues,
+    });
+    return res.data;
+  },
+
+  sensitivityAnalysis: async (
+    expression: string,
+    parameter: string,
+    baseValues: Record<string, number>,
+    parameterMin: number = -10,
+    parameterMax: number = 10,
+    numPoints: number = 50
+  ) => {
+    const res = await api.post<SensitivityResponse>("/api/modeling/sensitivity-analysis", {
+      expression,
+      parameter,
+      base_values: baseValues,
+      parameter_min: parameterMin,
+      parameter_max: parameterMax,
+      num_points: numPoints,
+    });
+    return res.data;
+  },
+
+  optimize: async (
+    objectiveFunction: string,
+    variable: string = "x",
+    optimizationType: string = "both"
+  ) => {
+    const res = await api.post<OptimizationResponse>("/api/modeling/optimization", {
+      objective_function: objectiveFunction,
+      variable,
+      optimization_type: optimizationType,
+    });
+    return res.data;
+  },
+
+  plotModel: async (
+    expression: string,
+    parameters: Record<string, number> = {},
+    xMin: number = -10,
+    xMax: number = 10,
+    numPoints: number = 200
+  ) => {
+    const res = await api.post<PlotModelResponse>("/api/modeling/plot-model", {
+      expression,
+      parameters,
+      x_min: xMin,
+      x_max: xMax,
+      num_points: numPoints,
+    });
+    return res.data;
+  },
+
+  simulateGrowth: async (
+    modelType: string,
+    initialValue: number,
+    ratParameters: Record<string, number>,
+    timePeriods: number = 100,
+    numPoints: number = 100
+  ) => {
+    const res = await api.post<SimulationResponse>("/api/modeling/simulate-growth", {
+      model_type: modelType,
+      initial_value: initialValue,
+      rate_parameters: ratParameters,
+      time_periods: timePeriods,
+      num_points: numPoints,
+    });
+    return res.data;
+  },
+
+  climateForecast: async (
+    initialTemperature: number = 20,
+    warmingTrend: number = 0.01,
+    seasonalAmplitude: number = 5,
+    variability: number = 0.5,
+    monthsToForecast: number = 120
+  ) => {
+    const res = await api.post<ClimateForecastResponse>("/api/modeling/climate-forecast", {
+      initial_temperature: initialTemperature,
+      warming_trend: warmingTrend,
+      seasonal_amplitude: seasonalAmplitude,
+      variability,
+      months_to_forecast: monthsToForecast,
+    });
+    return res.data;
+  },
+
+  epidemiologicalModel: async (
+    initialValues: Record<string, number>,
+    transmissionRate: number = 0.0005,
+    incubationRate: number = 1 / 5.1,
+    recoveryRate: number = 1 / 10,
+    daysToSimulate: number = 365
+  ) => {
+    const res = await api.post<MultiCompartmentResponse>("/api/modeling/multi-compartment-model", {
+      model_type: "SEIR",
+      initial_values: initialValues,
+      transmission_rate: transmissionRate,
+      incubation_rate: incubationRate,
+      recovery_rate: recoveryRate,
+      days_to_simulate: daysToSimulate,
+    });
+    return res.data;
+  },
+};
+
+// ==================== SIMULATION TYPES ====================
+
+export interface SimulationDataPoint {
+  time: number;
+  value: number;
+  rate_of_change: number;
+}
+
+export interface SimulationResponse {
+  model_type: string;
+  initial_value: number;
+  final_value: number;
+  percent_change: number;
+  rate_parameters: Record<string, number>;
+  time_periods: number;
+  simulation_data: SimulationDataPoint[];
+  interpretation: string;
+}
+
+export interface ClimateDataPoint {
+  month: number;
+  temperature: number;
+  trend_only: number;
+}
+
+export interface ClimateForecastResponse {
+  initial_temperature: number;
+  months_to_forecast: number;
+  warming_trend: number;
+  final_temperature: number;
+  average_temperature: number;
+  max_temperature: number;
+  min_temperature: number;
+  forecast_data: ClimateDataPoint[];
+  interpretation: string;
+}
+
+export interface CompartmentDataPoint {
+  day: number;
+  susceptible: number;
+  exposed: number;
+  infected: number;
+  recovered: number;
+  total: number;
+}
+
+export interface MultiCompartmentResponse {
+  model_type: string;
+  days_to_simulate: number;
+  initial_values: Record<string, number>;
+  transmission_rate: number;
+  recovery_rate: number;
+  peak_infected: number;
+  peak_day: number;
+  total_infected: number;
+  simulation_data: CompartmentDataPoint[];
+  interpretation: string;
+}
+
+// ==================== PREDEFINED MODELS & ADVANCED ====================
+
+export interface ModelInfo {
+  id: string;
+  name: string;
+  description: string;
+  equations: string[];
+  variables: string[];
+}
+
+export interface PredefinedModelsListResponse {
+  total: number;
+  models: ModelInfo[];
+}
+
+export interface PredefinedModelSimulationResponse {
+  model_type: string;
+  initial_conditions: number[];
+  time_periods: number;
+  parameters: Record<string, number>;
+  simulation_data: Array<{
+    time: number;
+    values: Record<string, number>;
+  }>;
+  interpretation: string;
+}
+
+export interface ParameterSensitivityResponse {
+  model_type: string;
+  parameter_name: string;
+  parameter_min: number;
+  parameter_max: number;
+  sensitivity_data: Array<{
+    parameter_value: number;
+    final_output: number;
+  }>;
+  interpretation: string;
+}
+
+export interface StochasticSimulationResponse {
+  model_type: string;
+  num_simulations: number;
+  parameter_noise: number;
+  measurement_noise: number;
+  noise_type: string;
+  statistics_data: Array<{
+    time: number;
+    mean: number;
+    std: number;
+    percentile_5: number;
+    percentile_95: number;
+  }>;
+  interpretation: string;
+}
+
+export interface ScenarioComparisonResponse {
+  model_type: string;
+  num_scenarios: number;
+  time_periods: number;
+  scenarios: Array<{
+    scenario_name: string;
+    parameters: Record<string, number>;
+    data: Array<{ time: number; value: number }>;
+    final_value: number;
+  }>;
+  interpretation: string;
+}
+
+export const advancedModelingAPI = {
+  listPredefinedModels: async () => {
+    const res = await api.get<PredefinedModelsListResponse>("/api/modeling/predefined-models");
+    return res.data;
+  },
+
+  simulatePredefinedModel: async (
+    modelType: string,
+    initialConditions: number[],
+    parameters: Record<string, number>,
+    timePeriods: number = 100,
+    numPoints: number = 100
+  ) => {
+    const res = await api.post<PredefinedModelSimulationResponse>(
+      "/api/modeling/simulate-predefined-model",
+      {
+        model_type: modelType,
+        initial_conditions: initialConditions,
+        parameters,
+        time_periods: timePeriods,
+        num_points: numPoints,
+      }
+    );
+    return res.data;
+  },
+
+  parameterSensitivityAnalysis: async (
+    modelType: string,
+    parameterName: string,
+    parameters: Record<string, number>,
+    initialConditions: number[],
+    paramMin: number = 0,
+    paramMax: number = 1,
+    numPoints: number = 50,
+    timePeriods: number = 100
+  ) => {
+    const res = await api.post<ParameterSensitivityResponse>(
+      "/api/modeling/parameter-sensitivity-analysis",
+      {
+        model_type: modelType,
+        parameter_name: parameterName,
+        parameters,
+        initial_conditions: initialConditions,
+        param_min: paramMin,
+        param_max: paramMax,
+        num_points: numPoints,
+        time_periods: timePeriods,
+      }
+    );
+    return res.data;
+  },
+
+  stochasticSimulation: async (
+    modelType: string,
+    initialConditions: number[],
+    parameters: Record<string, number>,
+    numSimulations: number = 100,
+    parameterNoise: number = 0.1,
+    measurementNoise: number = 0.05,
+    noiseType: string = "gaussian",
+    timePeriods: number = 100,
+    numPoints: number = 100
+  ) => {
+    const res = await api.post<StochasticSimulationResponse>(
+      "/api/modeling/stochastic-simulation",
+      {
+        model_type: modelType,
+        initial_conditions: initialConditions,
+        parameters,
+        num_simulations: numSimulations,
+        parameter_noise: parameterNoise,
+        measurement_noise: measurementNoise,
+        noise_type: noiseType,
+        time_periods: timePeriods,
+        num_points: numPoints,
+      }
+    );
+    return res.data;
+  },
+
+  compareScenarios: async (
+    modelType: string,
+    initialConditions: number[],
+    scenarios: Array<{ name: string; parameters: Record<string, number> }>,
+    timePeriods: number = 100,
+    numPoints: number = 100
+  ) => {
+    const res = await api.post<ScenarioComparisonResponse>(
+      "/api/modeling/compare-scenarios",
+      {
+        model_type: modelType,
+        initial_conditions: initialConditions,
+        scenarios,
+        time_periods: timePeriods,
+        num_points: numPoints,
+      }
+    );
+    return res.data;
+  },
+
+  exportSimulation: async (
+    modelName: string,
+    format: "csv" | "json",
+    simulationData: Array<Record<string, any>>
+  ) => {
+    const res = await api.post("/api/modeling/export-simulation", {
+      model_name: modelName,
+      format,
+      simulation_data: simulationData,
+    });
+    return res.data;
+  },
+};

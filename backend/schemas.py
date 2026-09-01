@@ -310,3 +310,315 @@ class FavoriteOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+# ==================== MODELING SCHEMAS ====================
+
+class BuildModelRequest(BaseModel):
+    equations: list[str]
+    parameters: list[str] = []
+
+
+class BuildModelResponse(BaseModel):
+    success: bool
+    message: str
+    model_info: dict
+    equations: list[str]
+    equations_latex: list[str]
+
+
+class PredictRequest(BaseModel):
+    expression: str
+    variable_values: dict[str, float]
+
+
+class PredictResponse(BaseModel):
+    expression: str
+    expression_latex: str
+    variable_values: dict[str, float]
+    prediction: float
+    prediction_rounded: float
+
+
+class SensitivityRequest(BaseModel):
+    expression: str
+    parameter: str
+    base_values: dict[str, float]
+    parameter_min: float = -10
+    parameter_max: float = 10
+    num_points: int = 50
+
+
+class ParameterChange(BaseModel):
+    parameter_value: float
+    output: float
+
+
+class SensitivityResponse(BaseModel):
+    parameter: str
+    base_values: dict[str, float]
+    sensitivity_at_base: float
+    sensitivity_interpretation: str
+    parameter_changes: list[ParameterChange]
+    derivative_expression: str
+    derivative_latex: str
+
+
+class OptimizationRequest(BaseModel):
+    objective_function: str
+    variable: str = "x"
+    optimization_type: str = "both"  # "max", "min", o "both"
+
+
+class CriticalPointInfo(BaseModel):
+    x: float
+    y: float
+    type: str
+    second_derivative: float
+
+
+class OptimizationResponse(BaseModel):
+    objective_function: str
+    objective_latex: str
+    variable: str
+    first_derivative: str
+    first_derivative_latex: str
+    critical_points: list[dict]
+    optimization_type: str
+
+
+class PlotModelRequest(BaseModel):
+    expression: str
+    parameters: dict[str, float] = {}
+    x_min: float = -10
+    x_max: float = 10
+    num_points: int = 200
+
+
+class PlotPoint(BaseModel):
+    x: float
+    y: float
+
+
+class PlotModelResponse(BaseModel):
+    expression: str
+    expression_latex: str
+    points: list[PlotPoint]
+    x_min: float
+    x_max: float
+    domain_note: str
+
+
+# ==================== SIMULATION SCHEMAS ====================
+
+class SimulationDataPoint(BaseModel):
+    time: float
+    value: float
+    rate_of_change: float
+
+
+class SimulationRequest(BaseModel):
+    model_type: str  # "malthus", "logistic", "compound_interest", "decay", "vital_rates"
+    initial_value: float
+    time_periods: float = 100
+    num_points: int = 100
+    rate_parameters: dict[str, float]  # {"growth_rate": 0.05, ...}
+
+
+class SimulationResponse(BaseModel):
+    model_type: str
+    initial_value: float
+    final_value: float
+    percent_change: float
+    rate_parameters: dict[str, float]
+    time_periods: float
+    simulation_data: list[SimulationDataPoint]
+    interpretation: str
+
+
+class ClimateDataPoint(BaseModel):
+    month: int
+    temperature: float
+    trend_only: float
+
+
+class ClimateForecastRequest(BaseModel):
+    initial_temperature: float = 20.0
+    warming_trend: float = 0.01  # °C por mes
+    seasonal_amplitude: float = 5.0  # Variación estacional
+    variability: float = 0.5  # Ruido estocástico
+    months_to_forecast: int = 120
+
+
+class ClimateForecastResponse(BaseModel):
+    initial_temperature: float
+    months_to_forecast: int
+    warming_trend: float
+    final_temperature: float
+    average_temperature: float
+    max_temperature: float
+    min_temperature: float
+    forecast_data: list[ClimateDataPoint]
+    interpretation: str
+
+
+class CompartmentDataPoint(BaseModel):
+    day: int
+    susceptible: int
+    exposed: int
+    infected: int
+    recovered: int
+    total: int
+
+
+class MultiCompartmentRequest(BaseModel):
+    model_type: str = "SEIR"
+    initial_values: dict[str, int]  # {"S": 99000, "I": 100, "E": 0, "R": 0}
+    transmission_rate: float = 0.0005  # β
+    incubation_rate: float = 1/5.1  # σ (período de incubación ~5 días)
+    recovery_rate: float = 1/10  # γ (período de recuperación ~10 días)
+    days_to_simulate: int = 365
+
+
+class MultiCompartmentResponse(BaseModel):
+    model_type: str
+    days_to_simulate: int
+    initial_values: dict[str, int]
+    transmission_rate: float
+    recovery_rate: float
+    peak_infected: int
+    peak_day: int
+    total_infected: int
+    simulation_data: list[CompartmentDataPoint]
+    interpretation: str
+
+
+# ==================== PREDEFINED MODELS & ADVANCED ANALYSIS ====================
+
+class ModelInfo(BaseModel):
+    id: str
+    name: str
+    description: str
+    equations: list[str]
+    variables: list[str]
+
+
+class PredefinedModelsListResponse(BaseModel):
+    total: int
+    models: list[ModelInfo]
+
+
+class PredefinedModelSimulationRequest(BaseModel):
+    model_type: str
+    initial_conditions: list[float]
+    parameters: dict[str, float]
+    time_periods: float = 100
+    num_points: int = 100
+
+
+class SimulationDataPoint(BaseModel):
+    time: float
+    values: dict[str, float]
+
+
+class PredefinedModelSimulationResponse(BaseModel):
+    model_type: str
+    initial_conditions: list[float]
+    time_periods: float
+    parameters: dict[str, float]
+    simulation_data: list[SimulationDataPoint]
+    interpretation: str
+
+
+class ParameterSensitivityRequest(BaseModel):
+    model_type: str
+    parameter_name: str
+    parameters: dict[str, float]
+    initial_conditions: list[float]
+    param_min: float
+    param_max: float
+    num_points: int = 50
+    time_periods: float = 100
+
+
+class SensitivityDataPoint(BaseModel):
+    parameter_value: float
+    final_output: float
+
+
+class ParameterSensitivityResponse(BaseModel):
+    model_type: str
+    parameter_name: str
+    parameter_min: float
+    parameter_max: float
+    sensitivity_data: list[SensitivityDataPoint]
+    interpretation: str
+
+
+class StochasticSimulationRequest(BaseModel):
+    model_type: str
+    initial_conditions: list[float]
+    parameters: dict[str, float]
+    num_simulations: int = 100
+    parameter_noise: float = 0.1  # 10% de ruido en parámetros
+    measurement_noise: float = 0.05  # 5% de ruido en mediciones
+    noise_type: str = "gaussian"  # gaussian, poisson, uniform
+    time_periods: float = 100
+    num_points: int = 100
+
+
+class StochasticDataPoint(BaseModel):
+    time: float
+    mean: float
+    std: float
+    percentile_5: float
+    percentile_95: float
+
+
+class StochasticSimulationResponse(BaseModel):
+    model_type: str
+    num_simulations: int
+    parameter_noise: float
+    measurement_noise: float
+    noise_type: str
+    statistics_data: list[StochasticDataPoint]
+    interpretation: str
+
+
+class Scenario(BaseModel):
+    name: str
+    parameters: dict[str, float]
+
+
+class ScenarioDataPoint(BaseModel):
+    time: float
+    value: float
+
+
+class ScenarioResult(BaseModel):
+    scenario_name: str
+    parameters: dict[str, float]
+    data: list[ScenarioDataPoint]
+    final_value: float
+
+
+class ScenarioComparisonRequest(BaseModel):
+    model_type: str
+    initial_conditions: list[float]
+    scenarios: list[Scenario]
+    time_periods: float = 100
+    num_points: int = 100
+
+
+class ScenarioComparisonResponse(BaseModel):
+    model_type: str
+    num_scenarios: int
+    time_periods: float
+    scenarios: list[ScenarioResult]
+    interpretation: str
+
+
+class ExportSimulationRequest(BaseModel):
+    model_name: str
+    format: str  # csv, json
+    simulation_data: list[dict]

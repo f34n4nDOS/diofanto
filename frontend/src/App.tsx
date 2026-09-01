@@ -11,6 +11,7 @@ import AlgebraLab from "./pages/AlgebraLab";
 import GeometryLab from "./pages/GeometryLab";
 import DerivativeLab from "./pages/DerivativeLab";
 import StatisticsLab from "./pages/StatisticsLab";
+import ModelingLab from "./pages/ModelingLab";
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +42,7 @@ function App() {
 <Route path="/geometry" element={<ProtectedRoute><GeometryLab /></ProtectedRoute>} />
 <Route path="/derivatives" element={<ProtectedRoute><DerivativeLab /></ProtectedRoute>} />
 <Route path="/statistics" element={<ProtectedRoute><StatisticsLab /></ProtectedRoute>} />
+<Route path="/modeling" element={<ProtectedRoute><ModelingLab /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

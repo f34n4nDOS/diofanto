@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, math, algebra, geometry, statistics
-from routers import auth, math, algebra
-from routers import auth, math, algebra, geometry
-from routers import auth, math, algebra, geometry, statistics, exercises
+from routers import auth, math, algebra, geometry, statistics, exercises, modeling
 app = FastAPI(title="Diofanto API")
 
 app.add_middleware(
@@ -19,6 +16,7 @@ app.include_router(auth.router)
 app.include_router(math.router)
 app.include_router(algebra.router)
 app.include_router(geometry.router)
+app.include_router(modeling.router)
 @app.get("/health")
 def health_check():
     return {"status": "ok"}

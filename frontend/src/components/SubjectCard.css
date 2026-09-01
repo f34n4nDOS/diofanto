@@ -1,0 +1,89 @@
+.subject-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  padding-top: calc(var(--spacing-lg) + 6px);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+.subject-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -12px var(--card-accent, var(--primary));
+}
+
+.subject-card:hover .subject-card__cta {
+  text-decoration: underline;
+}
+
+/* La "pestaña" de color, como los separadores de materia en un cuaderno */
+.subject-card__tab {
+  position: absolute;
+  top: 0;
+  left: var(--spacing-lg);
+  width: 40px;
+  height: 8px;
+  background: var(--card-accent, var(--primary));
+  border-radius: 0 0 6px 6px;
+}
+
+.subject-card--algebra {
+  --card-accent: var(--subject-algebra);
+  border-left: 4px solid var(--subject-algebra);
+}
+
+.subject-card--geometry {
+  --card-accent: var(--subject-geometry);
+  border-left: 4px solid var(--subject-geometry);
+}
+
+.subject-card--calculus {
+  --card-accent: var(--subject-calculus);
+  border-left: 4px solid var(--subject-calculus);
+}
+
+.subject-card--statistics {
+  --card-accent: var(--subject-statistics);
+  border-left: 4px solid var(--subject-statistics);
+}
+
+.subject-card__icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.subject-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+
+.subject-card__description {
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  margin: 0;
+  flex: 1;
+}
+
+.subject-card__cta {
+  margin-top: var(--spacing-sm);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--card-accent, var(--primary));
+}
+
+@media (max-width: 480px) {
+  .subject-card {
+    min-height: auto;
+  }
+}

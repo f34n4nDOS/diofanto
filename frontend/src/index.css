@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 /* Variables de color */
 :root {
   --primary: #2563eb;
@@ -17,20 +19,37 @@
   --neutral-700: #374151;
   --neutral-800: #1f2937;
   --neutral-900: #111827;
-  
+
+  /* Nuevo: tokens del sistema "cuaderno cuadriculado" */
+  --ink: #1e2340;
+  --paper: #f7f8fc;
+  --grid-line: #e3e8fa;
+  --spark: #f5a524;
+  --spark-dark: #d6890a;
+
+  /* Nuevo: color por área de la matemática (wayfinding) */
+  --subject-algebra: #7c3aed;
+  --subject-geometry: #2563eb;
+  --subject-calculus: #16a34a;
+  --subject-statistics: #f5a524;
+
+  /* Nuevo: tipografía */
+  --font-display: 'Baloo 2', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
   /* Espaciado */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  
+
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  
+
   /* Bordes */
   --border-radius: 8px;
   --border-radius-lg: 12px;
@@ -48,26 +67,25 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  color: var(--neutral-900);
+  background: var(--paper);
+  color: var(--ink);
   line-height: 1.6;
   min-height: 100vh;
 }
 
 /* Tipografía */
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: var(--spacing-lg);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--ink);
 }
 
 h2 {
@@ -87,6 +105,36 @@ h3 {
 p {
   color: var(--neutral-600);
   margin-bottom: var(--spacing-md);
+}
+
+/* Reservado para UN solo elemento protagonista por pantalla (wordmark, CTA hero) */
+.brand-mark {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Utilidad: cuadriculado sutil de fondo — usar solo en heroes/secciones vacías,
+   nunca detrás de contenido denso (tablas, formularios largos, etc.) */
+.grid-paper {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Utilidad: enmarca resultados matemáticos (KaTeX) como una voz distinta de la UI */
+.math-panel {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 /* Inputs y formularios */
@@ -155,6 +203,22 @@ button:disabled {
   color: var(--neutral-600);
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* Botón secundario/"ghost" — para acciones de salida o de bajo énfasis
+   (cerrar sesión, cancelar), nunca con el mismo peso que un CTA primario */
+button.button-ghost:not(:disabled) {
+  background: transparent;
+  color: var(--neutral-600);
+  box-shadow: none;
+  border: 1px solid var(--neutral-300);
+}
+
+button.button-ghost:not(:disabled):hover {
+  background: var(--neutral-100);
+  color: var(--ink);
+  transform: none;
+  box-shadow: none;
 }
 
 /* Links */
