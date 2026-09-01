@@ -395,9 +395,7 @@ class PlotModelRequest(BaseModel):
     num_points: int = 200
 
 
-class PlotPoint(BaseModel):
-    x: float
-    y: float
+
 
 
 class PlotModelResponse(BaseModel):
@@ -501,6 +499,7 @@ class ModelInfo(BaseModel):
     description: str
     equations: list[str]
     variables: list[str]
+    default_parameters: dict[str, float]
 
 
 class PredefinedModelsListResponse(BaseModel):

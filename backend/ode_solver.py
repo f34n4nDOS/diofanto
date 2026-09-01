@@ -173,20 +173,71 @@ class PredefinedModels:
         
         return [dS, dE, dI, dR]
     
+    
     @staticmethod
     def resource_competition(N1, N2, t, params):
         """Competencia de dos especies por recursos"""
         r1 = params.get('growth_rate_1', 0.5)
         r2 = params.get('growth_rate_2', 0.4)
         K = params.get('carrying_capacity', 1000)
-        alpha = params.get('competition_coeff', 0.5)  # Efecto de N2 en N1
-        beta = params.get('competition_coeff_inv', 0.7)  # Efecto de N1 en N2
+        alpha = params.get('competition_coeff', 0.5)
+        beta = params.get('competition_coeff_inv', 0.7)
         
         dN1 = r1 * N1 * (1 - (N1 + alpha * N2) / K)
         dN2 = r2 * N2 * (1 - (N2 + beta * N1) / K)
         
         return [dN1, dN2]
 
+    @staticmethod
+    def sir_simple(S, I, R, t, params):
+        """Modelo SIR clásico, sin mortalidad ni latencia — el más básico de todos"""
+        beta = params.get('transmission_rate', 0.3)
+        gamma = params.get('recovery_rate', 0.1)
+
+        N = S + I + R
+        dS = -beta * S * I / N
+        dI = beta * S * I / N - gamma * I
+        dR = gamma * I
+
+        return [dS, dI, dR]
+
+    @staticmethod
+    def damped_pendulum(theta, omega, t, params):
+        """Péndulo con amortiguación (no lineal, sin aproximación de ángulo pequeño)"""
+        g = params.get('gravity', 9.8)
+        L = params.get('length', 1.0)
+        b = params.get('damping', 0.2)
+
+        dtheta = omega
+        domega = -(g / L) * np.sin(theta) - b * omega
+
+        return [dtheta, domega]
+
+    @staticmethod
+    def solow_growth(K, t, params):
+        """Modelo de crecimiento de Solow: capital por trabajador"""
+        s = params.get('savings_rate', 0.2)
+        A = params.get('technology', 1.0)
+        alpha = params.get('capital_share', 0.33)
+        delta = params.get('depreciation_rate', 0.05)
+        n = params.get('population_growth', 0.01)
+
+        dK = s * A * (K ** alpha) - (delta + n) * K
+
+        return [dK]
+
+    @staticmethod
+    def lorenz_attractor(x, y, z, t, params):
+        """Atractor de Lorenz: sistema caótico clásico"""
+        sigma = params.get('sigma', 10.0)
+        rho = params.get('rho', 28.0)
+        beta = params.get('beta', 8.0 / 3.0)
+
+        dx = sigma * (y - x)
+        dy = x * (rho - z) - y
+        dz = x * y - beta * z
+
+        return [dx, dy, dz]
 
 def get_model_description(model_name: str) -> str:
     """Retorna descripción de un modelo predefinido."""
@@ -197,6 +248,10 @@ def get_model_description(model_name: str) -> str:
         "climate": "Modelo de puntos de inflexión climáticos",
         "tuberculosis": "Modelo SEIR para tuberculosis",
         "competition": "Competencia entre dos especies",
+        "sir_simple": "Modelo SIR clásico sin latencia ni mortalidad",
+        "pendulum": "Péndulo con amortiguación (sistema no lineal)",
+        "solow": "Modelo de crecimiento económico de Solow",
+        "lorenz": "Atractor de Lorenz (sistema caótico)",
     }
     return descriptions.get(model_name, "Modelo desconocido")
 
@@ -231,6 +286,23 @@ def get_model_equations(model_name: str) -> List[str]:
         "competition": [
             "dN₁/dt = r₁·N₁·(1 - (N₁ + α·N₂)/K)",
             "dN₂/dt = r₂·N₂·(1 - (N₂ + β·N₁)/K)",
+        ],
+                "sir_simple": [
+            "dS/dt = -β·S·I/N",
+            "dI/dt = β·S·I/N - γ·I",
+            "dR/dt = γ·I",
+        ],
+        "pendulum": [
+            "dθ/dt = ω",
+            "dω/dt = -(g/L)·sin(θ) - b·ω",
+        ],
+        "solow": [
+            "dK/dt = s·A·K^α - (δ+n)·K",
+        ],
+        "lorenz": [
+            "dx/dt = σ·(y - x)",
+            "dy/dt = x·(ρ - z) - y",
+            "dz/dt = x·y - β·z",
         ],
     }
     return equations.get(model_name, [])
@@ -272,6 +344,27 @@ def get_default_parameters(model_name: str) -> Dict:
             "carrying_capacity": 1000,
             "competition_coeff": 0.5,
             "competition_coeff_inv": 0.7,
+        },
+                "sir_simple": {
+            "transmission_rate": 0.3,
+            "recovery_rate": 0.1,
+        },
+        "pendulum": {
+            "gravity": 9.8,
+            "length": 1.0,
+            "damping": 0.2,
+        },
+        "solow": {
+            "savings_rate": 0.2,
+            "technology": 1.0,
+            "capital_share": 0.33,
+            "depreciation_rate": 0.05,
+            "population_growth": 0.01,
+        },
+        "lorenz": {
+            "sigma": 10.0,
+            "rho": 28.0,
+            "beta": 8.0 / 3.0,
         },
     }
     return defaults.get(model_name, {})

@@ -568,6 +568,7 @@ export interface ModelInfo {
   description: string;
   equations: string[];
   variables: string[];
+  default_parameters: Record<string, number>; 
 }
 
 export interface PredefinedModelsListResponse {

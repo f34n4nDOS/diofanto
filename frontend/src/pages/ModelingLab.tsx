@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   LineChart,
@@ -10,7 +10,6 @@ import {
   ReferenceLine,
   ResponsiveContainer,
   ComposedChart,
-  Bar,
 } from "recharts";
 import {
   modelingAPI,
@@ -99,6 +98,20 @@ export default function ModelingLab() {
   const [sensResult2, setSensResult2] = useState<ParameterSensitivityResponse | null>(null);
   const [stochasticResult, setStochasticResult] = useState<StochasticSimulationResponse | null>(null);
   const [scenarioResult, setScenarioResult] = useState<ScenarioComparisonResponse | null>(null);
+  const [currentInitialConditions, setCurrentInitialConditions] = useState<number[]>([]);
+  const [currentParameters, setCurrentParameters] = useState<Record<string, number>>({});
+
+  const currentModelInfo = predefinedModels?.models.find((m) => m.id === selectedModel);
+
+  useEffect(() => {
+    if (currentModelInfo) {
+      setCurrentInitialConditions(currentModelInfo.variables.map(() => 100));
+      // NOTA: "default_parameters" no está tipado hoy en PredefinedModelsListResponse
+      // (api/client.ts). Se castea a `any` para no romper el build; si lo agregás al
+      // tipo del backend/frontend, sacá el `as any`.
+      setCurrentParameters((currentModelInfo as any).default_parameters ?? {});
+    }
+  }, [selectedModel, predefinedModels]);
 
   async function handleBuildModel(e: FormEvent) {
     e.preventDefault();
@@ -283,10 +296,10 @@ export default function ModelingLab() {
     try {
       const result = await advancedModelingAPI.simulatePredefinedModel(
         selectedModel,
-        [99000, 100], // S, I
-        { transmission_rate: 0.5, recovery_rate: 0.1, mortality_rate: 0.01 },
+        currentInitialConditions,
+        currentParameters,
         100,
-        100
+        200
       );
       setPredefinedResult(result);
     } catch (err: any) {
@@ -503,7 +516,7 @@ export default function ModelingLab() {
                   </p>
                 </div>
                 <div className="equations-display">
-                  {buildResult.equations_latex.map((latex, i) => (
+                  {buildResult.equations_latex.map((latex: string, i: number) => (
                     <div key={i} className="equation-item">
                       <MathDisplay latex={latex} block />
                     </div>
@@ -1333,23 +1346,61 @@ export default function ModelingLab() {
             )}
 
             <div className="advanced-analysis">
+              {/* Único bloque de "Simulación Predefinida" — se eliminó la versión
+                  vieja duplicada que tenías más abajo, que usaba un <select> con
+                  opciones hardcodeadas y no respetaba las condiciones iniciales
+                  ni parámetros dinámicos del modelo seleccionado. */}
               <div className="analysis-section">
                 <h3>Simulación Predefinida</h3>
                 <form onSubmit={handlePredefinedModel}>
                   <div className="form-section">
                     <label>Modelo</label>
-                    <select
-                      value={selectedModel}
-                      onChange={(e) => setSelectedModel(e.target.value)}
-                    >
-                      <option value="covid19">COVID-19</option>
-                      <option value="predator_prey">Depredador-Presa</option>
-                      <option value="rossiter">Malaria</option>
-                      <option value="climate">Clima</option>
-                      <option value="tuberculosis">Tuberculosis</option>
-                      <option value="competition">Competencia</option>
+                    <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
+                      {predefinedModels?.models.map((m) => (
+                        <option key={m.id} value={m.id}>{m.name}</option>
+                      ))}
                     </select>
                   </div>
+
+                  {currentModelInfo && (
+                    <>
+                      <div className="form-section">
+                        <label>Condiciones iniciales</label>
+                        {currentModelInfo.variables.map((varName, i) => (
+                          <div key={varName} className="variable-input">
+                            <label>{varName} =</label>
+                            <input
+                              type="number"
+                              value={currentInitialConditions[i] ?? 0}
+                              onChange={(e) => {
+                                const next = [...currentInitialConditions];
+                                next[i] = parseFloat(e.target.value);
+                                setCurrentInitialConditions(next);
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="form-section">
+                        <label>Parámetros</label>
+                        {Object.entries(currentParameters).map(([key, value]) => (
+                          <div key={key} className="variable-input">
+                            <label>{key.replace(/_/g, " ")} =</label>
+                            <input
+                              type="number"
+                              step="any"
+                              value={value}
+                              onChange={(e) =>
+                                setCurrentParameters((prev) => ({ ...prev, [key]: parseFloat(e.target.value) }))
+                              }
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
                   <button type="submit" className="submit-btn" disabled={loading}>
                     {loading ? "Simulando..." : "Simular Modelo"}
                   </button>
@@ -1363,16 +1414,27 @@ export default function ModelingLab() {
                       <div className="chart-container">
                         <ResponsiveContainer width="100%" height={300}>
                           <LineChart
-                            data={predefinedResult.simulation_data.map((d) => ({
-                              time: d.time,
-                              value: d.values["var_0"] || 0,
-                            }))}
+                            data={predefinedResult.simulation_data.map((d) => {
+                              const row: Record<string, number> = { time: d.time };
+                              currentModelInfo?.variables.forEach((varName, i) => {
+                                row[varName] = d.values[`var_${i}`];
+                              });
+                              return row;
+                            })}
                           >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="time" />
                             <YAxis />
                             <Tooltip />
-                            <Line type="monotone" dataKey="value" stroke="#3b82f6" />
+                            {currentModelInfo?.variables.map((varName, i) => (
+                              <Line
+                                key={varName}
+                                type="monotone"
+                                dataKey={varName}
+                                stroke={["#3b82f6", "#ef4444", "#10b981", "#f59e0b"][i % 4]}
+                                dot={false}
+                              />
+                            ))}
                           </LineChart>
                         </ResponsiveContainer>
                       </div>

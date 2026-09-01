@@ -564,6 +564,7 @@ def list_predefined_models():
             "description": get_model_description("covid19"),
             "equations": get_model_equations("covid19"),
             "variables": ["S", "I", "R"],
+            "default_parameters": get_default_parameters("covid19"),
         },
         {
             "id": "predator_prey",
@@ -571,6 +572,7 @@ def list_predefined_models():
             "description": get_model_description("predator_prey"),
             "equations": get_model_equations("predator_prey"),
             "variables": ["Presas", "Depredadores"],
+            "default_parameters": get_default_parameters("predator_prey"),
         },
         {
             "id": "rossiter",
@@ -578,6 +580,7 @@ def list_predefined_models():
             "description": get_model_description("rossiter"),
             "equations": get_model_equations("rossiter"),
             "variables": ["S", "I", "R"],
+            "default_parameters": get_default_parameters("rossiter"),
         },
         {
             "id": "climate",
@@ -585,6 +588,7 @@ def list_predefined_models():
             "description": get_model_description("climate"),
             "equations": get_model_equations("climate"),
             "variables": ["Temperatura", "CO2"],
+            "default_parameters": get_default_parameters("climate"),
         },
         {
             "id": "tuberculosis",
@@ -592,6 +596,7 @@ def list_predefined_models():
             "description": get_model_description("tuberculosis"),
             "equations": get_model_equations("tuberculosis"),
             "variables": ["S", "E", "I", "R"],
+            "default_parameters": get_default_parameters("tuberculosis"),
         },
         {
             "id": "competition",
@@ -599,6 +604,39 @@ def list_predefined_models():
             "description": get_model_description("competition"),
             "equations": get_model_equations("competition"),
             "variables": ["Especie 1", "Especie 2"],
+            "default_parameters": get_default_parameters("competition"),
+        },
+        {
+            "id": "sir_simple",
+            "name": "SIR Simple",
+            "description": get_model_description("sir_simple"),
+            "equations": get_model_equations("sir_simple"),
+            "variables": ["S", "I", "R"],
+            "default_parameters": get_default_parameters("sir_simple"),
+        },
+        {
+            "id": "pendulum",
+            "name": "Péndulo Amortiguado",
+            "description": get_model_description("pendulum"),
+            "equations": get_model_equations("pendulum"),
+            "variables": ["Ángulo (θ)", "Velocidad angular (ω)"],
+            "default_parameters": get_default_parameters("pendulum"),
+        },
+        {
+            "id": "solow",
+            "name": "Crecimiento de Solow",
+            "description": get_model_description("solow"),
+            "equations": get_model_equations("solow"),
+            "variables": ["Capital (K)"],
+            "default_parameters": get_default_parameters("solow"),
+        },
+        {
+            "id": "lorenz",
+            "name": "Atractor de Lorenz",
+            "description": get_model_description("lorenz"),
+            "equations": get_model_equations("lorenz"),
+            "variables": ["x", "y", "z"],
+            "default_parameters": get_default_parameters("lorenz"),
         },
     ]
     
@@ -643,6 +681,22 @@ def simulate_predefined_model(req: schemas.PredefinedModelSimulationRequest):
             ),
             "competition": lambda: odeint(
                 lambda state, t: PredefinedModels.resource_competition(*state, t, parameters),
+                initial_conditions, np.linspace(0, t_max, req.num_points)
+            ),
+                        "sir_simple": lambda: odeint(
+                lambda state, t: PredefinedModels.sir_simple(*state, t, parameters),
+                initial_conditions, np.linspace(0, t_max, req.num_points)
+            ),
+            "pendulum": lambda: odeint(
+                lambda state, t: PredefinedModels.damped_pendulum(*state, t, parameters),
+                initial_conditions, np.linspace(0, t_max, req.num_points)
+            ),
+            "solow": lambda: odeint(
+                lambda state, t: PredefinedModels.solow_growth(*state, t, parameters),
+                initial_conditions, np.linspace(0, t_max, req.num_points)
+            ),
+            "lorenz": lambda: odeint(
+                lambda state, t: PredefinedModels.lorenz_attractor(*state, t, parameters),
                 initial_conditions, np.linspace(0, t_max, req.num_points)
             ),
         }
