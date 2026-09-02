@@ -1,0 +1,123 @@
+.auth-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ---------- Panel de marca (izquierda) ---------- */
+
+.auth-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  border-right: 1px solid var(--neutral-200);
+}
+
+.auth-showcase__content {
+  max-width: 380px;
+  text-align: left;
+}
+
+.auth-showcase__brand {
+  font-size: 2.25rem;
+  display: inline-block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.auth-showcase__tagline {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-showcase__plot {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-showcase__caption {
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ---------- Panel del formulario (derecha) ---------- */
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  background: white;
+}
+
+.auth-form-card {
+  width: 100%;
+  max-width: 360px;
+}
+
+.auth-form-card__title {
+  margin-bottom: var(--spacing-xs);
+}
+
+.auth-form-card__subtitle {
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.auth-field label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--neutral-700);
+}
+
+.auth-error {
+  margin-bottom: 0;
+}
+
+.auth-submit {
+  margin-top: var(--spacing-sm);
+  width: 100%;
+  justify-content: center;
+}
+
+.auth-form-card__footer {
+  margin-top: var(--spacing-lg);
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .auth-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-showcase {
+    display: none;
+  }
+
+  .auth-form-panel {
+    padding: var(--spacing-lg);
+  }
+}

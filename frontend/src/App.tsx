@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -17,6 +18,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
@@ -36,13 +38,13 @@ function App() {
     </ProtectedRoute>
   }
 />
-<Route path="/limits" element={<ProtectedRoute><LimitLab /></ProtectedRoute>} />
-<Route path="/integrals" element={<ProtectedRoute><IntegralLab /></ProtectedRoute>} />
-<Route path="/algebra" element={<ProtectedRoute><AlgebraLab /></ProtectedRoute>} />
-<Route path="/geometry" element={<ProtectedRoute><GeometryLab /></ProtectedRoute>} />
-<Route path="/derivatives" element={<ProtectedRoute><DerivativeLab /></ProtectedRoute>} />
-<Route path="/statistics" element={<ProtectedRoute><StatisticsLab /></ProtectedRoute>} />
-<Route path="/modeling" element={<ProtectedRoute><ModelingLab /></ProtectedRoute>} />
+          <Route path="/limits" element={<ProtectedRoute><LimitLab /></ProtectedRoute>} />
+          <Route path="/integrals" element={<ProtectedRoute><IntegralLab /></ProtectedRoute>} />
+          <Route path="/algebra" element={<ProtectedRoute><AlgebraLab /></ProtectedRoute>} />
+          <Route path="/geometry" element={<ProtectedRoute><GeometryLab /></ProtectedRoute>} />
+          <Route path="/derivatives" element={<ProtectedRoute><DerivativeLab /></ProtectedRoute>} />
+          <Route path="/statistics" element={<ProtectedRoute><StatisticsLab /></ProtectedRoute>} />
+          <Route path="/modeling" element={<ProtectedRoute><ModelingLab /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
