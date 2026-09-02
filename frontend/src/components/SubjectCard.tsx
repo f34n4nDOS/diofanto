@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./SubjectCard.css";
 
-export type Subject = "algebra" | "geometry" | "calculus" | "statistics";
+export type Subject = "algebra" | "geometry" | "calculus" | "statistics" | "exercises";
 
 interface SubjectCardProps {
   title: string;

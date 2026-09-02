@@ -67,6 +67,13 @@ const LABS: Lab[] = [
     subject: "calculus",
     icon: "🧬",
   },
+  {
+    title: "Ejercicios",
+    description: "Practicá, corregí tus respuestas y seguí tu progreso.",
+    to: "/exercises",
+    subject: "exercises",
+    icon: "📝",
+  },
 ];
 
 export default function Dashboard() {

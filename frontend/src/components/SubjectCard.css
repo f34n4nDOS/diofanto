@@ -87,3 +87,7 @@
     min-height: auto;
   }
 }
+.subject-card--exercises {
+  --card-accent: var(--subject-exercises);
+  border-left: 4px solid var(--subject-exercises);
+}

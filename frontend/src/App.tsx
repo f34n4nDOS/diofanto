@@ -13,6 +13,8 @@ import GeometryLab from "./pages/GeometryLab";
 import DerivativeLab from "./pages/DerivativeLab";
 import StatisticsLab from "./pages/StatisticsLab";
 import ModelingLab from "./pages/ModelingLab";
+import ExercisesList from "./pages/ExercisesList";
+import ExerciseDetail from "./pages/ExerciseDetail";
 function App() {
   return (
     <BrowserRouter>
@@ -45,6 +47,8 @@ function App() {
           <Route path="/derivatives" element={<ProtectedRoute><DerivativeLab /></ProtectedRoute>} />
           <Route path="/statistics" element={<ProtectedRoute><StatisticsLab /></ProtectedRoute>} />
           <Route path="/modeling" element={<ProtectedRoute><ModelingLab /></ProtectedRoute>} />
+          <Route path="/exercises" element={<ProtectedRoute><ExercisesList /></ProtectedRoute>} />
+          <Route path="/exercises/:id" element={<ProtectedRoute><ExerciseDetail /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

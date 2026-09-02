@@ -45,8 +45,43 @@ def list_favorites(db: Session = Depends(get_db), user: models.User = Depends(ge
         .all()
     )
     return favorites
+@router.get("/history", response_model=schemas.HistoryResponse)
+def get_history(
+    limit: int = Query(50, ge=1, le=200),
+    db: Session = Depends(get_db),
+    user: models.User = Depends(get_current_user),
+):
+    attempts = (
+        db.query(models.ExerciseAttempt, models.Exercise)
+        .join(models.Exercise, models.Exercise.id == models.ExerciseAttempt.exercise_id)
+        .filter(models.ExerciseAttempt.user_id == user.id)
+        .order_by(models.ExerciseAttempt.created_at.desc())
+        .limit(limit)
+        .all()
+    )
 
+    items = [
+        schemas.AttemptOut(
+            id=attempt.id,
+            exercise_id=exercise.id,
+            exercise_statement=exercise.statement,
+            exercise_area=exercise.area,
+            exercise_topic=exercise.topic,
+            submitted_answer=attempt.submitted_answer,
+            is_correct=attempt.is_correct,
+            attempt_number=attempt.attempt_number,
+            created_at=attempt.created_at,
+        )
+        for attempt, exercise in attempts
+    ]
 
+    total = (
+        db.query(models.ExerciseAttempt)
+        .filter(models.ExerciseAttempt.user_id == user.id)
+        .count()
+    )
+
+    return schemas.HistoryResponse(total=total, items=items)
 @router.get("/{exercise_id}", response_model=schemas.ExerciseOut)
 def get_exercise(exercise_id: int, db: Session = Depends(get_db)):
     exercise = db.query(models.Exercise).filter(models.Exercise.id == exercise_id).first()

@@ -621,3 +621,19 @@ class ExportSimulationRequest(BaseModel):
     model_name: str
     format: str  # csv, json
     simulation_data: list[dict]
+
+class AttemptOut(BaseModel):
+    id: int
+    exercise_id: int
+    exercise_statement: str
+    exercise_area: str
+    exercise_topic: str
+    submitted_answer: Any
+    is_correct: bool
+    attempt_number: int
+    created_at: datetime
+
+
+class HistoryResponse(BaseModel):
+    total: int
+    items: list[AttemptOut]

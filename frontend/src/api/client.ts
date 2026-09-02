@@ -742,3 +742,71 @@ export const advancedModelingAPI = {
     return res.data;
   },
 };
+export interface ExerciseOut {
+  id: number;
+  area: string;
+  topic: string;
+  level: string;
+  difficulty: string;
+  statement: string;
+  exercise_type: string;
+  created_at: string;
+}
+
+export interface ExerciseListResponse {
+  total: number;
+  items: ExerciseOut[];
+}
+
+export interface ExerciseSubmitResponse {
+  is_correct: boolean;
+  correct_answer: any;
+  explanation: string | null;
+  attempt_number: number;
+}
+
+export interface AttemptOut {
+  id: number;
+  exercise_id: number;
+  exercise_statement: string;
+  exercise_area: string;
+  exercise_topic: string;
+  submitted_answer: any;
+  is_correct: boolean;
+  attempt_number: number;
+  created_at: string;
+}
+
+export interface HistoryResponse {
+  total: number;
+  items: AttemptOut[];
+}
+
+export const exercisesAPI = {
+  list: async (filters: { area?: string; topic?: string; level?: string; difficulty?: string; page?: number }) => {
+    const res = await api.get<ExerciseListResponse>("/api/exercises", { params: filters });
+    return res.data;
+  },
+  get: async (id: number) => {
+    const res = await api.get<ExerciseOut>(`/api/exercises/${id}`);
+    return res.data;
+  },
+  submit: async (id: number, answer: any) => {
+    const res = await api.post<ExerciseSubmitResponse>(`/api/exercises/${id}/submit`, { answer });
+    return res.data;
+  },
+  listFavorites: async () => {
+    const res = await api.get<ExerciseOut[]>("/api/exercises/favorites");
+    return res.data;
+  },
+  addFavorite: async (id: number) => {
+    await api.post(`/api/exercises/${id}/favorite`);
+  },
+  removeFavorite: async (id: number) => {
+    await api.delete(`/api/exercises/${id}/favorite`);
+  },
+  getHistory: async () => {
+    const res = await api.get<HistoryResponse>("/api/exercises/history");
+    return res.data;
+  },
+};
