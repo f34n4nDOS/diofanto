@@ -30,10 +30,22 @@ import {
 import MathDisplay from "../components/MathDisplay";
 import "../styles/ModelingLab.css";
 
-type TabType = "build" | "predict" | "sensitivity" | "optimize" | "visualize" | "evolution" | "climate" | "epidemiology" | "advanced";
+type TabType = "ai" | "build" | "predict" | "sensitivity" | "optimize" | "visualize" | "evolution" | "climate" | "epidemiology" | "advanced";
+
+// Respuesta del endpoint que interpreta una consigna en texto libre
+// (ver interpret_scenario.py en el backend). Si preferís, movés esta
+// interfaz a api/client.ts junto a los demás tipos.
+interface ScenarioInterpretationResponse {
+  model_type: string;
+  model_variables: string[];
+  initial_conditions: number[];
+  parameters: Record<string, number>;
+  time_periods: number;
+  justification: string;
+}
 
 export default function ModelingLab() {
-  const [activeTab, setActiveTab] = useState<TabType>("build");
+  const [activeTab, setActiveTab] = useState<TabType>("ai");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -100,18 +112,38 @@ export default function ModelingLab() {
   const [scenarioResult, setScenarioResult] = useState<ScenarioComparisonResponse | null>(null);
   const [currentInitialConditions, setCurrentInitialConditions] = useState<number[]>([]);
   const [currentParameters, setCurrentParameters] = useState<Record<string, number>>({});
+  const [timePeriods, setTimePeriods] = useState(100);
+
+  // AI Scenario Interpreter Tab ("Modelar con IA")
+  const [aiScenarioText, setAiScenarioText] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState("");
+  const [aiResult, setAiResult] = useState<ScenarioInterpretationResponse | null>(null);
+  // Guarda la sugerencia de la IA hasta que predefinedModels/currentModelInfo
+  // estén listos para aplicarla (ver el useEffect de abajo).
+  const [pendingSuggestion, setPendingSuggestion] = useState<{
+    initial: number[];
+    params: Record<string, number>;
+  } | null>(null);
 
   const currentModelInfo = predefinedModels?.models.find((m) => m.id === selectedModel);
 
   useEffect(() => {
-    if (currentModelInfo) {
+    if (!currentModelInfo) return;
+
+    if (pendingSuggestion) {
+      // Vino de la IA: usamos sus valores en vez de pisarlos con los genéricos.
+      setCurrentInitialConditions(pendingSuggestion.initial);
+      setCurrentParameters(pendingSuggestion.params);
+      setPendingSuggestion(null);
+    } else {
       setCurrentInitialConditions(currentModelInfo.variables.map(() => 100));
       // NOTA: "default_parameters" no está tipado hoy en PredefinedModelsListResponse
       // (api/client.ts). Se castea a `any` para no romper el build; si lo agregás al
       // tipo del backend/frontend, sacá el `as any`.
       setCurrentParameters((currentModelInfo as any).default_parameters ?? {});
     }
-  }, [selectedModel, predefinedModels]);
+  }, [selectedModel, predefinedModels, pendingSuggestion]);
 
   async function handleBuildModel(e: FormEvent) {
     e.preventDefault();
@@ -298,7 +330,7 @@ export default function ModelingLab() {
         selectedModel,
         currentInitialConditions,
         currentParameters,
-        100,
+        timePeriods,
         200
       );
       setPredefinedResult(result);
@@ -352,6 +384,29 @@ export default function ModelingLab() {
     }
   }
 
+  async function handleInterpretScenario(e: FormEvent) {
+    e.preventDefault();
+    setAiError("");
+    setAiLoading(true);
+    setAiResult(null);
+    try {
+      // Si todavía no cargamos el catálogo de modelos, lo cargamos ahora:
+      // currentModelInfo lo necesita para poder aplicar la sugerencia.
+      if (!predefinedModels) {
+        await loadPredefinedModels();
+      }
+      const result = await advancedModelingAPI.interpretScenario(aiScenarioText);
+      setAiResult(result);
+      setPendingSuggestion({ initial: result.initial_conditions, params: result.parameters });
+      setTimePeriods(result.time_periods);
+      setSelectedModel(result.model_type);
+    } catch (err: any) {
+      setAiError(err?.response?.data?.detail ?? "No se pudo interpretar la consigna");
+    } finally {
+      setAiLoading(false);
+    }
+  }
+
   async function handleScenarioComparison(e: FormEvent) {
     e.preventDefault();
     setError("");
@@ -387,6 +442,12 @@ export default function ModelingLab() {
       {error && <div className="error">{error}</div>}
 
       <div className="tabs">
+        <button
+          className={`tab ${activeTab === "ai" ? "active" : ""}`}
+          onClick={() => setActiveTab("ai")}
+        >
+          🤖 Modelar con IA
+        </button>
         <button
           className={`tab ${activeTab === "build" ? "active" : ""}`}
           onClick={() => setActiveTab("build")}
@@ -445,6 +506,81 @@ export default function ModelingLab() {
           🚀 Avanzado
         </button>
       </div>
+
+      {/* AI SCENARIO INTERPRETER TAB */}
+      {activeTab === "ai" && (
+        <div className="tab-content">
+          <div className="tab-panel">
+            <h2>🤖 Modelar con IA</h2>
+            <p>
+              Describí la situación en lenguaje natural. La IA va a elegir el
+              modelo matemático más adecuado de la biblioteca y va a sugerir
+              condiciones iniciales y parámetros razonables para arrancar.
+            </p>
+
+            <form onSubmit={handleInterpretScenario} className="input-form">
+              <div className="form-section">
+                <label>Descripción de la situación</label>
+                <textarea
+                  value={aiScenarioText}
+                  onChange={(e) => setAiScenarioText(e.target.value)}
+                  placeholder="Ej: una población de 500 conejos crece un 3% mensual en un hábitat con capacidad para 8000 individuos..."
+                  rows={5}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={aiLoading || !aiScenarioText.trim()}
+              >
+                <span>{aiLoading ? "⏳" : "🤖"}</span>
+                {aiLoading ? "Interpretando..." : "Interpretar con IA"}
+              </button>
+            </form>
+
+            {aiError && <div className="error">{aiError}</div>}
+
+            {aiResult && (
+              <div className="result-section">
+                <h3>
+                  ✅ Modelo sugerido:{" "}
+                  {predefinedModels?.models.find((m) => m.id === aiResult.model_type)?.name ??
+                    aiResult.model_type}
+                </h3>
+                <p className="interpretation">
+                  <strong>Justificación de la IA:</strong> {aiResult.justification}
+                </p>
+                <div className="model-info">
+                  <p>
+                    <strong>Variables:</strong> {aiResult.model_variables.join(", ")}
+                  </p>
+                  <p>
+                    <strong>Condiciones iniciales sugeridas:</strong>{" "}
+                    {aiResult.initial_conditions.join(", ")}
+                  </p>
+                  <p>
+                    <strong>Parámetros sugeridos:</strong>{" "}
+                    {Object.entries(aiResult.parameters)
+                      .map(([k, v]) => `${k} = ${v}`)
+                      .join(", ")}
+                  </p>
+                  <p>
+                    <strong>Períodos de tiempo:</strong> {aiResult.time_periods}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="submit-btn"
+                  onClick={() => setActiveTab("advanced")}
+                >
+                  Revisar y simular →
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* BUILD MODEL TAB */}
       {activeTab === "build" && (
@@ -1397,6 +1533,15 @@ export default function ModelingLab() {
                             />
                           </div>
                         ))}
+                      </div>
+                      <div className="form-section">
+                        <label>Períodos de tiempo a simular</label>
+                        <input
+                          type="number"
+                          value={timePeriods}
+                          onChange={(e) => setTimePeriods(parseFloat(e.target.value))}
+                          step="10"
+                        />
                       </div>
                     </>
                   )}

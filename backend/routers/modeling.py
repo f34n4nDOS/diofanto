@@ -6,7 +6,9 @@ import numpy as np
 from fastapi import APIRouter, HTTPException
 from sympy import symbols, sympify, diff, solve, Eq, lambdify, simplify
 from math_utils import parse_expression, to_latex
+from ai_model_interpreter import interpret_scenario
 import schemas
+import requests
 from ode_solver import (
     solve_ode_system, 
     add_stochastic_noise, 
@@ -938,3 +940,18 @@ def export_simulation(req: schemas.ExportSimulationRequest):
     
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error exportando datos: {e}")
+@router.post("/interpret-scenario", response_model=schemas.ScenarioInterpretResponse)
+def interpret_scenario_endpoint(req: schemas.ScenarioInterpretRequest):
+    """
+    Recibe una consigna en texto libre y usa una IA (vía OpenRouter) para
+    sugerir cuál modelo predefinido usar, con condiciones iniciales y
+    parámetros ajustados a la situación descrita.
+    """
+    try:
+        result = interpret_scenario(req.scenario_text)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=502, detail=f"Error al contactar OpenRouter: {e}")
+
+    return schemas.ScenarioInterpretResponse(**result)

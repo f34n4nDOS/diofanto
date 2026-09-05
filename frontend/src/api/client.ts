@@ -629,6 +629,15 @@ export interface ScenarioComparisonResponse {
   interpretation: string;
 }
 
+export interface ScenarioInterpretationResponse {
+  model_type: string;
+  model_variables: string[];
+  initial_conditions: number[];
+  parameters: Record<string, number>;
+  time_periods: number;
+  justification: string;
+}
+
 export const advancedModelingAPI = {
   listPredefinedModels: async () => {
     const res = await api.get<PredefinedModelsListResponse>("/api/modeling/predefined-models");
@@ -651,6 +660,14 @@ export const advancedModelingAPI = {
         time_periods: timePeriods,
         num_points: numPoints,
       }
+    );
+    return res.data;
+  },
+
+  interpretScenario: async (scenarioText: string) => {
+    const res = await api.post<ScenarioInterpretationResponse>(
+      "/api/modeling/interpret-scenario",
+      { scenario_text: scenarioText }
     );
     return res.data;
   },

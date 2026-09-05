@@ -637,3 +637,15 @@ class AttemptOut(BaseModel):
 class HistoryResponse(BaseModel):
     total: int
     items: list[AttemptOut]
+
+class ScenarioInterpretRequest(BaseModel):
+    scenario_text: str
+
+
+class ScenarioInterpretResponse(BaseModel):
+    model_type: str
+    model_variables: list[str]
+    initial_conditions: list[float]
+    parameters: dict[str, float]
+    time_periods: float
+    justification: str
