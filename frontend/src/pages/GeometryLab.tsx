@@ -4,7 +4,9 @@ import { geometryAPI } from "../api/client";
 import type { TriangleResponse, CircleResponse, RegularPolygonResponse } from "../api/client";
 import "../styles/AlgebraLab.css"; // reutilizamos las mismas clases
 import { TriangleFigure, CircleFigure, PolygonFigure } from "../components/GeometryFigure";
-type GeometryTab = "triangle" | "circle" | "polygon";
+import GeometryConstructor from "../components/GeometryConstructor";
+
+type GeometryTab = "triangle" | "circle" | "polygon" | "constructor";
 
 export default function GeometryLab() {
   const [activeTab, setActiveTab] = useState<GeometryTab>("triangle");
@@ -93,6 +95,12 @@ export default function GeometryLab() {
           onClick={() => { setActiveTab("polygon"); setError(null); }}
         >
           Polígonos regulares
+        </button>
+        <button
+          className={`tab-button ${activeTab === "constructor" ? "active" : ""}`}
+          onClick={() => { setActiveTab("constructor"); setError(null); }}
+        >
+          Construcción libre
         </button>
       </nav>
 
@@ -199,6 +207,18 @@ export default function GeometryLab() {
                 </div>
               </div>
             )}
+          </div>
+        )}
+
+        {activeTab === "constructor" && (
+          <div className="form-card">
+            <h2>Construcción Libre</h2>
+            <p>
+              Construí figuras con herramientas precisas (punto, recta, círculo,
+              polígono) que podés arrastrar y medir, o dibujá libremente encima
+              con la herramienta de mano alzada.
+            </p>
+            <GeometryConstructor />
           </div>
         )}
       </div>

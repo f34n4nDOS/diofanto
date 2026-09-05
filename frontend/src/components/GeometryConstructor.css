@@ -1,0 +1,39 @@
+.geo-constructor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.geo-constructor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.geo-constructor__hint {
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  font-style: italic;
+  margin: 0;
+}
+
+.geo-constructor__canvas {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 760 / 460;
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  cursor: crosshair;
+}
+
+.geo-constructor__grid-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  margin-left: auto;
+}

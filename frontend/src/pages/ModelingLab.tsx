@@ -1,4 +1,4 @@
-import { useState, useEffect, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   LineChart,
@@ -126,24 +126,31 @@ export default function ModelingLab() {
     params: Record<string, number>;
   } | null>(null);
 
-  const currentModelInfo = predefinedModels?.models.find((m) => m.id === selectedModel);
 
-  useEffect(() => {
-    if (!currentModelInfo) return;
+const currentModelInfo = predefinedModels?.models.find((m) => m.id === selectedModel);
+const prevSelectedModelRef = useRef<string | null>(null);
 
-    if (pendingSuggestion) {
-      // Vino de la IA: usamos sus valores en vez de pisarlos con los genéricos.
-      setCurrentInitialConditions(pendingSuggestion.initial);
-      setCurrentParameters(pendingSuggestion.params);
-      setPendingSuggestion(null);
-    } else {
-      setCurrentInitialConditions(currentModelInfo.variables.map(() => 100));
-      // NOTA: "default_parameters" no está tipado hoy en PredefinedModelsListResponse
-      // (api/client.ts). Se castea a `any` para no romper el build; si lo agregás al
-      // tipo del backend/frontend, sacá el `as any`.
-      setCurrentParameters((currentModelInfo as any).default_parameters ?? {});
-    }
-  }, [selectedModel, predefinedModels, pendingSuggestion]);
+useEffect(() => {
+  if (!currentModelInfo) return;
+
+  if (pendingSuggestion) {
+    setCurrentInitialConditions(pendingSuggestion.initial);
+    setCurrentParameters(pendingSuggestion.params);
+    setPendingSuggestion(null);
+    prevSelectedModelRef.current = selectedModel;
+    return;
+  }
+
+  // Solo reseteamos a los valores por defecto si el modelo realmente cambió
+  // (elegido a mano en el selector). Esto evita que la limpieza de
+  // pendingSuggestion dispare este bloque y pise los valores que la IA
+  // acaba de sugerir.
+  if (prevSelectedModelRef.current !== selectedModel) {
+    setCurrentInitialConditions(currentModelInfo.variables.map(() => 100));
+    setCurrentParameters(currentModelInfo.default_parameters ?? {});
+    prevSelectedModelRef.current = selectedModel;
+  }
+}, [selectedModel, predefinedModels, pendingSuggestion, currentModelInfo]);
 
   async function handleBuildModel(e: FormEvent) {
     e.preventDefault();
