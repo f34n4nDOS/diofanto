@@ -6,9 +6,79 @@
 
 .geo-constructor__toolbar {
   display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+}
+
+.geo-constructor__tool-group {
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
+}
+
+.geo-constructor__group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--neutral-500);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.geo-constructor__group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.geo-constructor__group-buttons .tab-button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.geo-constructor__actions {
+  display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px dashed var(--neutral-200);
+}
+
+.geo-constructor__grid-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  margin-left: auto;
+}
+
+.geo-constructor__inline-form {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.geo-constructor__inline-form label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  white-space: nowrap;
+}
+
+.geo-constructor__inline-form input[type="number"] {
+  width: 80px;
 }
 
 .geo-constructor__hint {
@@ -29,11 +99,17 @@
   cursor: crosshair;
 }
 
-.geo-constructor__grid-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-  color: var(--neutral-600);
-  margin-left: auto;
+@media (max-width: 640px) {
+  .geo-constructor__tool-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .geo-constructor__group-label {
+    min-width: auto;
+  }
+
+  .geo-constructor__grid-toggle {
+    margin-left: 0;
+  }
 }

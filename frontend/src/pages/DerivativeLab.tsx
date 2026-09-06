@@ -125,6 +125,24 @@ export default function DerivativeLab() {
             block
           />
 
+          {derivative.steps && derivative.steps.length > 0 && (
+            <div style={{ marginTop: 16 }}>
+              <h3>Cómo se derivó, paso a paso</h3>
+              <ol style={{ paddingLeft: 20 }}>
+                {derivative.steps.map((step, i) => (
+                  <li key={i} style={{ marginBottom: 10 }}>
+                    <div>{step.description}</div>
+                    {step.expression && (
+                      <div style={{ marginTop: 4 }}>
+                        <MathDisplay latex={step.expression} />
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           {derivative.critical_points.length > 0 && (
             <div style={{ marginTop: 16 }}>
               <h3>Puntos críticos</h3>

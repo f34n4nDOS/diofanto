@@ -13,6 +13,32 @@ import "../styles/AlgebraLab.css";
 
 type AlgebraTab = "equations" | "systems" | "factor" | "simplify" | "expand";
 
+interface StepItem {
+  step: string;
+  expression: string;
+}
+
+function StepsList({ steps }: { steps: StepItem[] }) {
+  if (!steps || steps.length === 0) return null;
+  return (
+    <div className="steps-section">
+      <h4>Procedimiento</h4>
+      <ol style={{ marginLeft: "var(--spacing-lg)" }}>
+        {steps.map((step, i) => (
+          <li key={i} style={{ marginBottom: "var(--spacing-sm)" }}>
+            <strong>{step.step}</strong>
+            {step.expression && (
+              <div style={{ marginTop: "4px" }}>
+                <MathDisplay latex={step.expression} block={false} />
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
 export default function AlgebraLab() {
   const [activeTab, setActiveTab] = useState<AlgebraTab>("equations");
   const [loading, setLoading] = useState(false);
@@ -199,12 +225,12 @@ export default function AlgebraLab() {
               <div className="result-card">
                 <h3>✓ Solución Encontrada</h3>
                 <div className="result-content">
-                  <MathDisplay 
+                  <MathDisplay
                     latex={equationResult.original_latex}
-                    block 
+                    block
                   />
                 </div>
-                
+
                 <div className="result-details">
                   <div className="detail-item">
                     <strong>Variable</strong>
@@ -235,6 +261,8 @@ export default function AlgebraLab() {
                     </ul>
                   </div>
                 )}
+
+                <StepsList steps={equationResult.steps} />
               </div>
             )}
           </div>
@@ -376,19 +404,26 @@ export default function AlgebraLab() {
             {factorResult && (
               <div className="result-card">
                 <h3>✓ Factorización Completa</h3>
+
+                {factorResult.method && (
+                  <p style={{ marginBottom: "var(--spacing-md)" }}>
+                    <strong>Método detectado:</strong> {factorResult.method}
+                  </p>
+                )}
+
                 <div className="steps-section">
                   <h4>Expresión Original</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={factorResult.original_latex}
-                    block 
+                    block
                   />
                 </div>
 
                 <div className="steps-section">
                   <h4>Expresión Factorizada</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={factorResult.factored_latex}
-                    block 
+                    block
                   />
                 </div>
 
@@ -407,6 +442,8 @@ export default function AlgebraLab() {
                     </ul>
                   </div>
                 )}
+
+                <StepsList steps={factorResult.steps} />
               </div>
             )}
           </div>
@@ -442,36 +479,21 @@ export default function AlgebraLab() {
                 <h3>✓ Expresión Simplificada</h3>
                 <div className="steps-section">
                   <h4>Expresión Original</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={simplifyResult.original_latex}
-                    block 
+                    block
                   />
                 </div>
 
                 <div className="steps-section">
                   <h4>Expresión Simplificada</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={simplifyResult.simplified_latex}
-                    block 
+                    block
                   />
                 </div>
 
-                {simplifyResult.steps.length > 0 && (
-                  <div className="steps-section">
-                    <h4>Pasos de Simplificación</h4>
-                    <ol style={{ marginLeft: "var(--spacing-lg)" }}>
-                      {simplifyResult.steps.map((step, i) => (
-                        <li key={i} style={{ marginBottom: "var(--spacing-sm)" }}>
-                          <strong>{step.step}:</strong>{" "}
-                          <MathDisplay
-                            latex={step.expression}
-                            block={false}
-                          />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                )}
+                <StepsList steps={simplifyResult.steps} />
               </div>
             )}
           </div>
@@ -517,19 +539,21 @@ export default function AlgebraLab() {
                 <h3>✓ Expresión Expandida</h3>
                 <div className="steps-section">
                   <h4>Expresión Original</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={expandResult.original_latex}
-                    block 
+                    block
                   />
                 </div>
 
                 <div className="steps-section">
                   <h4>Expresión Expandida</h4>
-                  <MathDisplay 
+                  <MathDisplay
                     latex={expandResult.expanded_latex}
-                    block 
+                    block
                   />
                 </div>
+
+                <StepsList steps={expandResult.steps} />
               </div>
             )}
           </div>
@@ -538,4 +562,3 @@ export default function AlgebraLab() {
     </div>
   );
 }
-  

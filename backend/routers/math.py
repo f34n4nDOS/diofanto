@@ -2,7 +2,7 @@ import numpy as np
 from fastapi import APIRouter, HTTPException
 from sympy import diff, simplify, lambdify, symbols, limit, oo, integrate, sympify
 
-from math_utils import parse_expression, to_latex
+from math_utils import parse_expression, to_latex, detect_derivative_rules, build_integral_steps
 import schemas
 
 router = APIRouter(prefix="/api/math", tags=["math"])
@@ -20,7 +20,14 @@ def derivative(req: schemas.DerivativeRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Expresión inválida: {e}")
 
-    steps = [
+    # Reglas detectadas ANTES de derivar (cadena, producto, potencia, etc.),
+    # para que el estudiante vea por qué se deriva como se deriva, no solo el resultado.
+    rule_steps = [
+        schemas.DerivativeStep(description=rule, expression="")
+        for rule in detect_derivative_rules(expr, var)
+    ]
+
+    steps = rule_steps + [
         schemas.DerivativeStep(description=f"Derivamos la expresión respecto a {req.respect_to}", expression=str(result)),
         schemas.DerivativeStep(description="Simplificamos el resultado", expression=str(result_simplified)),
     ]
@@ -168,12 +175,19 @@ def calculate_integral(req: schemas.IntegralRequest):
         var = symbols(req.variable)
 
         is_definite = req.lower is not None and req.upper is not None
+        # Necesitamos la antiderivada SIEMPRE (incluso en el caso definido),
+        # porque build_integral_steps arma el paso del Teorema Fundamental
+        # del Cálculo (F(b) - F(a)) a partir de ella.
+        antiderivative = integrate(expr, var)
+
         if is_definite:
             lower = _parse_point(req.lower)
             upper = _parse_point(req.upper)
             result = integrate(expr, (var, lower, upper))
+            steps_raw = build_integral_steps(expr, var, antiderivative, is_definite, lower, upper)
         else:
-            result = integrate(expr, var)
+            result = antiderivative
+            steps_raw = build_integral_steps(expr, var, antiderivative, is_definite)
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"No se pudo calcular la integral: {e}")
@@ -184,4 +198,5 @@ def calculate_integral(req: schemas.IntegralRequest):
         result=str(result),
         result_latex=to_latex(result),
         is_definite=is_definite,
+        steps=[schemas.IntegralStep(step=s["step"], expression=s["expression"]) for s in steps_raw],
     )

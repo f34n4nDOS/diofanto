@@ -59,6 +59,7 @@ export interface EquationResponse {
   solutions_latex: string[];
   is_quadratic: boolean;
   num_solutions: number;
+  steps: Array<{ step: string; expression: string }>;
 }
 
 export interface SystemResponse {
@@ -77,6 +78,8 @@ export interface FactorResponse {
   factored_latex: string;
   factors: string[];
   factors_latex: string[];
+  method: string;                                          
+  steps: Array<{ step: string; expression: string }>;
 }
 
 export interface SimplifyResponse {
@@ -92,6 +95,7 @@ export interface ExpandResponse {
   original_latex: string;
   expanded: string;
   expanded_latex: string;
+  steps: Array<{ step: string; expression: string }>;
 }
 
 // ==================== ALGEBRA API FUNCTIONS ====================
@@ -143,6 +147,7 @@ export interface IntegralResponse {
   result: string;
   result_latex: string;
   is_definite: boolean;
+    steps: Array<{ step: string; expression: string }>;
 }
 
 export async function calculateLimit(expression: string, point: string, variable = "x") {

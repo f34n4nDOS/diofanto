@@ -28,15 +28,6 @@ class DerivativeRequest(BaseModel):
     expression: str
     respect_to: str = "x"
 
-class DerivativeResponse(BaseModel):
-    original: str
-    original_latex: str
-    result: str
-    result_latex: str
-    result_simplified: str
-    result_simplified_latex: str
-    steps: list[DerivativeStep]
-    critical_points: list[CriticalPoint] = []
 
 class DerivativeStep(BaseModel):
     description: str
@@ -47,6 +38,17 @@ class CriticalPoint(BaseModel):
     x: float
     y: float
     kind: str
+
+
+class DerivativeResponse(BaseModel):
+    original: str
+    original_latex: str
+    result: str
+    result_latex: str
+    result_simplified: str
+    result_simplified_latex: str
+    steps: list[DerivativeStep]
+    critical_points: list[CriticalPoint] = []
 
 
 class TangentLineRequest(BaseModel):
@@ -83,12 +85,18 @@ class IntegralRequest(BaseModel):
     upper: str | None = None
 
 
+class IntegralStep(BaseModel):
+    step: str
+    expression: str
+
+
 class IntegralResponse(BaseModel):
     original: str
     original_latex: str
     result: str
     result_latex: str
     is_definite: bool
+    steps: list[IntegralStep] = []
 
 
 class PlotRequest(BaseModel):
@@ -124,6 +132,7 @@ class EquationResponse(BaseModel):
     solutions_latex: list[str]
     is_quadratic: bool
     num_solutions: int
+    steps: list[dict] = []
 
 
 class SystemRequest(BaseModel):
@@ -150,8 +159,10 @@ class FactorResponse(BaseModel):
     original_latex: str
     factored: str
     factored_latex: str
-    factors: list[str]  # Lista de factores individuales
+    factors: list[str]
     factors_latex: list[str]
+    method: str = ""
+    steps: list[dict] = []
 
 
 class SimplifyRequest(BaseModel):
@@ -176,6 +187,7 @@ class ExpandResponse(BaseModel):
     original_latex: str
     expanded: str
     expanded_latex: str
+    steps: list[dict] = []
 
 class TriangleRequest(BaseModel):
     side_a: float

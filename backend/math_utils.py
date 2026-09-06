@@ -5,13 +5,14 @@ from sympy.parsing.sympy_parser import (
     implicit_multiplication_application,
 )
 from sympy import latex as sympy_latex
-from sympy import solve, factor, simplify, expand, Poly, Symbol
+from sympy import solve, factor, simplify, expand, Poly, Symbol, fraction
 from sympy import Eq
 import json
 import math
 import random
 import statistics
 from collections import Counter
+from sympy import Add, Mul, Rational, sin, cos, tan, exp, log, sqrt
 ALLOWED_VARS = "xyzt"
 
 
@@ -39,43 +40,55 @@ def to_latex(expr) -> str:
 # ==================== ALGEBRA FUNCTIONS ====================
 
 def solve_equation(equation_str: str, variable_str: str = "x"):
-    """
-    Resuelve una ecuación como "x**2 - 5*x + 6 = 0"
-    
-    Args:
-        equation_str: ecuación como string (puede incluir o no el "= 0")
-        variable_str: variable a despejar
-    
-    Returns:
-        dict con soluciones y detalles
-    """
     var = symbols(variable_str)
-    
-    # Si no tiene "=", asumimos que = 0
+
     if "=" not in equation_str:
         equation_str = f"{equation_str} = 0"
-    
-    # Parsear ecuación
+
     left_str, right_str = equation_str.split("=")
     left = parse_expression(left_str.strip())
     right = parse_expression(right_str.strip())
-    
-    # Crear ecuación como left - right = 0
-    equation = left - right
-    
-    # Resolver
+    equation = expand(left - right)
+
     solutions = solve(equation, var)
-    
     if not solutions:
         solutions = []
-    
-    # Verificar si es cuadrática
+
+    steps = []
+    is_quadratic = False
+
     try:
         poly = Poly(equation, var)
-        is_quadratic = poly.degree() == 2
-    except:
-        is_quadratic = False
-    
+        degree = poly.degree()
+    except Exception:
+        degree = None
+
+    if degree == 1:
+        a, b = poly.all_coeffs()
+        steps.append({"step": "Escribimos la ecuación en la forma a·x + b = 0", "expression": f"{to_latex(equation)} = 0"})
+        steps.append({"step": f"Identificamos a = {a}, b = {b}", "expression": ""})
+        if a != 0:
+            steps.append({"step": "Despejamos x: x = -b / a", "expression": f"x = {to_latex(-b/a)}"})
+
+    elif degree == 2:
+        is_quadratic = True
+        a, b, c = poly.all_coeffs()
+        discriminant = b**2 - 4*a*c
+        steps.append({"step": "Escribimos la ecuación en la forma a·x² + b·x + c = 0", "expression": f"{to_latex(equation)} = 0"})
+        steps.append({"step": f"Identificamos a = {a}, b = {b}, c = {c}", "expression": ""})
+        steps.append({"step": "Calculamos el discriminante: Δ = b² - 4ac", "expression": f"\\Delta = {to_latex(discriminant)}"})
+        if discriminant > 0:
+            steps.append({"step": "Δ > 0: hay dos soluciones reales distintas", "expression": ""})
+        elif discriminant == 0:
+            steps.append({"step": "Δ = 0: hay una única solución real (raíz doble)", "expression": ""})
+        else:
+            steps.append({"step": "Δ < 0: no hay soluciones reales (las raíces son complejas)", "expression": ""})
+        steps.append({"step": "Aplicamos la fórmula cuadrática: x = (-b ± √Δ) / (2a)", "expression": ""})
+
+    else:
+        degree_label = degree if degree is not None else "no polinómica"
+        steps.append({"step": f"Ecuación de grado {degree_label}, se resuelve de forma algebraica/simbólica", "expression": f"{to_latex(equation)} = 0"})
+
     return {
         "original": equation_str,
         "original_latex": to_latex(equation),
@@ -84,6 +97,7 @@ def solve_equation(equation_str: str, variable_str: str = "x"):
         "solutions_latex": [to_latex(sol) for sol in solutions],
         "is_quadratic": is_quadratic,
         "num_solutions": len(solutions),
+        "steps": steps,
     }
 
 
@@ -142,28 +156,65 @@ def solve_system(equations: list[str], variables: list[str]):
 
 
 def factor_expression(expr_str: str, variable_str: str = "x"):
-    """
-    Factoriza una expresión
-    
-    Args:
-        expr_str: expresión a factorizar
-        variable_str: variable principal
-    
-    Returns:
-        dict con factorización
-    """
     expr = parse_expression(expr_str)
     var = symbols(variable_str)
-    
-    # Factorizar
+
     factored = factor(expr)
-    
-    # Obtener factores individuales
+
     if hasattr(factored, 'as_ordered_factors'):
         factors_list = factored.as_ordered_factors()
     else:
         factors_list = [factored]
-    
+
+    steps = []
+    method = "factorización automática"
+
+    if simplify(factored - expr) == 0 and len(factors_list) <= 1:
+        method = "no se pudo factorizar más (expresión irreducible)"
+        steps.append({"step": "No se encontraron factores comunes ni patrones reconocibles", "expression": to_latex(expr)})
+    else:
+        try:
+            poly = Poly(expr, var)
+            degree = poly.degree()
+        except Exception:
+            degree = None
+
+        if degree == 2:
+            coeffs = poly.all_coeffs()
+            # completar con ceros si falta el término lineal o independiente
+            while len(coeffs) < 3:
+                coeffs.insert(1, 0)
+            a, b, c = coeffs
+            discriminant = b**2 - 4*a*c
+
+            if b == 0:
+                method = "diferencia de cuadrados"
+                steps.append({"step": "Reconocemos la forma a² - b² = (a-b)(a+b)", "expression": to_latex(expr)})
+                steps.append({"step": "Factorizamos", "expression": to_latex(factored)})
+            elif discriminant == 0:
+                method = "trinomio cuadrado perfecto"
+                steps.append({"step": "El discriminante es 0: es un cuadrado perfecto", "expression": to_latex(expr)})
+                steps.append({"step": "Factorizamos como (x ± r)²", "expression": to_latex(factored)})
+            else:
+                method = "trinomio factorizado por sus raíces"
+                steps.append({"step": "Buscamos las raíces del polinomio cuadrático", "expression": to_latex(expr)})
+                steps.append({"step": "Escribimos la factorización usando esas raíces", "expression": to_latex(factored)})
+        else:
+            # buscamos un factor común entre los términos
+            from sympy import gcd as sympy_gcd
+            try:
+                terms = expr.as_ordered_terms()
+                common = terms[0]
+                for t in terms[1:]:
+                    common = sympy_gcd(common, t)
+                if len(terms) > 1 and common != 1:
+                    method = "factor común"
+                    steps.append({"step": f"Extraemos el factor común: {to_latex(common)}", "expression": to_latex(factored)})
+                else:
+                    steps.append({"step": "Aplicamos reglas generales de factorización", "expression": to_latex(factored)})
+            except Exception:
+                steps.append({"step": "Aplicamos reglas generales de factorización", "expression": to_latex(factored)})
+
     return {
         "original": expr_str,
         "original_latex": to_latex(expr),
@@ -171,58 +222,56 @@ def factor_expression(expr_str: str, variable_str: str = "x"):
         "factored_latex": to_latex(factored),
         "factors": [str(f) for f in factors_list],
         "factors_latex": [to_latex(f) for f in factors_list],
+        "method": method,
+        "steps": steps,
     }
 
 
 def simplify_expression(expr_str: str):
-    """
-    Simplifica una expresión algebraica
-    
-    Args:
-        expr_str: expresión a simplificar
-    
-    Returns:
-        dict con simplificación
-    """
     expr = parse_expression(expr_str)
-    
-    # Simplificar
     simplified = simplify(expr)
-    
+
+    steps = [{"step": "Expresión original", "expression": to_latex(expr)}]
+
+    try:
+        numer, denom = fraction(expr)
+        if denom != 1:
+            f_numer = factor(numer)
+            f_denom = factor(denom)
+            steps.append({
+                "step": "Factorizamos numerador y denominador",
+                "expression": f"\\frac{{{to_latex(f_numer)}}}{{{to_latex(f_denom)}}}",
+            })
+            steps.append({"step": "Cancelamos los factores comunes", "expression": to_latex(simplified)})
+        else:
+            steps.append({"step": "Aplicamos simplificación algebraica", "expression": to_latex(simplified)})
+    except Exception:
+        steps.append({"step": "Aplicamos simplificación algebraica", "expression": to_latex(simplified)})
+
     return {
         "original": expr_str,
         "original_latex": to_latex(expr),
         "simplified": str(simplified),
         "simplified_latex": to_latex(simplified),
-        "steps": [
-            {"step": "Expresión original", "expression": str(expr)},
-            {"step": "Simplificación automática", "expression": str(simplified)},
-        ],
+        "steps": steps,
     }
 
 
 def expand_expression(expr_str: str, variable_str: str = "x"):
-    """
-    Expande una expresión (lo opuesto a factorizar)
-    
-    Args:
-        expr_str: expresión a expandir
-        variable_str: variable principal
-    
-    Returns:
-        dict con expansión
-    """
     expr = parse_expression(expr_str)
-    var = symbols(variable_str)
-    
-    # Expandir
     expanded = expand(expr)
-    
+
+    steps = [
+        {"step": "Expresión original", "expression": to_latex(expr)},
+        {"step": "Aplicamos la propiedad distributiva", "expression": to_latex(expanded)},
+    ]
+
     return {
         "original": expr_str,
         "original_latex": to_latex(expr),
         "expanded": str(expanded),
         "expanded_latex": to_latex(expanded),
+        "steps": steps,
     }
 def solve_triangle_sss(a: float, b: float, c: float) -> dict:
     sides = sorted([a, b, c])
@@ -374,3 +423,142 @@ def simulate_dice_rolls(num_rolls: int, num_sides: int = 6) -> dict:
         "frequency_table": frequency_table,
         "mean_result": round(statistics.mean(results), 4),
     }
+_BASIC_DERIVATIVES = {
+    sin: "d/dx sin(x) = cos(x)",
+    cos: "d/dx cos(x) = -sin(x)",
+    tan: "d/dx tan(x) = sec²(x)",
+    exp: "d/dx eˣ = eˣ",
+    log: "d/dx ln(x) = 1/x",
+}
+# NOTA: sqrt se maneja aparte (más abajo, junto a la regla de la potencia) y
+# NO va en este diccionario. sqrt(x) no es una clase de SymPy con instancias
+# propias en el árbol de la expresión — es una función que construye
+# Pow(x, 1/2). Si se usa como patrón en expr.find(sqrt), SymPy lo interpreta
+# como un callable genérico y lo aplica a CADA subexpresión del árbol
+# (llamando sqrt(subexpr) y evaluando el resultado como verdadero/falso),
+# lo que "matchea" nodos que no son raíces en absoluto — incluyendo símbolos
+# sueltos como x, que no tienen argumentos y rompen match.args[0].
+ 
+ 
+def detect_derivative_rules(expr, var) -> list[str]:
+    """
+    Analiza la estructura de la expresión (antes de derivar) y devuelve
+    una lista de reglas de derivación aplicables, en español, para
+    mostrarle al estudiante qué se está usando y por qué.
+    """
+    if not expr.has(var):
+        return ["La expresión no depende de la variable: su derivada es 0 (regla de la constante)."]
+ 
+    rules: list[str] = []
+ 
+    if isinstance(expr, Add):
+        rules.append("Regla de la suma: derivamos cada término por separado y sumamos los resultados.")
+ 
+    if isinstance(expr, Mul):
+        non_const_factors = [a for a in expr.args if a.has(var)]
+        if len(non_const_factors) >= 2:
+            has_negative_power = any(
+                getattr(f, "is_Pow", False) and f.args[1].is_negative for f in non_const_factors
+            )
+            if has_negative_power:
+                rules.append("Regla del cociente: (u/v)' = (u'·v - u·v') / v².")
+            else:
+                rules.append("Regla del producto: (u·v)' = u'·v + u·v'.")
+        elif len(non_const_factors) == 1:
+            rules.append("Regla de la constante multiplicativa: (k·f)' = k·f'.")
+ 
+    if getattr(expr, "is_Pow", False):
+        base, exponent = expr.args
+        if base == var and exponent == Rational(1, 2):
+            rules.append("Regla de la raíz cuadrada: d/dx √x = 1/(2√x).")
+        elif base == var and exponent.is_Number:
+            rules.append(f"Regla de la potencia: d/dx x^{exponent} = {exponent}·x^{exponent - 1}.")
+        elif base.has(var) and base != var:
+            rules.append("Regla de la cadena: derivamos la función externa y la multiplicamos por la derivada de la interna.")
+ 
+    for func_type, formula in _BASIC_DERIVATIVES.items():
+        for match in expr.find(func_type):
+            inner = match.args[0]
+            if inner != var:
+                rules.append(
+                    f"Regla de la cadena sobre {func_type.__name__}({inner}): {formula}, "
+                    f"multiplicado por la derivada de {inner}."
+                )
+            else:
+                rules.append(formula)
+ 
+    # quitar duplicados conservando el orden
+    seen = set()
+    unique_rules = []
+    for r in rules:
+        if r not in seen:
+            seen.add(r)
+            unique_rules.append(r)
+    return unique_rules
+ 
+ 
+# ==================== TEORÍA: INTEGRALES ====================
+ 
+_BASIC_ANTIDERIVATIVES = {
+    sin: "∫sin(x) dx = -cos(x) + C",
+    cos: "∫cos(x) dx = sin(x) + C",
+    exp: "∫eˣ dx = eˣ + C",
+}
+ 
+ 
+def detect_integral_rules(expr, var) -> list[str]:
+    rules: list[str] = []
+ 
+    if isinstance(expr, Add):
+        rules.append("Regla de la suma: integramos cada término por separado y sumamos los resultados.")
+ 
+    if isinstance(expr, Mul):
+        non_const_factors = [a for a in expr.args if a.has(var)]
+        const_factors = [a for a in expr.args if not a.has(var)]
+        if const_factors and len(non_const_factors) <= 1:
+            rules.append("Extraemos la constante fuera de la integral: ∫k·f(x) dx = k·∫f(x) dx.")
+ 
+    if expr == var:
+        rules.append("Regla de la potencia inversa: ∫x dx = x²/2 + C.")
+    elif getattr(expr, "is_Pow", False):
+        base, exponent = expr.args
+        if base == var and exponent.is_Number and exponent != -1:
+            rules.append(f"Regla de la potencia inversa: ∫x^{exponent} dx = x^{exponent + 1}/{exponent + 1} + C.")
+        elif base == var and exponent == -1:
+            rules.append("Caso especial: ∫(1/x) dx = ln|x| + C.")
+ 
+    for func_type, formula in _BASIC_ANTIDERIVATIVES.items():
+        if expr.has(func_type):
+            rules.append(formula)
+ 
+    seen = set()
+    unique_rules = []
+    for r in rules:
+        if r not in seen:
+            seen.add(r)
+            unique_rules.append(r)
+    return unique_rules
+ 
+ 
+def build_integral_steps(expr, var, antiderivative, is_definite: bool, lower=None, upper=None) -> list[dict]:
+    """
+    Arma la lista de pasos explicativos para la integral, incluyendo la
+    aplicación del Teorema Fundamental del Cálculo si es definida.
+    """
+    steps: list[dict] = []
+ 
+    for rule in detect_integral_rules(expr, var):
+        steps.append({"step": rule, "expression": ""})
+ 
+    antideriv_label = to_latex(antiderivative) + ("" if is_definite else " + C")
+    steps.append({"step": "Calculamos la antiderivada F(x)", "expression": antideriv_label})
+ 
+    if is_definite and lower is not None and upper is not None:
+        upper_val = antiderivative.subs(var, upper)
+        lower_val = antiderivative.subs(var, lower)
+        steps.append({
+            "step": "Aplicamos el Teorema Fundamental del Cálculo: ∫ₐᵇ f(x) dx = F(b) - F(a)",
+            "expression": f"F({to_latex(upper)}) - F({to_latex(lower)}) = {to_latex(upper_val)} - {to_latex(lower_val)}",
+        })
+ 
+    return steps

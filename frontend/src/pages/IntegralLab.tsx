@@ -102,6 +102,24 @@ export default function IntegralLab() {
             )}
           </div>
 
+          {result.steps && result.steps.length > 0 && (
+            <div className="result-details" style={{ marginTop: "var(--spacing-lg)", flexDirection: "column", alignItems: "stretch" }}>
+              <strong style={{ marginBottom: 8 }}>Cómo se resolvió, paso a paso</strong>
+              <ol style={{ paddingLeft: 20, margin: 0 }}>
+                {result.steps.map((step, i) => (
+                  <li key={i} style={{ marginBottom: 10 }}>
+                    <div>{step.step}</div>
+                    {step.expression && (
+                      <div style={{ marginTop: 4 }}>
+                        <MathDisplay latex={step.expression} />
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           {isDefinite && (
             <div className="result-details" style={{ marginTop: "var(--spacing-lg)" }}>
               <div className="detail-item">
