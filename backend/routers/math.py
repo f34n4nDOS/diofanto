@@ -1,7 +1,7 @@
 import numpy as np
 from fastapi import APIRouter, HTTPException
 from sympy import diff, simplify, lambdify, symbols, limit, oo, integrate, sympify
-
+from math_utils import parse_expression, to_latex, identify_derivative_rules, build_integral_steps
 from math_utils import parse_expression, to_latex, detect_derivative_rules, build_integral_steps
 import schemas
 
@@ -20,17 +20,36 @@ def derivative(req: schemas.DerivativeRequest):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Expresión inválida: {e}")
 
-    # Reglas detectadas ANTES de derivar (cadena, producto, potencia, etc.),
-    # para que el estudiante vea por qué se deriva como se deriva, no solo el resultado.
-    rule_steps = [
-        schemas.DerivativeStep(description=rule, expression="")
-        for rule in detect_derivative_rules(expr, var)
+    rules_used = identify_derivative_rules(expr, var)
+
+    steps = [
+        schemas.DerivativeStep(
+            description=f"Expresión original: f(x) = {expr}",
+            expression=str(expr),
+        ),
     ]
 
-    steps = rule_steps + [
-        schemas.DerivativeStep(description=f"Derivamos la expresión respecto a {req.respect_to}", expression=str(result)),
-        schemas.DerivativeStep(description="Simplificamos el resultado", expression=str(result_simplified)),
-    ]
+    if rules_used:
+        rules_text = "; ".join(rules_used)
+        steps.append(
+            schemas.DerivativeStep(
+                description=f"Reglas aplicadas: {rules_text}",
+                expression="",
+            )
+        )
+
+    steps.append(
+        schemas.DerivativeStep(
+            description=f"Derivamos la expresión respecto a {req.respect_to}",
+            expression=str(result),
+        )
+    )
+    steps.append(
+        schemas.DerivativeStep(
+            description="Simplificamos el resultado",
+            expression=str(result_simplified),
+        )
+    )
 
     # Puntos críticos: donde la derivada se anula
     critical_points = []
@@ -50,7 +69,7 @@ def derivative(req: schemas.DerivativeRequest):
                     kind = "punto de inflexión (a confirmar)"
                 critical_points.append(schemas.CriticalPoint(x=x_val, y=y_val, kind=kind))
     except Exception:
-        pass  # si no se puede resolver simbólicamente, seguimos sin puntos críticos
+        pass
 
     return schemas.DerivativeResponse(
         original=str(expr),
@@ -62,7 +81,6 @@ def derivative(req: schemas.DerivativeRequest):
         steps=steps,
         critical_points=critical_points,
     )
-
 
 @router.post("/tangent-line", response_model=schemas.TangentLineResponse)
 def tangent_line(req: schemas.TangentLineRequest):

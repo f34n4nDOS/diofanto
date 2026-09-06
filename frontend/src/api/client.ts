@@ -50,7 +50,10 @@ export interface LimitResponse {
 }
 
 // ==================== ALGEBRA TYPES ====================
-
+export interface EquationStep {
+  step: string;
+  expression: string;
+}
 export interface EquationResponse {
   original: string;
   original_latex: string;
@@ -59,7 +62,7 @@ export interface EquationResponse {
   solutions_latex: string[];
   is_quadratic: boolean;
   num_solutions: number;
-  steps: Array<{ step: string; expression: string }>;
+  steps: EquationStep[];
 }
 
 export interface SystemResponse {
@@ -79,7 +82,7 @@ export interface FactorResponse {
   factors: string[];
   factors_latex: string[];
   method: string;                                          
-  steps: Array<{ step: string; expression: string }>;
+  steps: EquationStep[];
 }
 
 export interface SimplifyResponse {
@@ -95,7 +98,7 @@ export interface ExpandResponse {
   original_latex: string;
   expanded: string;
   expanded_latex: string;
-  steps: Array<{ step: string; expression: string }>;
+  steps: EquationStep[];
 }
 
 // ==================== ALGEBRA API FUNCTIONS ====================

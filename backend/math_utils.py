@@ -562,3 +562,134 @@ def build_integral_steps(expr, var, antiderivative, is_definite: bool, lower=Non
         })
  
     return steps
+def identify_derivative_rules(expr, var, rules=None):
+    """
+    Recorre el árbol de la expresión y va anotando qué regla de derivación
+    corresponde aplicar en cada parte (suma, producto, cociente, potencia,
+    cadena, derivada elemental). Devuelve una lista de descripciones,
+    sin duplicados, en el orden en que aparecen.
+    """
+    if rules is None:
+        rules = []
+
+    if not hasattr(expr, "args") or not expr.args:
+        return rules
+
+    if expr.is_Add:
+        rules.append("Regla de la suma: derivamos cada término por separado y sumamos los resultados")
+
+    elif expr.is_Mul:
+        # ¿Es una división? (un factor tiene exponente -1 y depende de la variable)
+        quotient_factor = None
+        for f in expr.args:
+            if f.is_Pow and f.args[1] == -1 and f.args[0].has(var):
+                quotient_factor = f.args[0]
+                break
+
+        if quotient_factor is not None:
+            rules.append("Regla del cociente: (f/g)' = (f'·g - f·g') / g²")
+        else:
+            factors_with_var = [f for f in expr.args if f.has(var)]
+            if len(factors_with_var) >= 2:
+                rules.append("Regla del producto: (f·g)' = f'·g + f·g'")
+            elif len(factors_with_var) == 1:
+                rules.append("Regla del múltiplo constante: (c·f)' = c·f'")
+
+    elif expr.is_Pow:
+        base, exponent = expr.args
+        if base == var and not exponent.has(var):
+            rules.append("Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹")
+        elif base.has(var):
+            rules.append("Regla de la cadena sobre una potencia: (f(x)ⁿ)' = n·f(x)ⁿ⁻¹·f'(x)")
+
+    elif expr.is_Function:
+        arg = expr.args[0]
+        func_name = expr.func.__name__
+        if arg == var:
+            rules.append(f"Derivada elemental de {func_name}(x)")
+        else:
+            rules.append(f"Regla de la cadena: derivada de {func_name}(u) multiplicada por u'")
+
+    for sub_expr in expr.args:
+        identify_derivative_rules(sub_expr, var, rules)
+
+    # quitamos duplicados preservando el orden de aparición
+    seen = set()
+    unique_rules = []
+    for r in rules:
+        if r not in seen:
+            seen.add(r)
+            unique_rules.append(r)
+    return unique_rules
+def identify_integration_technique(expr, var):
+    """
+    Intenta reconocer qué técnica de integración es la más natural para
+    la expresión dada. No resuelve nada — solo devuelve una descripción
+    en texto para mostrarle al estudiante el "por qué" del método.
+    """
+    from sympy import Pow, Mul, Add, sin, cos, tan, exp, log
+
+    if expr.is_Add:
+        return "Integramos término a término (la integral de una suma es la suma de las integrales)"
+
+    if expr == var:
+        return "Regla de la potencia: ∫x dx = x²/2 + C"
+
+    if expr.is_Pow and expr.args[0] == var and not expr.args[1].has(var):
+        n = expr.args[1]
+        if n == -1:
+            return "Caso especial: ∫(1/x) dx = ln|x| + C"
+        return f"Regla de la potencia: ∫xⁿ dx = xⁿ⁺¹/(n+1) + C, con n = {n}"
+
+    if expr.is_Mul:
+        factors_with_var = [f for f in expr.args if f.has(var)]
+        # Patrón típico de sustitución: una función compuesta con su derivada como factor
+        if len(factors_with_var) >= 2:
+            has_function = any(f.is_Function or (f.is_Pow and f.args[0].has(var) and f.args[0] != var) for f in factors_with_var)
+            if has_function:
+                return "Sustitución (cambio de variable): se identifica una función interna u = g(x) y su derivada aparece como factor"
+            return "Integración por partes: se elige u y dv de forma que ∫u dv = u·v - ∫v du sea más simple"
+        return "Múltiplo constante: sacamos la constante fuera de la integral"
+
+    if expr.is_Function:
+        func_name = expr.func.__name__
+        arg = expr.args[0]
+        if arg == var:
+            return f"Integral elemental de {func_name}(x)"
+        return f"Sustitución: u = {arg}, se integra {func_name}(u) respecto a u"
+
+    return "Aplicamos las reglas básicas de integración"
+
+
+def build_integral_steps(expr, var, antiderivative, is_definite, lower=None, upper=None):
+    """
+    Arma la lista de pasos para mostrarle al estudiante, en el mismo
+    formato que espera el frontend: [{"step": ..., "expression": ...}, ...]
+    """
+    steps = []
+
+    steps.append({
+        "step": "Expresión a integrar",
+        "expression": to_latex(expr),
+    })
+
+    technique = identify_integration_technique(expr, var)
+    steps.append({
+        "step": f"Técnica: {technique}",
+        "expression": "",
+    })
+
+    steps.append({
+        "step": "Calculamos la antiderivada (integral indefinida)",
+        "expression": f"{to_latex(antiderivative)} + C",
+    })
+
+    if is_definite:
+        upper_val = antiderivative.subs(var, upper)
+        lower_val = antiderivative.subs(var, lower)
+        steps.append({
+            "step": "Aplicamos el Teorema Fundamental del Cálculo: evaluamos F(b) - F(a)",
+            "expression": f"F({to_latex(upper)}) - F({to_latex(lower)}) = {to_latex(upper_val)} - {to_latex(lower_val)}",
+        })
+
+    return steps
