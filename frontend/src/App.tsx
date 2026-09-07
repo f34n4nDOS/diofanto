@@ -15,6 +15,7 @@ import StatisticsLab from "./pages/StatisticsLab";
 import ModelingLab from "./pages/ModelingLab";
 import ExercisesList from "./pages/ExercisesList";
 import ExerciseDetail from "./pages/ExerciseDetail";
+import WhiteboardPage from "./pages/WhiteboardPage";
 function App() {
   return (
     <BrowserRouter>
@@ -49,6 +50,7 @@ function App() {
           <Route path="/modeling" element={<ProtectedRoute><ModelingLab /></ProtectedRoute>} />
           <Route path="/exercises" element={<ProtectedRoute><ExercisesList /></ProtectedRoute>} />
           <Route path="/exercises/:id" element={<ProtectedRoute><ExerciseDetail /></ProtectedRoute>} />
+          <Route path="/whiteboard" element={<ProtectedRoute><WhiteboardPage /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
