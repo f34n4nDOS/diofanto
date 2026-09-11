@@ -40,7 +40,7 @@ export default function WhiteboardPage() {
 
         <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, marginBottom: 16 }}>
           <h3>Soy profesor</h3>
-          <p>Creá una sala nueva y compartí el código con tus alumnos.</p>
+          <p>Creá una sala nueva y compartí el código con tus alumnos. Vas a tener herramientas de dibujo, formas, fórmulas en LaTeX, plano cartesiano, páginas múltiples y más.</p>
           <button onClick={handleCreateRoom} disabled={loading}>
             {loading ? "Creando..." : "Crear pizarra"}
           </button>
@@ -64,11 +64,17 @@ export default function WhiteboardPage() {
   }
 
   return (
-    <div style={{ maxWidth: 900, margin: "40px auto", padding: "0 16px" }}>
+    <div style={{ maxWidth: 1100, margin: "40px auto", padding: "0 16px" }}>
       <Link to="/dashboard">&larr; Volver al dashboard</Link>
       <h1>🖊️ Pizarra {mode === "host" ? "(profesor)" : "(alumno)"}</h1>
       {mode === "host" && (
-        <p>Compartí este código con tus alumnos: <strong style={{ fontSize: 20 }}>{roomCode}</strong></p>
+        <p>
+          Compartí este código con tus alumnos: <strong style={{ fontSize: 20 }}>{roomCode}</strong>
+          <br />
+          <span style={{ fontSize: 13, color: "#6b7280" }}>
+            Atajos: Ctrl+Z deshacer · Ctrl+Shift+Z rehacer · Supr elimina el ítem seleccionado (con la herramienta 🖱️).
+          </span>
+        </p>
       )}
       <WhiteboardCanvas roomCode={roomCode} role={mode} />
     </div>
