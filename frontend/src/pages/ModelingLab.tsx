@@ -73,7 +73,8 @@ export default function ModelingLab() {
 
   // Visualization Tab
   const [vizExpression, setVizExpression] = useState("sin(x) * exp(-x/10)");
-  const [vizParameters, setVizParameters] = useState<Record<string, number>>({});
+
+  const [vizParameters] = useState<Record<string, number>>({});
   const [xMin, setXMin] = useState(-10);
   const [xMax, setXMax] = useState(10);
   const [plotData, setPlotData] = useState<PlotModelResponse | null>(null);

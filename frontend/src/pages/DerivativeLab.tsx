@@ -101,7 +101,7 @@ export default function DerivativeLab() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="x" type="number" domain={["dataMin", "dataMax"]} />
               <YAxis />
-              <Tooltip formatter={(value: number) => value?.toFixed(3)} />
+              <Tooltip formatter={(value) => (typeof value === "number" ? value.toFixed(3) : value)} />
               <Legend />
               <ReferenceLine y={0} stroke="#888" />
               <ReferenceLine x={0} stroke="#888" />

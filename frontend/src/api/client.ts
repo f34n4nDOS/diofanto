@@ -42,11 +42,13 @@ export interface DerivativeResponse {
 }
 
 export interface LimitResponse {
-  original: string;
-  original_latex: string;
-  result: string;
-  result_latex: string;
   exists: boolean;
+  original_latex: string;
+  result_latex: string;
+  left_limit?: number;
+  right_limit?: number;
+  original: string;
+  result: string;
 }
 
 // ==================== ALGEBRA TYPES ====================
