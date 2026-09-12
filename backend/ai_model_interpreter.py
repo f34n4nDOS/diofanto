@@ -25,12 +25,15 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Lista de modelos a probar en orden. Se puede sobreescribir con la variable
 # de entorno OPENROUTER_MODELS separando los ids por comas, por ejemplo:
-#   OPENROUTER_MODELS=meta-llama/llama-3.1-8b-instruct:free,anthropic/claude-3.5-haiku
-# Conviene poner primero uno gratuito/barato y dejar uno más confiable al final
-# como red de seguridad.
+#   OPENROUTER_MODELS=openrouter/free,anthropic/claude-3.5-haiku
+#
+# "openrouter/free" es el auto-router gratuito de OpenRouter: en vez de
+# fijar un modelo gratuito puntual (cuyo id cambia o se discontinúa cada
+# pocas semanas), le pedimos a OpenRouter que elija él mismo cuál modelo
+# gratuito está disponible ahora. Si por algún motivo eso también falla,
+# cae al modelo de pago como red de seguridad final.
 DEFAULT_MODELS = [
-    "meta-llama/llama-3.1-8b-instruct:free",
-    "google/gemini-2.0-flash-exp:free",
+    "openrouter/free",
     "anthropic/claude-3.5-haiku",
 ]
 
@@ -186,14 +189,12 @@ def interpret_scenario(scenario_text: str, use_cache: bool = True) -> dict:
 
     system_prompt = _build_system_prompt()
 
-    raw_content = None
+    parsed = None
     last_error = None
 
     for model_id in OPENROUTER_MODELS:
         try:
             raw_content = _call_model(model_id, system_prompt, scenario_text)
-            logger.info("interpret_scenario: respuesta obtenida con el modelo %s", model_id)
-            break
         except requests.exceptions.HTTPError as e:
             status = e.response.status_code if e.response is not None else None
             if status in RETRYABLE_STATUS_CODES:
@@ -213,12 +214,25 @@ def interpret_scenario(scenario_text: str, use_cache: bool = True) -> dict:
             last_error = e
             continue
 
-    if raw_content is None:
-        raise ValueError(
-            f"Ningún modelo de la lista pudo responder. Último error: {last_error}"
-        )
+        try:
+            parsed = _extract_json(raw_content)
+            logger.info("interpret_scenario: respuesta obtenida y parseada con el modelo %s", model_id)
+            break
+        except ValueError as e:
+            # El modelo respondió pero no devolvió JSON válido (pasa más
+            # seguido con modelos gratuitos más chicos) -> probamos el
+            # siguiente de la lista en vez de fallar directo.
+            logger.warning(
+                "interpret_scenario: modelo %s devolvió JSON inválido, probando siguiente si hay",
+                model_id,
+            )
+            last_error = e
+            continue
 
-    parsed = _extract_json(raw_content)
+    if parsed is None:
+        raise ValueError(
+            f"Ningún modelo de la lista pudo responder con un JSON válido. Último error: {last_error}"
+        )
 
     model_type = parsed.get("model_type")
     if model_type not in ALLOWED_MODEL_IDS:
