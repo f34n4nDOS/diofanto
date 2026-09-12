@@ -8,6 +8,12 @@ from websocket_manager import whiteboard_manager
 
 router = APIRouter(prefix="/api/whiteboard", tags=["whiteboard"])
 
+# Mensajes de "solo lectura" que cualquier rol puede emitir, porque no
+# dibujan ni modifican el pizarrón: solo piden que el host reenvíe el
+# estado actual (usado cuando un alumno se conecta y necesita ponerse
+# al día con lo que ya se dibujó antes de que él se uniera).
+VIEWER_ALLOWED_TYPES = {"request-sync"}
+
 
 def generate_room_code(length: int = 6) -> str:
     return "".join(random.choices(string.ascii_uppercase + string.digits, k=length))
@@ -32,8 +38,11 @@ async def whiteboard_socket(websocket: WebSocket, room_code: str, role: str = "v
     """
     Conexión en tiempo real a una sala. role="host" (el profesor, puede
     dibujar) o role="viewer" (el alumno, solo recibe lo que dibuja el host).
-    Si alguien con role="viewer" intenta mandar un mensaje, se ignora:
-    solo el host puede emitir acciones de dibujo.
+
+    Un viewer solo puede emitir mensajes de control de solo lectura
+    (ver VIEWER_ALLOWED_TYPES, por ejemplo "request-sync" al conectarse).
+    Cualquier otro mensaje de un viewer se ignora: solo el host puede
+    emitir acciones que modifiquen el pizarrón.
     """
     room = whiteboard_manager.get_or_create_room(room_code)
     await room.connect(websocket, role)
@@ -41,7 +50,7 @@ async def whiteboard_socket(websocket: WebSocket, room_code: str, role: str = "v
     try:
         while True:
             data = await websocket.receive_json()
-            if role == "host":
+            if role == "host" or data.get("type") in VIEWER_ALLOWED_TYPES:
                 await room.broadcast(data, sender=websocket)
     except WebSocketDisconnect:
         room.disconnect(websocket)

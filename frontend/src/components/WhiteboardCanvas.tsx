@@ -55,18 +55,18 @@ interface Page {
 }
 
 type WSMessage =
-  | { kind: "live-start"; pageId: string; strokeId: string; x: number; y: number; color: string; width: number; tool: DrawTool }
-  | { kind: "live-point"; pageId: string; strokeId: string; x: number; y: number }
-  | { kind: "live-end"; pageId: string; strokeId: string }
-  | { kind: "op-commit"; pageId: string; op: Op }
-  | { kind: "op-remove"; pageId: string; opId: string }
-  | { kind: "op-update"; pageId: string; opId: string; patch: Partial<ItemOp> }
-  | { kind: "clear"; pageId: string }
-  | { kind: "page-add"; pageId: string }
-  | { kind: "page-remove"; pageId: string }
-  | { kind: "page-switch"; pageId: string }
-  | { kind: "request-sync" }
-  | { kind: "full-sync"; pages: Page[]; currentPageId: string };
+  | { type: "live-start"; pageId: string; strokeId: string; x: number; y: number; color: string; width: number; tool: DrawTool }
+  | { type: "live-point"; pageId: string; strokeId: string; x: number; y: number }
+  | { type: "live-end"; pageId: string; strokeId: string }
+  | { type: "op-commit"; pageId: string; op: Op }
+  | { type: "op-remove"; pageId: string; opId: string }
+  | { type: "op-update"; pageId: string; opId: string; patch: Partial<ItemOp> }
+  | { type: "clear"; pageId: string }
+  | { type: "page-add"; pageId: string }
+  | { type: "page-remove"; pageId: string }
+  | { type: "page-switch"; pageId: string }
+  | { type: "request-sync" }
+  | { type: "full-sync"; pages: Page[]; currentPageId: string };
 
 /* ============================================================
    CONSTANTES
@@ -356,7 +356,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
     }
     if (!opts?.fromRemote) {
       redoStackRef.current[pageId] = [];
-      sendWS({ kind: "op-commit", pageId, op });
+      sendWS({ type: "op-commit", pageId, op });
     }
   }
 
@@ -366,12 +366,12 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       // redraw diferido: el estado se actualiza async, forzamos redibujo tras el próximo render
       queueMicrotask(redrawPage);
     }
-    if (!opts?.fromRemote) sendWS({ kind: "op-remove", pageId, opId });
+    if (!opts?.fromRemote) sendWS({ type: "op-remove", pageId, opId });
   }
 
   function updateItemOp(pageId: string, opId: string, patch: Partial<ItemOp>, opts?: { fromRemote?: boolean }) {
     mutatePage(pageId, (ops) => ops.map((o) => (o.id === opId && o.kind === "item" ? { ...o, ...patch } : o)));
-    if (!opts?.fromRemote) sendWS({ kind: "op-update", pageId, opId, patch });
+    if (!opts?.fromRemote) sendWS({ type: "op-update", pageId, opId, patch });
   }
 
   /* ---------- WebSocket ---------- */
@@ -384,17 +384,23 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
 
   const connectWS = useCallback(() => {
     if (unmountedRef.current) return;
+    // Si ya hay un socket abierto o abriéndose para esta instancia, no dupliques la conexión.
+    if (wsRef.current && (wsRef.current.readyState === WebSocket.OPEN || wsRef.current.readyState === WebSocket.CONNECTING)) {
+      return;
+    }
     const wsUrl = `${import.meta.env.VITE_WS_URL}/api/whiteboard/ws/${roomCode}?role=${role}`;
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 
     ws.onopen = () => {
+      if (wsRef.current !== ws) return; // este socket ya fue reemplazado/descartado
       setConnected(true);
       reconnectAttemptsRef.current = 0;
-      if (role === "viewer") sendWS({ kind: "request-sync" });
+      if (role === "viewer") sendWS({ type: "request-sync" });
     };
 
     ws.onclose = () => {
+      if (wsRef.current !== ws) return; // cierre de un socket viejo ya reemplazado: ignorar
       setConnected(false);
       if (unmountedRef.current) return;
       const attempt = ++reconnectAttemptsRef.current;
@@ -402,9 +408,12 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       reconnectTimerRef.current = setTimeout(connectWS, delay);
     };
 
-    ws.onerror = () => ws.close();
+    ws.onerror = () => {
+      if (wsRef.current === ws) ws.close();
+    };
 
     ws.onmessage = (event) => {
+      if (wsRef.current !== ws) return;
       try {
         handleRemoteMessage(JSON.parse(event.data));
       } catch {
@@ -426,7 +435,9 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       unmountedRef.current = true;
       if (reconnectTimerRef.current) clearTimeout(reconnectTimerRef.current);
       ro.disconnect();
-      wsRef.current?.close();
+      const ws = wsRef.current;
+      wsRef.current = null; // invalida el socket ANTES de cerrarlo, así su propio onclose no reconecta
+      ws?.close();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomCode, role]);
@@ -442,7 +453,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
   }, [currentPageId]);
 
   function handleRemoteMessage(msg: WSMessage) {
-    switch (msg.kind) {
+    switch (msg.type) {
       case "live-start": {
         if (msg.pageId !== currentPageIdRef.current) return;
         const ctx = getCtx(canvasRef);
@@ -497,7 +508,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
         return;
       case "request-sync":
         if (isHost) {
-          sendWS({ kind: "full-sync", pages: pagesRef.current, currentPageId: currentPageIdRef.current });
+          sendWS({ type: "full-sync", pages: pagesRef.current, currentPageId: currentPageIdRef.current });
         }
         return;
       case "full-sync":
@@ -563,7 +574,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
     }
-    sendWS({ kind: "live-start", pageId: currentPageId, strokeId: id, x, y, color: effectiveColor, width: effectiveWidth, tool: tool as DrawTool });
+    sendWS({ type: "live-start", pageId: currentPageId, strokeId: id, x, y, color: effectiveColor, width: effectiveWidth, tool: tool as DrawTool });
   }
 
   function handleMove(e: React.MouseEvent | React.TouchEvent) {
@@ -591,7 +602,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       ctx.lineTo(absX, absY);
       ctx.stroke();
     }
-    sendWS({ kind: "live-point", pageId: currentPageId, strokeId: currentStrokeRef.current.id, x, y });
+    sendWS({ type: "live-point", pageId: currentPageId, strokeId: currentStrokeRef.current.id, x, y });
   }
 
   function handleEnd(e: React.MouseEvent | React.TouchEvent) {
@@ -617,7 +628,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       const ctx = getCtx(canvasRef);
       ctx?.restore();
       commitOp(currentPageId, currentStrokeRef.current, { alreadyDrawnLive: true });
-      sendWS({ kind: "live-end", pageId: currentPageId, strokeId: currentStrokeRef.current.id });
+      sendWS({ type: "live-end", pageId: currentPageId, strokeId: currentStrokeRef.current.id });
       currentStrokeRef.current = null;
     }
     isDrawingRef.current = false;
@@ -631,7 +642,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
     const ctx = getCtx(canvasRef);
     const canvas = canvasRef.current;
     if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
-    sendWS({ kind: "clear", pageId: currentPageId });
+    sendWS({ type: "clear", pageId: currentPageId });
   }
 
   function handleUndo() {
@@ -654,8 +665,8 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
     const id = genId();
     setPages((prev) => [...prev, { id, ops: [] }]);
     setCurrentPageId(id);
-    sendWS({ kind: "page-add", pageId: id });
-    sendWS({ kind: "page-switch", pageId: id });
+    sendWS({ type: "page-add", pageId: id });
+    sendWS({ type: "page-switch", pageId: id });
   }
 
   function removePage(id: string) {
@@ -666,15 +677,15 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
       const next = pages[idx - 1] ?? pages[idx + 1];
       if (next) {
         setCurrentPageId(next.id);
-        sendWS({ kind: "page-switch", pageId: next.id });
+        sendWS({ type: "page-switch", pageId: next.id });
       }
     }
-    sendWS({ kind: "page-remove", pageId: id });
+    sendWS({ type: "page-remove", pageId: id });
   }
 
   function switchPage(id: string) {
     setCurrentPageId(id);
-    sendWS({ kind: "page-switch", pageId: id });
+    sendWS({ type: "page-switch", pageId: id });
   }
 
   function confirmItemModal() {
