@@ -11,6 +11,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://diofanto.xyz", "https://www.diofanto.xyz"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+print(">>> DIOFANTO DEBUG: CORS origins configurados =", ["https://diofanto.xyz", "https://www.diofanto.xyz"])
+print(">>> DIOFANTO DEBUG: archivo main.py version = v2-cors-fix")
 app.include_router(exercises.router)
 app.include_router(statistics.router)
 app.include_router(auth.router)
