@@ -157,15 +157,13 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
     open: false, kind: "text", x: 0.5, y: 0.5, value: "",
   });
 
-  const isEraser = tool === "eraser";
-  const isDrawTool = tool === "pen" || tool === "highlighter" || tool === "eraser";
   const isHost = role === "host";
 
   const currentOps = pages.find((p) => p.id === currentPageId)?.ops ?? [];
 
   /* ---------- Helpers de canvas ---------- */
 
-  function getCtx(ref: React.RefObject<HTMLCanvasElement>) {
+  function getCtx(ref: React.RefObject<HTMLCanvasElement | null>) {
     return ref.current?.getContext("2d") ?? null;
   }
 
@@ -605,7 +603,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
     sendWS({ type: "live-point", pageId: currentPageId, strokeId: currentStrokeRef.current.id, x, y });
   }
 
-  function handleEnd(e: React.MouseEvent | React.TouchEvent) {
+  function handleEnd(_e: React.MouseEvent | React.TouchEvent) {
     if (!isHost) return;
 
     if (isShapeTool(tool) && dragStartRef.current) {
