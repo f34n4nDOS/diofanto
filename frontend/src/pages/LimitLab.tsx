@@ -90,6 +90,7 @@ export default function LimitLab() {
               borderRadius: 14,
               border: "1px solid #d1d5db",
               background: "#f9fafb",
+              color: "#374151",
               cursor: "pointer",
             }}
           >
@@ -132,6 +133,7 @@ export default function LimitLab() {
                     borderRadius: 10,
                     border: point === p.value ? "1px solid #4f46e5" : "1px solid #d1d5db",
                     background: point === p.value ? "#eef2ff" : "white",
+                    color: point === p.value ? "#4338ca" : "#374151",
                     cursor: "pointer",
                   }}
                 >
