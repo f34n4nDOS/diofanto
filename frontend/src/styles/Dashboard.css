@@ -1,32 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap');
+
 .dashboard {
   max-width: 1100px;
   margin: 0 auto;
   padding: var(--spacing-lg);
 }
 
+/* ---------- Hero ---------- */
+
 .dashboard__hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--spacing-md);
-  padding: var(--spacing-xl) var(--spacing-lg);
+  position: relative;
+  padding: var(--spacing-xl) var(--spacing-lg) calc(var(--spacing-lg) + 14px);
   border-radius: var(--border-radius-lg);
   margin-bottom: var(--spacing-xl);
-  flex-wrap: wrap;
+  border: 1px solid var(--grid-line);
 }
 
-.dashboard__hero-content h1.dashboard__greeting {
-  margin-bottom: var(--spacing-sm);
+.dashboard__hero-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashboard__hero-content {
+  max-width: 640px;
+}
+
+h1.dashboard__greeting {
+  font-family: 'Source Serif 4', 'Georgia', serif;
+  font-weight: 600;
+  font-size: 2.35rem;
+  letter-spacing: -0.01em;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  color: var(--ink);
 }
 
 .dashboard__subtitle {
-  margin-bottom: 0;
+  margin-bottom: var(--spacing-sm);
   font-size: 1.05rem;
+  color: var(--neutral-600);
 }
 
-.dashboard__logout {
-  flex-shrink: 0;
+.dashboard__readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--neutral-500);
+  font-variant-numeric: tabular-nums;
 }
+
+.dashboard__readout strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Marca de regla / papel milimetrado a lo largo del borde inferior del
+   hero — un detalle "de instrumento", no un degradé decorativo. */
+.dashboard__hero::after {
+  content: "";
+  position: absolute;
+  left: var(--spacing-lg);
+  right: var(--spacing-lg);
+  bottom: var(--spacing-md);
+  height: 8px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0px,
+    var(--ink) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* ---------- Grilla de laboratorios ---------- */
 
 .dashboard__grid {
   display: grid;
@@ -35,11 +85,12 @@
 }
 
 @media (max-width: 640px) {
-  .dashboard__hero {
-    flex-direction: column;
+  .dashboard__hero-top {
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-sm);
   }
 
-  .dashboard__logout {
-    align-self: flex-start;
+  h1.dashboard__greeting {
+    font-size: 1.85rem;
   }
 }

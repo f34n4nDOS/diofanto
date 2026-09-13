@@ -3,15 +3,18 @@ import SubjectCard, { type Subject } from "../components/SubjectCard";
 import "../styles/Dashboard.css";
 
 interface Lab {
+  code: string;
   title: string;
   description: string;
   to: string;
   subject: Subject;
   icon: string;
+  featured?: boolean;
 }
 
 const LABS: Lab[] = [
   {
+    code: "Álg",
     title: "Álgebra",
     description: "Ecuaciones, sistemas, factorización, simplificación y expansión.",
     to: "/algebra",
@@ -19,6 +22,7 @@ const LABS: Lab[] = [
     icon: "🧮",
   },
   {
+    code: "Geo",
     title: "Geometría",
     description: "Triángulos, circunferencias y polígonos regulares.",
     to: "/geometry",
@@ -26,6 +30,7 @@ const LABS: Lab[] = [
     icon: "📐",
   },
   {
+    code: "Fn",
     title: "Funciones",
     description: "Graficá cualquier función y mirá su derivada al lado.",
     to: "/functions",
@@ -33,6 +38,7 @@ const LABS: Lab[] = [
     icon: "📈",
   },
   {
+    code: "D/dx",
     title: "Derivadas",
     description: "Derivadas, puntos críticos y rectas tangentes interactivas.",
     to: "/derivatives",
@@ -40,6 +46,7 @@ const LABS: Lab[] = [
     icon: "🔺",
   },
   {
+    code: "Lím",
     title: "Límites",
     description: "Límites laterales, en el infinito, y su interpretación.",
     to: "/limits",
@@ -47,6 +54,7 @@ const LABS: Lab[] = [
     icon: "➰",
   },
   {
+    code: "∫",
     title: "Integrales",
     description: "Integrales definidas e indefinidas paso a paso.",
     to: "/integrals",
@@ -54,6 +62,7 @@ const LABS: Lab[] = [
     icon: "∫",
   },
   {
+    code: "Prob",
     title: "Probabilidad y Estadística",
     description: "Estadística descriptiva y simulaciones de moneda y dados.",
     to: "/statistics",
@@ -61,13 +70,7 @@ const LABS: Lab[] = [
     icon: "🎲",
   },
   {
-    title: "Modelaje Matemático",
-    description: "Construye, analiza y optimiza modelos matemáticos complejos.",
-    to: "/modeling",
-    subject: "calculus",
-    icon: "🧬",
-  },
-  {
+    code: "Ejer",
     title: "Ejercicios",
     description: "Practicá, corregí tus respuestas y seguí tu progreso.",
     to: "/exercises",
@@ -75,13 +78,28 @@ const LABS: Lab[] = [
     icon: "📝",
   },
   {
-    title: "Pizarra",
-    description: "Practicá, corregí tus respuestas y seguí tu progreso.",
+    code: "Mod",
+    title: "Modelaje Matemático",
+    description:
+      "Construí, analizá y optimizá modelos matemáticos complejos. Incluye un intérprete con IA para partir de una consigna en lenguaje natural.",
+    to: "/modeling",
+    subject: "calculus",
+    icon: "🧬",
+    featured: true,
+  },
+  {
+    code: "Viva",
+    title: "Pizarra en vivo",
+    // Antes esta tarjeta compartía por error la copy y el color de "Ejercicios".
+    description: "Dibujá y resolvé problemas en tiempo real, en una pizarra compartida con quien quieras.",
     to: "/Whiteboard",
-    subject: "exercises",
-    icon: "📝",
+    subject: "live",
+    icon: "🖊️",
+    featured: true,
   },
 ];
+
+const AREA_COUNT = new Set(LABS.map((l) => l.subject)).size;
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -89,13 +107,19 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <header className="dashboard__hero grid-paper">
-        <div className="dashboard__hero-content">
-          <h1 className="dashboard__greeting">Hola, {user?.name} </h1>
-          <p className="dashboard__subtitle">¿Qué querés resolver hoy?</p>
+        <div className="dashboard__hero-top">
+          <button onClick={logout} className="button-ghost dashboard__logout">
+            Cerrar sesión
+          </button>
         </div>
-        <button onClick={logout} className="button-ghost dashboard__logout">
-          Cerrar sesión
-        </button>
+
+        <div className="dashboard__hero-content">
+          <h1 className="dashboard__greeting">Hola, {user?.name}</h1>
+          <p className="dashboard__subtitle">¿Qué querés resolver hoy?</p>
+          <p className="dashboard__readout">
+            <strong>{LABS.length}</strong> laboratorios en <strong>{AREA_COUNT}</strong> áreas
+          </p>
+        </div>
       </header>
 
       <section className="dashboard__grid">

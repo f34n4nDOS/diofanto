@@ -55,9 +55,41 @@
   border-left: 4px solid var(--subject-statistics);
 }
 
+.subject-card--exercises {
+  --card-accent: var(--subject-exercises);
+  border-left: 4px solid var(--subject-exercises);
+}
+
+.subject-card--live {
+  --card-accent: var(--subject-live);
+  border-left: 4px solid var(--subject-live);
+}
+
+.subject-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
 .subject-card__icon {
   font-size: 1.75rem;
   line-height: 1;
+}
+
+/* Código corto tipo "código de materia" (Álg, Geo, D/dx...) — referencia
+   de catálogo, no una etiqueta decorativa: ayuda a escanear la grilla
+   como se escanea un índice de facultad. Minúscula/mixta a propósito,
+   nunca todo en mayúsculas. */
+.subject-card__code {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--card-accent, var(--primary));
+  background: color-mix(in srgb, var(--card-accent, var(--primary)) 12%, white);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
 }
 
 .subject-card__title {
@@ -82,12 +114,32 @@
   color: var(--card-accent, var(--primary));
 }
 
+/* Tarjetas destacadas: las herramientas "de flujo de trabajo" (Modelaje,
+   Pizarra) en vez de fichas de consulta puntual. Ocupan doble ancho y
+   respiran más, como el instrumental grande de un laboratorio frente a
+   las fichas de catálogo del resto. */
+.subject-card--featured {
+  grid-column: span 2;
+  min-height: 190px;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.subject-card--featured .subject-card__icon {
+  font-size: 2.25rem;
+}
+
+.subject-card--featured .subject-card__title {
+  font-size: 1.35rem;
+}
+
+@media (max-width: 640px) {
+  .subject-card--featured {
+    grid-column: span 1;
+  }
+}
+
 @media (max-width: 480px) {
   .subject-card {
     min-height: auto;
   }
-}
-.subject-card--exercises {
-  --card-accent: var(--subject-exercises);
-  border-left: 4px solid var(--subject-exercises);
 }
