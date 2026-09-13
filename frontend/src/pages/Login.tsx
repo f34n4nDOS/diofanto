@@ -123,7 +123,7 @@ export default function Login() {
               {loading ? "Ingresando..." : "Ingresar"}
             </button>
           </form>
-
+            <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
           <p className="auth-form-card__footer">
             ¿No tenés cuenta? <Link to="/register">Registrate</Link>
           </p>

@@ -661,3 +661,18 @@ class ScenarioInterpretResponse(BaseModel):
     parameters: dict[str, float]
     time_periods: float
     justification: str
+
+# ==================== RECUPERACIÓN DE CONTRASEÑA ====================
+# Agregar estas clases al final de tu schemas.py existente.
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    new_password: str
+
+
+class MessageResponse(BaseModel):
+    detail: str
