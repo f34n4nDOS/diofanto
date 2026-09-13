@@ -148,6 +148,19 @@ def _parse_point(point_str: str):
     return sympify(point_str)
 
 
+def _safe_limit(expr, var, point, direction):
+    """
+    Calcula un límite lateral. Si sympy no puede resolverlo (pasa con
+    ciertas funciones no estándar o puntos raros), devuelve None en vez
+    de romper toda la request — así el endpoint puede seguir informando
+    lo que sí pudo calcular en vez de tirar un 400 genérico.
+    """
+    try:
+        return limit(expr, var, point, dir=direction)
+    except (NotImplementedError, ValueError):
+        return None
+
+
 @router.post("/limit", response_model=schemas.LimitResponse)
 def calculate_limit(req: schemas.LimitRequest):
     try:
@@ -158,19 +171,41 @@ def calculate_limit(req: schemas.LimitRequest):
         dir_map = {"+": "+", "-": "-", "+-": "+-"}
         direction = dir_map.get(req.direction, "+-")
 
+        left_val = right_val = None
+
         if direction == "+-":
-            left = limit(expr, var, point, dir="-")
-            right = limit(expr, var, point, dir="+")
-            exists = left == right
-            result = left if exists else None
+            left_val = _safe_limit(expr, var, point, "-")
+            right_val = _safe_limit(expr, var, point, "+")
+
+            if left_val is None or right_val is None:
+                # No pudimos resolver al menos uno de los dos lados.
+                result = None
+                exists = False
+                undetermined = True
+            else:
+                exists = left_val == right_val
+                result = left_val if exists else None
+                undetermined = False
         else:
-            result = limit(expr, var, point, dir=direction)
-            exists = True
+            result = _safe_limit(expr, var, point, direction)
+            exists = result is not None
+            undetermined = result is None
+            # En un límite de un solo lado no calculamos "el otro lado",
+            # así que no tiene sentido devolver left/right por separado.
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"No se pudo calcular el límite: {e}")
 
-    if result is None:
+    # Distinguimos "existe y es finito" de "existe pero diverge a infinito",
+    # que antes se reportaban igual (mal) como "existe".
+    is_finite = None
+    if result is not None:
+        is_finite = bool(result.is_finite) if result.is_finite is not None else None
+
+    if undetermined:
+        result_str = "No se pudo determinar con los métodos disponibles"
+        result_lat = r"\text{Indeterminado}"
+    elif result is None:
         result_str = "No existe (los límites laterales difieren)"
         result_lat = r"\text{No existe}"
     else:
@@ -183,6 +218,11 @@ def calculate_limit(req: schemas.LimitRequest):
         result=result_str,
         result_latex=result_lat,
         exists=exists,
+        is_finite=is_finite,
+        left_limit=str(left_val) if left_val is not None else None,
+        left_limit_latex=to_latex(left_val) if left_val is not None else None,
+        right_limit=str(right_val) if right_val is not None else None,
+        right_limit_latex=to_latex(right_val) if right_val is not None else None,
     )
 
 

@@ -4,6 +4,22 @@ import { calculateLimit, type LimitResponse } from "../api/client";
 import MathDisplay from "../components/MathDisplay";
 import "../styles/LimitLab.css";
 
+const POINT_PRESETS: { label: string; value: string }[] = [
+  { label: "0", value: "0" },
+  { label: "1", value: "1" },
+  { label: "∞", value: "oo" },
+  { label: "-∞", value: "-oo" },
+];
+
+const EXAMPLES: { label: string; expression: string; point: string }[] = [
+  { label: "sin(x)/x en 0 (clásico)", expression: "sin(x)/x", point: "0" },
+  { label: "(x²-1)/(x-1) en 1 (factoreable)", expression: "(x**2 - 1)/(x - 1)", point: "1" },
+  { label: "1/x en 0 (no existe)", expression: "1/x", point: "0" },
+  { label: "1/x² en 0 (diverge a ∞)", expression: "1/x**2", point: "0" },
+  { label: "(1+1/x)**x en ∞ (→ e)", expression: "(1 + 1/x)**x", point: "oo" },
+  { label: "1/x en ∞ (→ 0)", expression: "1/x", point: "oo" },
+];
+
 export default function LimitLab() {
   const [expression, setExpression] = useState("sin(x)/x");
   const [point, setPoint] = useState("0");
@@ -13,6 +29,7 @@ export default function LimitLab() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!expression.trim() || !point.trim()) return;
     setError("");
     setLoading(true);
     try {
@@ -26,11 +43,33 @@ export default function LimitLab() {
     }
   }
 
+  function loadExample(ex: { expression: string; point: string }) {
+    setExpression(ex.expression);
+    setPoint(ex.point);
+    setResult(null);
+    setError("");
+  }
+
   const getPointDisplay = (p: string) => {
     if (p === "oo" || p === "∞") return "∞";
     if (p === "-oo" || p === "-∞") return "-∞";
     return p;
   };
+
+  // Determina el mensaje correcto según cómo resultó el cálculo:
+  // existe y es finito / diverge a infinito / no existe / indeterminado.
+  function getResultBanner(res: LimitResponse) {
+    if (!res.exists) {
+      if (res.left_limit === null && res.right_limit === null) {
+        return { kind: "warn", text: "⚠️ No se pudo determinar este límite con los métodos disponibles." };
+      }
+      return { kind: "warn", text: "⚠️ Los límites laterales son distintos, el límite no existe en este punto." };
+    }
+    if (res.is_finite === false) {
+      return { kind: "info", text: "∞ El límite existe pero diverge (es infinito)." };
+    }
+    return { kind: "ok", text: "✓ El límite existe y es finito." };
+  }
 
   return (
     <div className="limit-lab">
@@ -38,6 +77,26 @@ export default function LimitLab() {
         <span>←</span> Volver al dashboard
       </Link>
       <h1>Laboratorio de Límites</h1>
+
+      <div className="examples-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+        {EXAMPLES.map((ex) => (
+          <button
+            key={ex.label}
+            type="button"
+            onClick={() => loadExample(ex)}
+            style={{
+              fontSize: 13,
+              padding: "4px 10px",
+              borderRadius: 14,
+              border: "1px solid #d1d5db",
+              background: "#f9fafb",
+              cursor: "pointer",
+            }}
+          >
+            {ex.label}
+          </button>
+        ))}
+      </div>
 
       <form className="input-form" onSubmit={handleSubmit}>
         <div className="form-section">
@@ -61,9 +120,28 @@ export default function LimitLab() {
               placeholder="0, oo, -oo"
               type="text"
             />
+            <div style={{ display: "flex", gap: 4, marginTop: 4 }}>
+              {POINT_PRESETS.map((p) => (
+                <button
+                  key={p.label}
+                  type="button"
+                  onClick={() => setPoint(p.value)}
+                  style={{
+                    fontSize: 12,
+                    padding: "2px 8px",
+                    borderRadius: 10,
+                    border: point === p.value ? "1px solid #4f46e5" : "1px solid #d1d5db",
+                    background: point === p.value ? "#eef2ff" : "white",
+                    cursor: "pointer",
+                  }}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
             <div className="helper-text">Usa 'oo' para ∞</div>
           </div>
-          <button type="submit" className="submit-btn" disabled={loading}>
+          <button type="submit" className="submit-btn" disabled={loading || !expression.trim() || !point.trim()}>
             <span>{loading ? "⏳" : "📈"}</span>
             {loading ? "Calculando..." : "Calcular"}
           </button>
@@ -72,52 +150,57 @@ export default function LimitLab() {
 
       {error && <div className="error">{error}</div>}
 
-      {result && (
-        <div className={`result-card ${result.exists ? "exists" : "not-exists"}`}>
-          <div className="result-content">
-            <MathDisplay
-              latex={`\\lim_{x \\to ${getPointDisplay(point)}} ${result.original_latex} = ${result.result_latex}`}
-              block
-            />
-          </div>
-
-          {result.exists ? (
-            <div className="limit-exists-note">
-              ✓ El límite existe y es finito
+      {result && (() => {
+        const banner = getResultBanner(result);
+        return (
+          <div className={`result-card ${result.exists ? "exists" : "not-exists"}`}>
+            <div className="result-content">
+              <MathDisplay
+                latex={`\\lim_{x \\to ${getPointDisplay(point)}} ${result.original_latex} = ${result.result_latex}`}
+                block
+              />
             </div>
-          ) : (
-            <div className="limit-not-exists-note">
-              ⚠️ Los límites laterales son distintos, el límite no existe en este punto.
-            </div>
-          )}
 
-          {result.left_limit !== undefined && result.right_limit !== undefined && (
-            <div className="limit-details">
-              <h3>Análisis de Límites Laterales</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--spacing-md)" }}>
-                <div>
-                  <strong>Límite por la izquierda</strong>
-                  <p>
-                    <MathDisplay
-                      latex={`\\lim_{x \\to ${getPointDisplay(point)}^-} f(x) = ${result.left_limit}`}
-                      block={false}
-                    />
-                  </p>
-                </div>
-                <div>
-                  <strong>Límite por la derecha</strong>
-                  <p>
-                    <MathDisplay
-                      latex={`\\lim_{x \\to ${getPointDisplay(point)}^+} f(x) = ${result.right_limit}`}
-                      block={false}
-                    />
-                  </p>
+            <div
+              className={
+                banner.kind === "ok"
+                  ? "limit-exists-note"
+                  : banner.kind === "info"
+                  ? "limit-infinite-note"
+                  : "limit-not-exists-note"
+              }
+            >
+              {banner.text}
+            </div>
+
+            {result.left_limit !== null && result.right_limit !== null && (
+              <div className="limit-details">
+                <h3>Análisis de Límites Laterales</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--spacing-md)" }}>
+                  <div>
+                    <strong>Límite por la izquierda</strong>
+                    <p>
+                      <MathDisplay
+                        latex={`\\lim_{x \\to ${getPointDisplay(point)}^-} f(x) = ${result.left_limit_latex ?? result.left_limit}`}
+                        block={false}
+                      />
+                    </p>
+                  </div>
+                  <div>
+                    <strong>Límite por la derecha</strong>
+                    <p>
+                      <MathDisplay
+                        latex={`\\lim_{x \\to ${getPointDisplay(point)}^+} f(x) = ${result.right_limit_latex ?? result.right_limit}`}
+                        block={false}
+                      />
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        );
+      })()}
     </div>
   );
 }

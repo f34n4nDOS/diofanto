@@ -76,6 +76,11 @@ class LimitResponse(BaseModel):
     result: str
     result_latex: str
     exists: bool
+    is_finite: bool | None = None
+    left_limit: str | None = None
+    left_limit_latex: str | None = None
+    right_limit: str | None = None
+    right_limit_latex: str | None = None
 
 
 class IntegralRequest(BaseModel):
