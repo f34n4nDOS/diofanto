@@ -97,6 +97,16 @@ const LABS: Lab[] = [
     icon: "🖊️",
     featured: true,
   },
+
+  {
+  code: "IA",
+  title: "Laboratorio de IA",
+  description: "Entrená regresiones, redes neuronales y modelos de lenguaje reales, y mirá cómo funcionan por dentro.",
+  to: "/mllab",
+  subject: "calculus",
+  icon: "🤖",
+  featured: true,
+},
 ];
 
 const AREA_COUNT = new Set(LABS.map((l) => l.subject)).size;

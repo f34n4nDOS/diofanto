@@ -757,3 +757,86 @@ class LanguageModelResponse(BaseModel):
     next_word_predictions: list[NextWordPrediction]
     generated_text: str
     interpretation: str
+# ==================== LABORATORIO DE IA / ML ====================
+# Agregar estas clases al final de tu schemas.py existente.
+
+# ---------- Regresión ----------
+
+class RegressionPoint(BaseModel):
+    x: float
+    y: float
+
+
+class RegressionRequest(BaseModel):
+    points: list[RegressionPoint] | None = None  # si viene None, generamos datos sintéticos
+    degree: int = 1  # 1 = lineal, 2+ = polinómica
+    true_function: str = "linear"  # "linear" | "quadratic" | "sine" — solo aplica al modo sintético
+    noise: float = 1.0  # solo aplica al modo sintético
+    num_synthetic_points: int = 30
+
+
+class RegressionResponse(BaseModel):
+    points: list[RegressionPoint]
+    fitted_curve: list[RegressionPoint]
+    coefficients: list[float]
+    equation_str: str
+    equation_latex: str
+    r_squared: float
+    mse: float
+    interpretation: str
+
+
+# ---------- Red neuronal (clasificación binaria en 2D) ----------
+
+class ClassifierPoint(BaseModel):
+    x: float
+    y: float
+    label: int  # 0 o 1
+
+
+class GridPoint(BaseModel):
+    x: float
+    y: float
+    probability: float  # probabilidad predicha de la clase 1
+
+
+class NeuralNetworkRequest(BaseModel):
+    points: list[ClassifierPoint] | None = None  # si viene None, generamos datos sintéticos
+    dataset_type: str = "moons"  # "moons" | "circles" | "xor" | "linear" — solo modo sintético
+    num_synthetic_points: int = 150
+    noise: float = 0.2
+    hidden_layer_sizes: list[int] = [8, 8]
+    epochs: int = 200
+    learning_rate: float = 0.01
+
+
+class NeuralNetworkResponse(BaseModel):
+    points: list[ClassifierPoint]
+    decision_boundary: list[GridPoint]
+    accuracy: float
+    loss_curve: list[float]
+    interpretation: str
+
+
+# ---------- Modelo de lenguaje (n-gramas) ----------
+
+class NextWordPrediction(BaseModel):
+    word: str
+    probability: float
+
+
+class LanguageModelRequest(BaseModel):
+    corpus: str | None = None  # si viene None/vacío, usamos un corpus de ejemplo
+    n: int = 2  # tamaño del n-grama (2 = bigrama, 3 = trigrama, ...)
+    prompt: str = ""  # contexto para predecir la palabra siguiente
+    num_words_to_generate: int = 20
+    temperature: float = 1.0  # >1 = más aleatorio, <1 = más conservador
+
+
+class LanguageModelResponse(BaseModel):
+    corpus_word_count: int
+    vocabulary_size: int
+    n: int
+    next_word_predictions: list[NextWordPrediction]
+    generated_text: str
+    interpretation: str

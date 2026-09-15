@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, math, algebra, geometry, statistics, exercises, modeling
 from routers import auth, math, algebra, geometry, statistics, exercises, modeling, whiteboard
+from routers import ml_lab
+
+app.include_router(ml_lab.router)
 app = FastAPI(title="Diofanto API")
 
 app.add_middleware(
