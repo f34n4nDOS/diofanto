@@ -43,3 +43,4 @@ tzlocal==5.3.1
 urllib3==2.7.0
 uvicorn==0.52.4
 websockets==17.1 
+scikit-learn
