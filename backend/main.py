@@ -4,9 +4,9 @@ from routers import auth, math, algebra, geometry, statistics, exercises, modeli
 from routers import auth, math, algebra, geometry, statistics, exercises, modeling, whiteboard
 from routers import ml_lab
 
-app.include_router(ml_lab.router)
-app = FastAPI(title="Diofanto API")
 
+app = FastAPI(title="Diofanto API")
+app.include_router(ml_lab.router)
 app.add_middleware(
     CORSMiddleware,
      allow_origins=["https://diofanto.xyz", "https://www.diofanto.xyz"],
