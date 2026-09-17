@@ -229,8 +229,7 @@ export default function LandingPage({ loginHref = "/login", registerHref = "/reg
         <div className="landing-footer-inner">
           <span className="landing-logo" style={{ fontSize: "1.05rem" }}>Diofanto</span>
           <div className="landing-footer-links">
-            <a href={loginHref}>Iniciar sesión</a>
-            <a href={registerHref}>Crear cuenta</a>
+            
           </div>
           <span className="landing-logo" style={{ fontSize: "1.05rem" }}>© {new Date().getFullYear()} Desarrollado por corrientIA</span>
         </div>
