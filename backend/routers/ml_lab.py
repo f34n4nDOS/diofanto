@@ -1,9 +1,12 @@
 """
-Laboratorio de IA/ML: tres mini-modelos reales para que el estudiante
-vea "por dentro" cómo funcionan una regresión, una red neuronal, y un
-modelo de lenguaje — sin necesitar GPU ni datasets enormes.
+Laboratorio de IA/ML: mini-modelos reales para que el estudiante vea
+"por dentro" cómo funcionan una regresión, una red neuronal, un modelo
+de lenguaje de n-gramas, un tokenizador BPE, embeddings por
+co-ocurrencia, el mecanismo de atención, y un agente con herramientas.
 """
 import re
+import ast
+import operator
 from collections import defaultdict, Counter
 
 import numpy as np
@@ -13,6 +16,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import make_moons, make_circles, make_classification
 
 from math_utils import to_latex
+from ai_model_interpreter import OPENROUTER_MODELS, _call_model
 import schemas
 
 router = APIRouter(prefix="/api/mllab", tags=["mllab"])
@@ -70,11 +74,9 @@ def regression_lab(req: schemas.RegressionRequest):
         r_squared = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
         mse = float(np.mean((ys - y_pred) ** 2))
 
-        # Curva ajustada, muestreada densamente para graficar una línea suave
         x_curve = np.linspace(xs.min(), xs.max(), 150)
         y_curve = poly(x_curve)
 
-        # Ecuación en LaTeX, reusando el mismo formateador que el resto de la app
         x_sym = sympy.symbols("x")
         rounded_coeffs = [round(float(c), 4) for c in coeffs]
         expr = sum(c * x_sym ** (degree - i) for i, c in enumerate(rounded_coeffs))
@@ -166,8 +168,6 @@ def neural_network_lab(req: schemas.NeuralNetworkRequest):
         accuracy = float(mlp.score(X, y))
         loss_curve = [round(float(v), 5) for v in mlp.loss_curve_]
 
-        # Grilla para pintar la frontera de decisión: para cada punto del
-        # plano, qué probabilidad le asigna la red a la clase 1.
         x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
         y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
         xx = np.linspace(x_min, x_max, DECISION_BOUNDARY_GRID_SIZE)
@@ -296,8 +296,6 @@ def language_model_lab(req: schemas.LanguageModelRequest):
         elif n == 1:
             context = tuple()
         else:
-            # Prompt insuficiente o vacío: arrancamos de un contexto real
-            # visto en el corpus, elegido al azar.
             rng_seed = np.random.default_rng()
             contexts = list(model.keys())
             context = contexts[rng_seed.integers(0, len(contexts))] if contexts else tuple()
@@ -332,5 +330,400 @@ def language_model_lab(req: schemas.LanguageModelRequest):
             schemas.NextWordPrediction(word=w, probability=round(p, 4)) for w, p in predictions
         ],
         generated_text=generated,
+        interpretation=interpretation,
+    )
+
+
+# ==================== TOKENIZACIÓN (BPE) ====================
+
+MAX_BPE_TRAINING_CHARS = 5000
+MAX_BPE_MERGES = 300
+
+
+def _train_bpe(text: str, num_merges: int):
+    words = re.findall(r"[a-záéíóúñü]+|[^\sa-záéíóúñü]", text.lower())
+    word_freqs = Counter(words)
+    splits = {word: list(word) for word in word_freqs}
+
+    merges: list[tuple[str, str]] = []
+    for _ in range(num_merges):
+        pair_counts: Counter = Counter()
+        for word, freq in word_freqs.items():
+            symbols = splits[word]
+            for i in range(len(symbols) - 1):
+                pair_counts[(symbols[i], symbols[i + 1])] += freq
+
+        if not pair_counts:
+            break
+        best_pair, best_count = pair_counts.most_common(1)[0]
+        if best_count < 2:
+            break  # no vale la pena fusionar algo que aparece una sola vez
+
+        merges.append(best_pair)
+        for word in list(splits.keys()):
+            symbols = splits[word]
+            merged = []
+            i = 0
+            while i < len(symbols):
+                if i < len(symbols) - 1 and symbols[i] == best_pair[0] and symbols[i + 1] == best_pair[1]:
+                    merged.append(symbols[i] + symbols[i + 1])
+                    i += 2
+                else:
+                    merged.append(symbols[i])
+                    i += 1
+            splits[word] = merged
+
+    return merges
+
+
+def _apply_bpe(text: str, merges: list[tuple[str, str]]) -> list[str]:
+    words = re.findall(r"[a-záéíóúñü]+|[^\sa-záéíóúñü]", text.lower())
+    tokens: list[str] = []
+    for word in words:
+        symbols = list(word)
+        for pair in merges:
+            i = 0
+            merged = []
+            while i < len(symbols):
+                if i < len(symbols) - 1 and symbols[i] == pair[0] and symbols[i + 1] == pair[1]:
+                    merged.append(symbols[i] + symbols[i + 1])
+                    i += 2
+                else:
+                    merged.append(symbols[i])
+                    i += 1
+            symbols = merged
+        tokens.extend(symbols)
+    return tokens
+
+
+@router.post("/tokenize", response_model=schemas.TokenizeResponse)
+def tokenize_lab(req: schemas.TokenizeRequest):
+    try:
+        training_text = (req.training_text.strip() if req.training_text and req.training_text.strip() else DEFAULT_CORPUS)
+        training_text = training_text[:MAX_BPE_TRAINING_CHARS]
+        text_to_tokenize = req.text_to_tokenize.strip() if req.text_to_tokenize.strip() else training_text[:200]
+        num_merges = max(0, min(req.num_merges, MAX_BPE_MERGES))
+
+        merges = _train_bpe(training_text, num_merges)
+        tokens = _apply_bpe(text_to_tokenize, merges)
+        naive_tokens = text_to_tokenize.split()
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"No se pudo tokenizar: {e}")
+
+    if num_merges == 0 or not merges:
+        merge_note = "Con cero fusiones, el tokenizador todavía no aprendió nada: cada letra es su propio token."
+    elif len(merges) < num_merges:
+        merge_note = f"El texto de entrenamiento solo dio para aprender {len(merges)} fusiones útiles antes de quedarse sin pares repetidos."
+    else:
+        merge_note = "Con más fusiones aprendidas, las piezas se van acercando a palabras completas."
+
+    interpretation = (
+        f"El texto tiene {len(text_to_tokenize)} caracteres y {len(naive_tokens)} palabras separadas por "
+        f"espacio, pero el tokenizador BPE lo dividió en {len(tokens)} tokens (piezas de subpalabra). "
+        f"{merge_note}"
+    )
+
+    return schemas.TokenizeResponse(
+        tokens=tokens,
+        naive_word_tokens=naive_tokens,
+        char_count=len(text_to_tokenize),
+        naive_word_count=len(naive_tokens),
+        token_count=len(tokens),
+        num_merges_learned=len(merges),
+        sample_merges=[f"{a}+{b}→{a}{b}" for a, b in merges[:15]],
+        interpretation=interpretation,
+    )
+
+
+# ==================== EMBEDDINGS (CO-OCURRENCIA + SVD) ====================
+
+def _build_cooccurrence_embeddings(tokens: list[str], window: int, dim: int, max_vocab: int):
+    freq = Counter(tokens)
+    vocab = [w for w, _ in freq.most_common(max_vocab)]
+    vocab_set = set(vocab)
+    index = {w: i for i, w in enumerate(vocab)}
+    n = len(vocab)
+    co = np.zeros((n, n))
+
+    for i, tok in enumerate(tokens):
+        if tok not in vocab_set:
+            continue
+        for j in range(max(0, i - window), min(len(tokens), i + window + 1)):
+            if i == j:
+                continue
+            other = tokens[j]
+            if other in vocab_set:
+                co[index[tok], index[other]] += 1
+
+    weighted = np.log1p(co)  # suaviza las frecuencias, evita que una palabra muy común domine todo
+
+    actual_dim = max(1, min(dim, n))
+    U, S, _Vt = np.linalg.svd(weighted, full_matrices=False)
+    coords = U[:, :actual_dim] * S[:actual_dim]
+
+    if coords.shape[1] < dim:
+        pad = np.zeros((coords.shape[0], dim - coords.shape[1]))
+        coords = np.hstack([coords, pad])
+
+    return vocab, coords
+
+
+@router.post("/embeddings", response_model=schemas.EmbeddingsResponse)
+def embeddings_lab(req: schemas.EmbeddingsRequest):
+    try:
+        corpus_text = req.corpus.strip() if req.corpus and req.corpus.strip() else DEFAULT_CORPUS
+        tokens = _tokenize(corpus_text[:8000])
+        max_vocab = max(10, min(req.max_words, 60))
+        window = max(1, min(req.window, 6))
+
+        if len(set(tokens)) < 8:
+            raise ValueError("El texto es muy corto o muy repetitivo para generar embeddings útiles. Agregá más texto variado.")
+
+        vocab, coords = _build_cooccurrence_embeddings(tokens, window, dim=2, max_vocab=max_vocab)
+
+        focus_word = req.focus_word.strip().lower() if req.focus_word else None
+        nearest: list[tuple[str, float]] = []
+        if focus_word and focus_word in vocab:
+            idx = vocab.index(focus_word)
+            dists = np.linalg.norm(coords - coords[idx], axis=1)
+            order = np.argsort(dists)
+            for i in order:
+                if vocab[i] == focus_word:
+                    continue
+                nearest.append((vocab[i], float(dists[i])))
+                if len(nearest) >= 6:
+                    break
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"No se pudieron calcular los embeddings: {e}")
+
+    if focus_word and focus_word not in vocab:
+        note = f"'{focus_word}' no aparece con suficiente frecuencia en el texto para tener un embedding propio."
+    elif nearest:
+        note = f"Las palabras más cercanas a '{focus_word}' en este mapa son: {', '.join(w for w, _ in nearest[:3])}."
+    else:
+        note = "Elegí una palabra del vocabulario (abajo) para ver cuáles quedaron más cerca de ella."
+
+    interpretation = (
+        f"Cada palabra quedó ubicada según con qué otras palabras aparece cerca en el texto (ventana de "
+        f"{window} palabras). Palabras que se usan en contextos parecidos tienden a quedar cerca en este "
+        f"mapa — esa es la idea central detrás de los embeddings que usan los modelos de lenguaje reales, "
+        f"aunque ellos aprenden vectores de cientos de dimensiones con una red neuronal entrenada sobre "
+        f"textos muchísimo más grandes. {note}"
+    )
+
+    return schemas.EmbeddingsResponse(
+        words=[schemas.EmbeddingPoint(word=w, x=float(c[0]), y=float(c[1])) for w, c in zip(vocab, coords)],
+        focus_word=focus_word,
+        nearest_words=[schemas.WordDistance(word=w, distance=round(d, 4)) for w, d in nearest],
+        interpretation=interpretation,
+    )
+
+
+# ==================== ATENCIÓN ====================
+
+def _softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:
+    shifted = x - np.max(x, axis=axis, keepdims=True)
+    exp = np.exp(shifted)
+    return exp / np.sum(exp, axis=axis, keepdims=True)
+
+
+@router.post("/attention", response_model=schemas.AttentionResponse)
+def attention_lab(req: schemas.AttentionRequest):
+    try:
+        corpus_text = req.corpus.strip() if req.corpus and req.corpus.strip() else DEFAULT_CORPUS
+        sentence = req.sentence.strip() or "el modelo de lenguaje predice la palabra siguiente"
+        sentence_tokens = _tokenize(sentence)[:15]
+
+        if len(sentence_tokens) < 2:
+            raise ValueError("Escribí una oración con al menos dos palabras")
+
+        corpus_tokens = _tokenize(corpus_text[:8000])
+        combined_tokens = corpus_tokens + sentence_tokens * 3
+        max_vocab = max(40, min(len(set(combined_tokens)), 120))
+
+        vocab, coords = _build_cooccurrence_embeddings(combined_tokens, window=4, dim=16, max_vocab=max_vocab)
+        index_map = {w: i for i, w in enumerate(vocab)}
+
+        vectors = []
+        for w in sentence_tokens:
+            if w in index_map:
+                vectors.append(coords[index_map[w]])
+            else:
+                vectors.append(np.zeros(coords.shape[1]))
+        V = np.array(vectors)
+        d = V.shape[1]
+
+        scores = (V @ V.T) / np.sqrt(d)
+        temperature = max(0.05, req.temperature)
+        weights = _softmax(scores / temperature, axis=-1)
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"No se pudo calcular la atención: {e}")
+
+    last_word = sentence_tokens[-1]
+    last_row = weights[-1]
+    top_idx = int(np.argmax(last_row[:-1])) if len(last_row) > 1 else 0
+    top_word = sentence_tokens[top_idx] if len(sentence_tokens) > 1 else last_word
+
+    interpretation = (
+        f"Cada fila de esta matriz sirve para predecir la palabra en esa posición: muestra cuánto 'mira' "
+        f"a cada una de las demás palabras de la oración (las filas suman 1, como corresponde a una "
+        f"distribución de probabilidad vía softmax). Por ejemplo, para predecir después de '{last_word}', "
+        f"el modelo le presta más atención a '{top_word}'. Un transformer real usa tres matrices "
+        f"aprendidas (Q, K, V) en vez de comparar los embeddings directamente como hacemos acá, pero la "
+        f"fórmula del mecanismo — similitud, escalado por √d, y softmax — es exactamente la misma."
+    )
+
+    return schemas.AttentionResponse(
+        tokens=sentence_tokens,
+        attention_matrix=[[round(float(v), 4) for v in row] for row in weights],
+        interpretation=interpretation,
+    )
+
+
+# ==================== AGENTE (ReAct + calculadora, LLM real vía OpenRouter) ====================
+
+_SAFE_OPERATORS = {
+    ast.Add: operator.add,
+    ast.Sub: operator.sub,
+    ast.Mult: operator.mul,
+    ast.Div: operator.truediv,
+    ast.Pow: operator.pow,
+    ast.Mod: operator.mod,
+    ast.USub: operator.neg,
+    ast.UAdd: operator.pos,
+}
+
+
+def _safe_eval_arithmetic(expr: str) -> float:
+    """
+    Evalúa una expresión aritmética simple (+ - * / ** % paréntesis) de
+    forma segura. Solo acepta números y estos operadores — nada de
+    nombres, llamadas a función, ni ningún otro tipo de nodo de Python.
+    """
+    node = ast.parse(expr, mode="eval").body
+
+    def _eval(n):
+        if isinstance(n, ast.Constant) and isinstance(n.value, (int, float)):
+            return n.value
+        if isinstance(n, ast.BinOp) and type(n.op) in _SAFE_OPERATORS:
+            return _SAFE_OPERATORS[type(n.op)](_eval(n.left), _eval(n.right))
+        if isinstance(n, ast.UnaryOp) and type(n.op) in _SAFE_OPERATORS:
+            return _SAFE_OPERATORS[type(n.op)](_eval(n.operand))
+        raise ValueError("Expresión no permitida")
+
+    return _eval(node)
+
+
+AGENT_SYSTEM_PROMPT = """Sos un asistente que resuelve problemas paso a paso, y podés usar UNA herramienta: una calculadora.
+
+Cuando necesites calcular algo, respondé EXACTAMENTE en este formato, sin nada más:
+Pensamiento: <tu razonamiento breve>
+Acción: calculadora[<expresión aritmética, solo números y + - * / ** ( )>]
+
+Cuando ya tengas la respuesta final, respondé EXACTAMENTE en este formato:
+Pensamiento: <tu razonamiento breve>
+Respuesta final: <la respuesta>
+
+No respondas nada más que estos dos formatos. No inventes resultados de la calculadora: siempre pedí la acción y esperá la observación antes de calcular el siguiente paso."""
+
+MAX_AGENT_STEPS = 4
+
+
+def _parse_agent_turn(text: str) -> dict:
+    thought_match = re.search(r"Pensamiento:\s*(.+?)(?:\n|$)", text)
+    action_match = re.search(r"Acci[oó]n:\s*calculadora\[(.+?)\]", text)
+    final_match = re.search(r"Respuesta final:\s*(.+)", text, re.DOTALL)
+    return {
+        "thought": thought_match.group(1).strip() if thought_match else None,
+        "action_expression": action_match.group(1).strip() if action_match else None,
+        "final_answer": final_match.group(1).strip() if final_match else None,
+    }
+
+
+def _call_model_with_fallback(system_prompt: str, user_content: str) -> str:
+    last_error = None
+    for model_id in OPENROUTER_MODELS:
+        try:
+            return _call_model(model_id, system_prompt, user_content)
+        except Exception as e:
+            last_error = e
+            continue
+    raise ValueError(f"Ningún modelo de la lista pudo responder. Último error: {last_error}")
+
+
+def _run_agent(question: str, max_steps: int = MAX_AGENT_STEPS) -> list[dict]:
+    conversation = f"Pregunta: {question}\n"
+    steps: list[dict] = []
+
+    for _ in range(max_steps):
+        raw = _call_model_with_fallback(AGENT_SYSTEM_PROMPT, conversation)
+        parsed = _parse_agent_turn(raw)
+        step = {**parsed, "observation": None}
+
+        if parsed["action_expression"] is not None:
+            try:
+                result = _safe_eval_arithmetic(parsed["action_expression"])
+                observation = str(result)
+            except Exception:
+                observation = "Error: expresión inválida, no se pudo calcular"
+            step["observation"] = observation
+            conversation += f"{raw}\nObservación: {observation}\n"
+            steps.append(step)
+            continue
+
+        if parsed["final_answer"] is not None:
+            steps.append(step)
+            break
+
+        step["final_answer"] = raw.strip()
+        steps.append(step)
+        break
+
+    return steps
+
+
+@router.post("/agent", response_model=schemas.AgentResponse)
+def agent_lab(req: schemas.AgentRequest):
+    question = req.question.strip()
+    if not question:
+        raise HTTPException(status_code=400, detail="Escribí una pregunta para el agente")
+
+    try:
+        raw_steps = _run_agent(question)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"No se pudo ejecutar el agente: {e}")
+
+    steps = [
+        schemas.AgentStep(
+            step_number=i + 1,
+            thought=s.get("thought"),
+            action_expression=s.get("action_expression"),
+            observation=s.get("observation"),
+            final_answer=s.get("final_answer"),
+        )
+        for i, s in enumerate(raw_steps)
+    ]
+    final_answer = next((s.final_answer for s in reversed(steps) if s.final_answer), None)
+    num_tool_calls = sum(1 for s in steps if s.action_expression is not None)
+
+    interpretation = (
+        f"El agente pensó en {len(steps)} paso(s) y usó la calculadora {num_tool_calls} vez(veces) antes "
+        f"de responder. Esta es la idea central de un 'agente': en vez de responder directo, el modelo "
+        f"decide si necesita usar una herramienta externa, la usa, lee el resultado, y sigue razonando "
+        f"con esa información nueva — el mismo patrón (a mayor escala, con más herramientas) que usan "
+        f"los asistentes de IA que navegan la web, ejecutan código, o consultan bases de datos."
+    )
+
+    return schemas.AgentResponse(
+        question=question,
+        steps=steps,
+        final_answer=final_answer,
         interpretation=interpretation,
     )
