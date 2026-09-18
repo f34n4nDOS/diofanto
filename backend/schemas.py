@@ -920,4 +920,85 @@ class AgentResponse(BaseModel):
     steps: list[AgentStep]
     final_answer: str | None
     interpretation: str
- 
+
+# ==================== LLM: TOKENIZACIÓN, EMBEDDINGS, ATENCIÓN, AGENTE ====================
+
+# ---------- Tokenización ----------
+
+class TokenizeRequest(BaseModel):
+    training_text: str | None = None  # corpus para entrenar el BPE; si None, usa el de ejemplo
+    text_to_tokenize: str = ""  # si viene vacío, tokeniza un fragmento del propio training_text
+    num_merges: int = 60  # cuántas fusiones de BPE aprender
+
+
+class TokenizeResponse(BaseModel):
+    tokens: list[str]
+    naive_word_tokens: list[str]
+    char_count: int
+    naive_word_count: int
+    token_count: int
+    num_merges_learned: int
+    sample_merges: list[str]
+    interpretation: str
+
+
+# ---------- Embeddings ----------
+
+class EmbeddingPoint(BaseModel):
+    word: str
+    x: float
+    y: float
+
+
+class WordDistance(BaseModel):
+    word: str
+    distance: float
+
+
+class EmbeddingsRequest(BaseModel):
+    corpus: str | None = None
+    max_words: int = 40
+    window: int = 3
+    focus_word: str = ""
+
+
+class EmbeddingsResponse(BaseModel):
+    words: list[EmbeddingPoint]
+    focus_word: str | None
+    nearest_words: list[WordDistance]
+    interpretation: str
+
+
+# ---------- Atención ----------
+
+class AttentionRequest(BaseModel):
+    corpus: str | None = None
+    sentence: str = ""
+    temperature: float = 1.0
+
+
+class AttentionResponse(BaseModel):
+    tokens: list[str]
+    attention_matrix: list[list[float]]  # fila i = a qué le presta atención el token i
+    interpretation: str
+
+
+# ---------- Agente ----------
+
+class AgentStep(BaseModel):
+    step_number: int
+    thought: str | None = None
+    action_expression: str | None = None
+    observation: str | None = None
+    final_answer: str | None = None
+
+
+class AgentRequest(BaseModel):
+    question: str
+
+
+class AgentResponse(BaseModel):
+    question: str
+    steps: list[AgentStep]
+    final_answer: str | None
+    interpretation: str
