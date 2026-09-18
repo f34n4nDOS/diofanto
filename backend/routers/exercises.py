@@ -7,7 +7,8 @@ from dependencies import get_current_user
 from exercise_utils import check_answer
 import models
 import schemas
-
+import json
+from pathlib import Path
 router = APIRouter(prefix="/api/exercises", tags=["exercises"])
 
 
@@ -161,3 +162,20 @@ def remove_favorite(exercise_id: int, db: Session = Depends(get_db), user: model
         db.delete(fav)
         db.commit()
     return None
+@router.post("/admin/seed-masivo")
+def seed_masivo(db: Session = Depends(get_db)):
+    ruta = Path(__file__).parent / "diofanto_ejercicios.json"
+    with open(ruta, encoding="utf-8") as f:
+        ejercicios = json.load(f)
+
+    inserted, skipped = 0, 0
+    for ex in ejercicios:
+        existe = db.query(models.Exercise).filter(models.Exercise.statement == ex["statement"]).first()
+        if existe:
+            skipped += 1
+            continue
+        db.add(models.Exercise(**ex))
+        inserted += 1
+
+    db.commit()
+    return {"insertados": inserted, "ya_existian": skipped}
