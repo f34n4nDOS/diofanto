@@ -15,13 +15,25 @@ export default function TurnstileWidget({ onVerify, onExpire }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
 
+  // Guardamos las callbacks más recientes en refs, sin que
+  // esto dispare un re-render del widget.
+  const onVerifyRef = useRef(onVerify);
+  const onExpireRef = useRef(onExpire);
+
   useEffect(() => {
+    onVerifyRef.current = onVerify;
+    onExpireRef.current = onExpire;
+  });
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval> | undefined;
+
     function renderWidget() {
       if (window.turnstile && ref.current && widgetId.current === null) {
         widgetId.current = window.turnstile.render(ref.current, {
           sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
-          callback: onVerify,
-          "expired-callback": () => onExpire?.(),
+          callback: (token: string) => onVerifyRef.current(token),
+          "expired-callback": () => onExpireRef.current?.(),
         });
       }
     }
@@ -29,22 +41,23 @@ export default function TurnstileWidget({ onVerify, onExpire }: Props) {
     if (window.turnstile) {
       renderWidget();
     } else {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (window.turnstile) {
           renderWidget();
-          clearInterval(interval);
+          if (interval) clearInterval(interval);
         }
       }, 100);
-      return () => clearInterval(interval);
     }
 
     return () => {
+      if (interval) clearInterval(interval);
       if (window.turnstile && widgetId.current !== null) {
         window.turnstile.remove(widgetId.current);
         widgetId.current = null;
       }
     };
-  }, [onVerify, onExpire]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // ← se monta UNA sola vez, ya no depende de onVerify/onExpire
 
   return <div ref={ref} />;
 }
