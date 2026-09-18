@@ -758,7 +758,7 @@ class LanguageModelResponse(BaseModel):
     generated_text: str
     interpretation: str
 # ==================== LABORATORIO DE IA / ML ====================
-# Agregar estas clases al final de tu schemas.py existente.
+
 
 # ---------- Regresión ----------
 
