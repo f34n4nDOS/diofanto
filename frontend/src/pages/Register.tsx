@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import TurnstileWidget from "../components/TurnstileWidget";
 import "../styles/Login.css";
 
 export default function Register() {
@@ -9,18 +10,26 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const { register } = useAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError("");
+
+    if (!turnstileToken) {
+      setError("Completá la verificación de seguridad");
+      return;
+    }
+
     setLoading(true);
     try {
-      await register(name, email, password);
+      await register(name, email, password, turnstileToken);
       navigate("/dashboard");
     } catch {
       setError("No se pudo registrar. ¿El email ya existe?");
+      setTurnstileToken("");
     } finally {
       setLoading(false);
     }
@@ -131,7 +140,18 @@ export default function Register() {
               </div>
             )}
 
-            <button type="submit" className="auth-submit" disabled={loading}>
+            <div className="auth-field">
+              <TurnstileWidget
+                onVerify={setTurnstileToken}
+                onExpire={() => setTurnstileToken("")}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="auth-submit"
+              disabled={loading || !turnstileToken}
+            >
               {loading ? "Creando cuenta..." : "Registrarme"}
             </button>
           </form>
