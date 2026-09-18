@@ -66,7 +66,8 @@ type WSMessage =
   | { type: "page-remove"; pageId: string }
   | { type: "page-switch"; pageId: string }
   | { type: "request-sync" }
-  | { type: "full-sync"; pages: Page[]; currentPageId: string };
+  | { type: "full-sync"; pages: Page[]; currentPageId: string }
+  | { type: "viewer-count"; count: number };
 
 /* ============================================================
    CONSTANTES
@@ -86,20 +87,20 @@ const LATEX_SNIPPETS: { label: string; insert: string }[] = [
   { label: "∏", insert: "\\prod_{i=1}^{n} " },
   { label: "lim", insert: "\\lim_{x \\to \\infty} " },
   { label: "d/dx", insert: "\\frac{d}{dx}" },
-  { label: "∂", insert: "\\partial" },
-  { label: "π", insert: "\\pi" },
-  { label: "θ", insert: "\\theta" },
-  { label: "α", insert: "\\alpha" },
-  { label: "β", insert: "\\beta" },
-  { label: "∞", insert: "\\infty" },
-  { label: "≠", insert: "\\neq" },
-  { label: "≤", insert: "\\leq" },
-  { label: "≥", insert: "\\geq" },
-  { label: "≈", insert: "\\approx" },
-  { label: "→", insert: "\\to" },
-  { label: "∈", insert: "\\in" },
-  { label: "∀", insert: "\\forall" },
-  { label: "∃", insert: "\\exists" },
+  { label: "∂", insert: "\\partial " },
+  { label: "π", insert: "\\pi " },
+  { label: "θ", insert: "\\theta " },
+  { label: "α", insert: "\\alpha " },
+  { label: "β", insert: "\\beta " },
+  { label: "∞", insert: "\\infty " },
+  { label: "≠", insert: "\\neq " },
+  { label: "≤", insert: "\\leq " },
+  { label: "≥", insert: "\\geq " },
+  { label: "≈", insert: "\\approx " },
+  { label: "→", insert: "\\to " },
+  { label: "∈", insert: "\\in " },
+  { label: "∀", insert: "\\forall " },
+  { label: "∃", insert: "\\exists " },
   { label: "vec", insert: "\\vec{v}" },
   { label: "matriz", insert: "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}" },
   { label: "sin", insert: "\\sin(x)" },
@@ -151,6 +152,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
   const [fillShape, setFillShape] = useState(false);
   const [gridMode, setGridMode] = useState<GridMode>("lines");
   const [connected, setConnected] = useState(false);
+  const [viewerCount, setViewerCount] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const [formulaModal, setFormulaModal] = useState<{ open: boolean; kind: "text" | "formula"; x: number; y: number; value: string }>({
@@ -513,6 +515,9 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
         setPages(msg.pages);
         setCurrentPageId(msg.currentPageId);
         return;
+      case "viewer-count":
+        setViewerCount(msg.count);
+        return;
     }
   }
 
@@ -795,6 +800,11 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
           {connected ? "● Conectado" : "○ Reconectando..."}
         </span>
         <span style={{ fontSize: 13, color: "#6b7280" }}>Sala: <strong>{roomCode}</strong></span>
+        {isHost && (
+          <span style={{ fontSize: 13, color: "#6b7280" }}>
+            👥 {viewerCount} {viewerCount === 1 ? "alumno conectado" : "alumnos conectados"}
+          </span>
+        )}
 
         {isHost && (
           <>
@@ -903,7 +913,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
                   type="button"
                   onClick={() => removePage(p.id)}
                   title="Eliminar página"
-                  style={{ border: "none", borderRadius: "0 6px 6px 0", padding: "4px 6px", background: "#fee2e2", cursor: "pointer" }}
+                  style={{ border: "none", borderRadius: "0 6px 6px 0", padding: "4px 6px", background: "#fee2e2", color: "#991b1b", cursor: "pointer" }}
                 >
                   ×
                 </button>
@@ -991,7 +1001,7 @@ export default function WhiteboardCanvas({ roomCode, role }: WhiteboardCanvasPro
                       key={s.label}
                       type="button"
                       onClick={() => insertSnippet(s.insert)}
-                      style={{ padding: "3px 8px", fontSize: 13, borderRadius: 6, border: "1px solid #d1d5db", background: "#f9fafb", cursor: "pointer" }}
+                      style={{ padding: "3px 8px", fontSize: 13, borderRadius: 6, border: "1px solid #d1d5db", background: "#f9fafb", color: "#374151", cursor: "pointer" }}
                     >
                       {s.label}
                     </button>

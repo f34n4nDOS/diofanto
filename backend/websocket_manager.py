@@ -21,6 +21,16 @@ class WhiteboardRoom:
                 except Exception:
                     pass  # la conexión puede haberse caído justo en este instante
 
+    async def broadcast_all(self, message: dict):
+        """Como broadcast, pero a TODAS las conexiones (incluido quien
+        dispara el evento) — usado para avisos del servidor, como el
+        conteo de conectados, que no vienen de ningún cliente puntual."""
+        for ws, _role in self.connections:
+            try:
+                await ws.send_json(message)
+            except Exception:
+                pass
+
     @property
     def is_empty(self) -> bool:
         return len(self.connections) == 0

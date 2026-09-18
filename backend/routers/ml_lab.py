@@ -16,7 +16,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import make_moons, make_circles, make_classification
 
 from math_utils import to_latex
-from ai_model_interpreter import OPENROUTER_MODELS, _call_model
+from ai_model_interpreter import _call_model
 import schemas
 
 router = APIRouter(prefix="/api/mllab", tags=["mllab"])
@@ -635,21 +635,43 @@ No respondas nada más que estos dos formatos. No inventes resultados de la calc
 
 MAX_AGENT_STEPS = 4
 
+# Para el agente priorizamos seguimiento confiable de instrucciones de
+# texto por sobre el costo: el auto-router "openrouter/free" a veces
+# elige un modelo entrenado para usar SU PROPIO formato nativo de
+# tool-calling, ignorando el formato de texto simple que le pedimos acá.
+# Esto solo se llama cuando un estudiante usa esta pestaña puntual, así
+# que el costo de usar un modelo de pago barato como principal es bajo.
+AGENT_MODELS = [
+    "anthropic/claude-3.5-haiku",
+    "openrouter/free",
+]
+
 
 def _parse_agent_turn(text: str) -> dict:
     thought_match = re.search(r"Pensamiento:\s*(.+?)(?:\n|$)", text)
     action_match = re.search(r"Acci[oó]n:\s*calculadora\[(.+?)\]", text)
     final_match = re.search(r"Respuesta final:\s*(.+)", text, re.DOTALL)
+
+    action_expression = action_match.group(1).strip() if action_match else None
+
+    # Red de seguridad: si un modelo ignora el formato pedido y usa su
+    # propio formato nativo de "tool calling" (algunos modelos gratuitos
+    # hacen esto), igual intentamos rescatar la expresión de ahí.
+    if action_expression is None and final_match is None:
+        native_call_match = re.search(r"calculadora\(\s*expression\s*=\s*['\"]([^'\"]+)['\"]", text)
+        if native_call_match:
+            action_expression = native_call_match.group(1).strip()
+
     return {
         "thought": thought_match.group(1).strip() if thought_match else None,
-        "action_expression": action_match.group(1).strip() if action_match else None,
+        "action_expression": action_expression,
         "final_answer": final_match.group(1).strip() if final_match else None,
     }
 
 
-def _call_model_with_fallback(system_prompt: str, user_content: str) -> str:
+def _call_model_with_fallback(system_prompt: str, user_content: str, models: list[str] = AGENT_MODELS) -> str:
     last_error = None
-    for model_id in OPENROUTER_MODELS:
+    for model_id in models:
         try:
             return _call_model(model_id, system_prompt, user_content)
         except Exception as e:
