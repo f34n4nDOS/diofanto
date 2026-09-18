@@ -1,0 +1,4649 @@
+[
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 7x - 11 = 94",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "15",
+      "variable": "x",
+      "explanation": "7x = 94 - (-11) → x = 105/7 = 15"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 8x - 17 = 23",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "5",
+      "variable": "x",
+      "explanation": "8x = 23 - (-17) → x = 40/8 = 5"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x + 14 = 47",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "11",
+      "variable": "x",
+      "explanation": "3x = 47 - (14) → x = 33/3 = 11"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x + 17 = 5",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-4",
+      "variable": "x",
+      "explanation": "3x = 5 - (17) → x = -12/3 = -4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 2x + 12 = 40",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "14",
+      "variable": "x",
+      "explanation": "2x = 40 - (12) → x = 28/2 = 14"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 5x - 15 = -85",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-14",
+      "variable": "x",
+      "explanation": "5x = -85 - (-15) → x = -70/5 = -14"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 8x - 16 = -32",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-2",
+      "variable": "x",
+      "explanation": "8x = -32 - (-16) → x = -16/8 = -2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 5x + 15 = -50",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-13",
+      "variable": "x",
+      "explanation": "5x = -50 - (15) → x = -65/5 = -13"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 8x + 16 = -96",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-14",
+      "variable": "x",
+      "explanation": "8x = -96 - (16) → x = -112/8 = -14"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x - 6 = 39",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "15",
+      "variable": "x",
+      "explanation": "3x = 39 - (-6) → x = 45/3 = 15"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 12x + 17 = 77",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "5",
+      "variable": "x",
+      "explanation": "12x = 77 - (17) → x = 60/12 = 5"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 2x + 17 = 23",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "3",
+      "variable": "x",
+      "explanation": "2x = 23 - (17) → x = 6/2 = 3"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 8x - 6 = -118",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-14",
+      "variable": "x",
+      "explanation": "8x = -118 - (-6) → x = -112/8 = -14"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 2x - 12 = -8",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "2",
+      "variable": "x",
+      "explanation": "2x = -8 - (-12) → x = 4/2 = 2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 6x - 11 = -23",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-2",
+      "variable": "x",
+      "explanation": "6x = -23 - (-11) → x = -12/6 = -2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 10x + 16 = -104",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-12",
+      "variable": "x",
+      "explanation": "10x = -104 - (16) → x = -120/10 = -12"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 6x - 9 = 3",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "2",
+      "variable": "x",
+      "explanation": "6x = 3 - (-9) → x = 12/6 = 2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x + 16 = 25",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "3",
+      "variable": "x",
+      "explanation": "3x = 25 - (16) → x = 9/3 = 3"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 12x + 3 = -105",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-9",
+      "variable": "x",
+      "explanation": "12x = -105 - (3) → x = -108/12 = -9"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x - 16 = -10",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "2",
+      "variable": "x",
+      "explanation": "3x = -10 - (-16) → x = 6/3 = 2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 11x + 19 = -135",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-14",
+      "variable": "x",
+      "explanation": "11x = -135 - (19) → x = -154/11 = -14"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 12x + 7 = 31",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "2",
+      "variable": "x",
+      "explanation": "12x = 31 - (7) → x = 24/12 = 2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 7x + 17 = 10",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-1",
+      "variable": "x",
+      "explanation": "7x = 10 - (17) → x = -7/7 = -1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 9x - 1 = -37",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-4",
+      "variable": "x",
+      "explanation": "9x = -37 - (-1) → x = -36/9 = -4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 5x - 9 = 41",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "10",
+      "variable": "x",
+      "explanation": "5x = 41 - (-9) → x = 50/5 = 10"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 5x + 16 = -49",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-13",
+      "variable": "x",
+      "explanation": "5x = -49 - (16) → x = -65/5 = -13"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 6x + 11 = 17",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "6x = 17 - (11) → x = 6/6 = 1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 7x + 8 = 64",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "8",
+      "variable": "x",
+      "explanation": "7x = 64 - (8) → x = 56/7 = 8"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 6x - 16 = 8",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "4",
+      "variable": "x",
+      "explanation": "6x = 8 - (-16) → x = 24/6 = 4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones lineales",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Resolvé la ecuación: 3x + 6 = 9",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "3x = 9 - (6) → x = 3/3 = 1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 3x - 4 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-4",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (-4))(x - (1)) = 0 → soluciones -4 y 1. La menor es -4."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 1x - 30 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-5",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (-5))(x - (6)) = 0 → soluciones -5 y 6. La menor es -5."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 4x - 32 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-8",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (4))(x - (-8)) = 0 → soluciones 4 y -8. La menor es -8."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 1x - 56 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-7",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (-7))(x - (8)) = 0 → soluciones -7 y 8. La menor es -7."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 10x + 9 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (9))(x - (1)) = 0 → soluciones 9 y 1. La menor es 1."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 3x + 2 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (1))(x - (2)) = 0 → soluciones 1 y 2. La menor es 1."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 15x + 54 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "6",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (6))(x - (9)) = 0 → soluciones 6 y 9. La menor es 6."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 2x - 35 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-7",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (5))(x - (-7)) = 0 → soluciones 5 y -7. La menor es -7."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 8x + 7 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-7",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (-7))(x - (-1)) = 0 → soluciones -7 y -1. La menor es -7."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 1x - 42 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-7",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (6))(x - (-7)) = 0 → soluciones 6 y -7. La menor es -7."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 8x = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-8",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (-8))(x - (0)) = 0 → soluciones -8 y 0. La menor es -8."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 14x + 45 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "5",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (9))(x - (5)) = 0 → soluciones 9 y 5. La menor es 5."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 3x = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "0",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (0))(x - (3)) = 0 → soluciones 0 y 3. La menor es 0."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² + 7x - 18 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-9",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (2))(x - (-9)) = 0 → soluciones 2 y -9. La menor es -9."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones cuadráticas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé la ecuación cuadrática: x² - 7x + 10 = 0. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "2",
+      "variable": "x",
+      "explanation": "Factorizando: (x - (5))(x - (2)) = 0 → soluciones 5 y 2. La menor es 2."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n1x + 4y = 31\n1x + 2y = 13",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 4,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -5, y = 9 → x + y = 4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n6x + 2y = -18\n4x + 4y = -28",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -7,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -1, y = -6 → x + y = -7"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n2x + 4y = -22\n4x + 5y = -20",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -3,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 5, y = -8 → x + y = -3"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n4x + 5y = -38\n3x + 6y = -42",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -8,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -2, y = -6 → x + y = -8"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n6x + 4y = 22\n2x + 2y = 8",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 4,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 3, y = 1 → x + y = 4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n2x + 2y = -26\n6x + 2y = -58",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -13,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -8, y = -5 → x + y = -13"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n5x + 2y = -40\n3x + 3y = -15",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -5,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -10, y = 5 → x + y = -5"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n4x + 5y = -70\n3x + 5y = -60",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -16,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -10, y = -6 → x + y = -16"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n2x + 6y = 16\n5x + 5y = 40",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 8,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 8, y = 0 → x + y = 8"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n4x + 6y = -14\n5x + 4y = 14",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 10, y = -9 → x + y = 1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n4x + 1y = 10\n4x + 6y = 20",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 4,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 2, y = 2 → x + y = 4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n2x + 1y = -5\n2x + 4y = -32",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -7,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 2, y = -9 → x + y = -7"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n3x + 5y = -50\n1x + 1y = -12",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -12,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -5, y = -7 → x + y = -12"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n2x + 5y = 20\n1x + 3y = 14",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -2,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = -10, y = 8 → x + y = -2"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Sistemas de ecuaciones",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Resolvé el sistema de ecuaciones y calculá el valor de x + y:\n1x + 2y = -11\n5x + 4y = 5",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -1,
+      "tolerance": 0.001,
+      "explanation": "Resolviendo el sistema: x = 9, y = -10 → x + y = -1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 6) / 6 = -5/6",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "Multiplicando por 6: x - 6 = -5 → x = 1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x + 9| = 6. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-15",
+      "variable": "x",
+      "explanation": "x + 9 = 6 ó x + 9 = -6 → soluciones -15 y -3. La menor es -15."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x + 5) = 2",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-1",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + 5 = 4 → x = -1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 3x + 12 > 0",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "a",
+      "options": {
+        "a": "x > -4",
+        "b": "x > -3",
+        "c": "x < -4",
+        "d": "x ≥ -4"
+      },
+      "value": "x > -4",
+      "explanation": "3x > -12 → x > -4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 1) / 3 = -7/3",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-6",
+      "variable": "x",
+      "explanation": "Multiplicando por 3: x - 1 = -7 → x = -6"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x - 7| = 12. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-5",
+      "variable": "x",
+      "explanation": "x + -7 = 12 ó x + -7 = -12 → soluciones -5 y 19. La menor es -5."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x + 0) = 5",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "25",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + 0 = 25 → x = 25"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 9x + 11 > 7",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "b",
+      "options": {
+        "a": "x ≥ -4/9",
+        "b": "x > -4/9",
+        "c": "x > 5/9",
+        "d": "x < -4/9"
+      },
+      "value": "x > -4/9",
+      "explanation": "9x > -4 → x > -4/9"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 4) / 7 = -10/7",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-6",
+      "variable": "x",
+      "explanation": "Multiplicando por 7: x - 4 = -10 → x = -6"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x + 7| = 15. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-22",
+      "variable": "x",
+      "explanation": "x + 7 = 15 ó x + 7 = -15 → soluciones -22 y 8. La menor es -22."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x - 10) = 5",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "35",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + -10 = 25 → x = 35"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 3x + 7 > 12",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "a",
+      "options": {
+        "a": "x > 5/3",
+        "b": "x < 5/3",
+        "c": "x ≥ 5/3",
+        "d": "x > 8/3"
+      },
+      "value": "x > 5/3",
+      "explanation": "3x > 5 → x > 5/3"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 5) / 7 = -8/7",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-3",
+      "variable": "x",
+      "explanation": "Multiplicando por 7: x - 5 = -8 → x = -3"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x + 7| = 9. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-16",
+      "variable": "x",
+      "explanation": "x + 7 = 9 ó x + 7 = -9 → soluciones -16 y 2. La menor es -16."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x + 6) = 6",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "30",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + 6 = 36 → x = 30"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 5x + 4 > 10",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "c",
+      "options": {
+        "a": "x > 11/5",
+        "b": "x ≥ 6/5",
+        "c": "x > 6/5",
+        "d": "x < 6/5"
+      },
+      "value": "x > 6/5",
+      "explanation": "5x > 6 → x > 6/5"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 3) / 5 = 3/5",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "6",
+      "variable": "x",
+      "explanation": "Multiplicando por 5: x - 3 = 3 → x = 6"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x + 5| = 6. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-11",
+      "variable": "x",
+      "explanation": "x + 5 = 6 ó x + 5 = -6 → soluciones -11 y 1. La menor es -11."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x - 10) = 1",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "11",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + -10 = 1 → x = 11"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 6x + 0 > -7",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "a",
+      "options": {
+        "a": "x > -7/6",
+        "b": "x ≥ -7/6",
+        "c": "x > -1/6",
+        "d": "x < -7/6"
+      },
+      "value": "x > -7/6",
+      "explanation": "6x > -7 → x > -7/6"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x + 4) / 7 = 5/7",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "1",
+      "variable": "x",
+      "explanation": "Multiplicando por 7: x + 4 = 5 → x = 1"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x - 8| = 4. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "4",
+      "variable": "x",
+      "explanation": "x + -8 = 4 ó x + -8 = -4 → soluciones 4 y 12. La menor es 4."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x - 7) = 4",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "23",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + -7 = 16 → x = 23"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 9x - 9 > -5",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "b",
+      "options": {
+        "a": "x > 13/9",
+        "b": "x > 4/9",
+        "c": "x ≥ 4/9",
+        "d": "x < 4/9"
+      },
+      "value": "x > 4/9",
+      "explanation": "9x > 4 → x > 4/9"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x + 5) / 7 = 15/7",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "10",
+      "variable": "x",
+      "explanation": "Multiplicando por 7: x + 5 = 15 → x = 10"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x - 8| = 14. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-6",
+      "variable": "x",
+      "explanation": "x + -8 = 14 ó x + -8 = -14 → soluciones -6 y 22. La menor es -6."
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con radicales",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: √(x - 7) = 7",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "56",
+      "variable": "x",
+      "explanation": "Elevando al cuadrado: x + -7 = 49 → x = 56"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Inecuaciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé la inecuación: 5x + 0 > 13",
+    "exercise_type": "multiple_choice",
+    "answer_data": {
+      "correct_option": "a",
+      "options": {
+        "a": "x > 13/5",
+        "b": "x > 18/5",
+        "c": "x ≥ 13/5",
+        "d": "x < 13/5"
+      },
+      "value": "x > 13/5",
+      "explanation": "5x > 13 → x > 13/5"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con fracciones",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: (x - 8) / 8 = -1/2",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "4",
+      "variable": "x",
+      "explanation": "Multiplicando por 8: x - 8 = -4 → x = 4"
+    }
+  },
+  {
+    "area": "algebra",
+    "topic": "Ecuaciones con valor absoluto",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Resolvé: |x + 2| = 12. Indicá la menor de las dos soluciones.",
+    "exercise_type": "equation",
+    "answer_data": {
+      "value": "-14",
+      "variable": "x",
+      "explanation": "x + 2 = 12 ó x + 2 = -12 → soluciones -14 y 10. La menor es -14."
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 5 cm y altura 26 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 130,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 5 × 26 = 130"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 8 cm y altura 8 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 32,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(8+8) = 32"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 7 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 49,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 7² = 49"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 3 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 3 = 12"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 8 cm y altura 21 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 84.0,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (8×21)/2 = 84.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 17 cm y altura 28 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 476,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 17 × 28 = 476"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 23 cm y altura 7 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 60,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(23+7) = 60"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 22 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 484,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 22² = 484"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 29 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 116,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 29 = 116"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 23 cm y altura 18 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 207.0,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (23×18)/2 = 207.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 24 cm y altura 14 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 336,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 24 × 14 = 336"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 7 cm y altura 20 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 54,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(7+20) = 54"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 20 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 400,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 20² = 400"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 7 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 28,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 7 = 28"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 4 cm y altura 3 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6.0,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (4×3)/2 = 6.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 28 cm y altura 26 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 728,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 28 × 26 = 728"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 23 cm y altura 6 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 58,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(23+6) = 58"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 19 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 361,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 19² = 361"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 26 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 104,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 26 = 104"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 8 cm y altura 16 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 64.0,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (8×16)/2 = 64.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 30 cm y altura 9 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 270,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 30 × 9 = 270"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 29 cm y altura 30 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 118,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(29+30) = 118"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 9 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 81,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 9² = 81"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 11 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 44,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 11 = 44"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 10 cm y altura 12 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 60.0,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (10×12)/2 = 60.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 19 cm y altura 10 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 190,
+      "tolerance": 0.01,
+      "explanation": "Área = base × altura = 19 × 10 = 190"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de rectángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un rectángulo tiene base 27 cm y altura 21 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 96,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 2×(base+altura) = 2×(27+21) = 96"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 13 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 169,
+      "tolerance": 0.01,
+      "explanation": "Área = lado² = 13² = 169"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área y perímetro de cuadrados",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un cuadrado tiene lado de 20 cm. Calculá su perímetro (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 80,
+      "tolerance": 0.01,
+      "explanation": "Perímetro = 4 × 20 = 80"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de triángulos",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Un triángulo tiene base 17 cm y altura 29 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 246.5,
+      "tolerance": 0.01,
+      "explanation": "Área = (base×altura)/2 = (17×29)/2 = 246.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 5 cm y 12 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 13,
+      "tolerance": 0.01,
+      "explanation": "c² = 5² + 12² = 169 → c = 13"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 13 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 530.93,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×13² ≈ 530.93"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 16 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 100.53,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×16 ≈ 100.53"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 23 cm y 21 cm, y altura 16 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 352.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((23+21)×16)/2 = 352.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 24 cm y 32 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 40,
+      "tolerance": 0.01,
+      "explanation": "c² = 24² + 32² = 1600 → c = 40"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 19 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1134.11,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×19² ≈ 1134.11"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 6 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 37.7,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×6 ≈ 37.7"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 21 cm y 21 cm, y altura 3 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 63.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((21+21)×3)/2 = 63.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 40 cm y 42 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 58,
+      "tolerance": 0.01,
+      "explanation": "c² = 40² + 42² = 3364 → c = 58"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 2 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12.57,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×2² ≈ 12.57"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 7 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 43.98,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×7 ≈ 43.98"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 9 cm y 20 cm, y altura 6 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 87.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((9+20)×6)/2 = 87.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 12 cm y 16 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 20,
+      "tolerance": 0.01,
+      "explanation": "c² = 12² + 16² = 400 → c = 20"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 12 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 452.39,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×12² ≈ 452.39"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 18 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 113.1,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×18 ≈ 113.1"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 21 cm y 22 cm, y altura 18 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 387.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((21+22)×18)/2 = 387.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 10,
+      "tolerance": 0.01,
+      "explanation": "c² = 6² + 8² = 100 → c = 10"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 9 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 254.47,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×9² ≈ 254.47"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 8 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 50.27,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×8 ≈ 50.27"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 13 cm y 6 cm, y altura 6 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 57.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((13+6)×6)/2 = 57.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 48 cm y 64 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 80,
+      "tolerance": 0.01,
+      "explanation": "c² = 48² + 64² = 6400 → c = 80"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 4 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 50.27,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×4² ≈ 50.27"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 12 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 75.4,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×12 ≈ 75.4"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 24 cm y 21 cm, y altura 19 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 427.5,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((24+21)×19)/2 = 427.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 24 cm y 45 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 51,
+      "tolerance": 0.01,
+      "explanation": "c² = 24² + 45² = 2601 → c = 51"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 16 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 804.25,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×16² ≈ 804.25"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 19 cm. Calculá su circunferencia (en cm, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 119.38,
+      "tolerance": 0.5,
+      "explanation": "Circunferencia = 2πr = 2×π×19 ≈ 119.38"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Área de trapecios",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un trapecio tiene bases de 20 cm y 21 cm, y altura 10 cm. Calculá su área (en cm²).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 205.0,
+      "tolerance": 0.01,
+      "explanation": "Área = ((B+b)×h)/2 = ((20+21)×10)/2 = 205.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Teorema de Pitágoras",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un triángulo rectángulo tiene catetos de 36 cm y 48 cm. Calculá la hipotenusa (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 60,
+      "tolerance": 0.01,
+      "explanation": "c² = 36² + 48² = 3600 → c = 60"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Círculos",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Un círculo tiene radio 8 cm. Calculá su área (en cm², usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 201.06,
+      "tolerance": 0.5,
+      "explanation": "Área = πr² = π×8² ≈ 201.06"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 15 cm y altura 17 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12016.59,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×15²×17 ≈ 12016.59"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 4 cm y altura 16 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 268.08,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×4²×16)/3 ≈ 268.08"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 17 cm y uno de sus ángulos agudos es de 30°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 8.5,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(30°) = 17 × sen(30°) ≈ 8.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 9 cm y altura 13 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 3308.1,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×9²×13 ≈ 3308.1"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 3 cm y altura 10 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 94.25,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×3²×10)/3 ≈ 94.25"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 7 cm y uno de sus ángulos agudos es de 45°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 4.95,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(45°) = 7 × sen(45°) ≈ 4.95"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 5 cm y altura 12 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 942.48,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×5²×12 ≈ 942.48"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 14 cm y altura 6 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1231.5,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×14²×6)/3 ≈ 1231.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 27 cm y uno de sus ángulos agudos es de 30°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 13.5,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(30°) = 27 × sen(30°) ≈ 13.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 12 cm y altura 14 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6333.45,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×12²×14 ≈ 6333.45"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 4 cm y altura 11 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 184.31,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×4²×11)/3 ≈ 184.31"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 19 cm y uno de sus ángulos agudos es de 30°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 9.5,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(30°) = 19 × sen(30°) ≈ 9.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 5 cm y altura 6 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 471.24,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×5²×6 ≈ 471.24"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 8 cm y altura 18 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1206.37,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×8²×18)/3 ≈ 1206.37"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 26 cm y uno de sus ángulos agudos es de 30°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 13.0,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(30°) = 26 × sen(30°) ≈ 13.0"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 15 cm y altura 10 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 7068.58,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×15²×10 ≈ 7068.58"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 10 cm y altura 15 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1570.8,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×10²×15)/3 ≈ 1570.8"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 18 cm y uno de sus ángulos agudos es de 45°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12.73,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(45°) = 18 × sen(45°) ≈ 12.73"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 5 cm y altura 14 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1099.56,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×5²×14 ≈ 1099.56"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 7 cm y altura 5 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 256.56,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×7²×5)/3 ≈ 256.56"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 16 cm y uno de sus ángulos agudos es de 60°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 13.86,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(60°) = 16 × sen(60°) ≈ 13.86"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 2 cm y altura 13 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 163.36,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×2²×13 ≈ 163.36"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 10 cm y altura 17 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1780.24,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×10²×17)/3 ≈ 1780.24"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 27 cm y uno de sus ángulos agudos es de 45°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 19.09,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(45°) = 27 × sen(45°) ≈ 19.09"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 2 cm y altura 15 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 188.5,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×2²×15 ≈ 188.5"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 7 cm y altura 19 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 974.94,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×7²×19)/3 ≈ 974.94"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 14 cm y uno de sus ángulos agudos es de 60°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12.12,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(60°) = 14 × sen(60°) ≈ 12.12"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de cilindros",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cilindro tiene radio 10 cm y altura 5 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1570.8,
+      "tolerance": 1.0,
+      "explanation": "V = πr²h = π×10²×5 ≈ 1570.8"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Volumen de conos",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Un cono tiene radio 3 cm y altura 5 cm. Calculá su volumen (en cm³, usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 47.12,
+      "tolerance": 1.0,
+      "explanation": "V = (πr²h)/3 = (π×3²×5)/3 ≈ 47.12"
+    }
+  },
+  {
+    "area": "geometria",
+    "topic": "Trigonometría",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En un triángulo rectángulo, la hipotenusa mide 13 cm y uno de sus ángulos agudos es de 45°. Calculá el cateto opuesto a ese ángulo (en cm).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 9.19,
+      "tolerance": 0.05,
+      "explanation": "cateto opuesto = hipotenusa × sen(45°) = 13 × sen(45°) ≈ 9.19"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^3 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3*x**2 - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 3x^2 - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 3x^5 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "15*x**4 - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 15x^4 - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 7x^3 + 7x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "21*x**2 + 7",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 21x^2 + 7"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 9x^6 + 5x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "54*x**5 + 5",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 54x^5 + 5"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 6x^2 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "12*x - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 12x - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^3 + 3x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3*x**2 + 3",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 3x^2 + 3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 2x^4 - 10x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "8*x**3 - 10",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 8x^3 - 10"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 2x^4 - 8x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "8*x**3 - 8",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 8x^3 - 8"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 4x^2 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "8*x - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 8x - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 2x^5 - 10x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "10*x**4 - 10",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 10x^4 - 10"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 6x^6 + 3x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "36*x**5 + 3",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 36x^5 + 3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 5x^6 - 6x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "30*x**5 - 6",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 30x^5 - 6"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^6 - 3x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "6*x**5 - 3",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 6x^5 - 3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 2x^3 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "6*x**2 - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 6x^2 - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^3 - 4x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3*x**2 - 4",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 3x^2 - 4"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 5x^4 + 6x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "20*x**3 + 6",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 20x^3 + 6"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 4x^4 + 4x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "16*x**3 + 4",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 16x^3 + 4"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 9x^3 - 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "27*x**2 - 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 27x^2 - 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^2 - 10x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "2*x - 10",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 2x - 10"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 9x^6 - 4x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "54*x**5 - 4",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 54x^5 - 4"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 9x^5 - 3x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "45*x**4 - 3",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 45x^4 - 3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 8x^2 + 10x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "16*x + 10",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 16x + 10"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 7x^5 + 7x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "35*x**4 + 7",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 35x^4 + 7"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 7x^6 - x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "42*x**5 - 1",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 42x^5 - 1"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 4x^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "12*x**2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 12x^2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 4x^3 + 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "12*x**2 + 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 12x^2 + 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 6x^2 - 6x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "12*x - 6",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 12x - 6"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^2 + 10x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "2*x + 10",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 2x + 10"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = 5x^5 - 5x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "25*x**4 - 5",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 25x^4 - 5"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Derivadas de polinomios",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Calculá la derivada de f(x) = x^2 + 2x",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "2*x + 2",
+      "explanation": "Aplicando la regla de la potencia: f'(x) = 2x + 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 9x^4 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "9*x**5/5",
+      "explanation": "∫9xⁿ dx = 9x^5/5 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 4x^4 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "4*x**5/5",
+      "explanation": "∫4xⁿ dx = 4x^5/5 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ x^5 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "x**6/6",
+      "explanation": "∫1xⁿ dx = x^6/6 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 3x^3 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3*x**4/4",
+      "explanation": "∫3xⁿ dx = 3x^4/4 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 5x^5 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "5*x**6/6",
+      "explanation": "∫5xⁿ dx = 5x^6/6 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ x^4 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "x**5/5",
+      "explanation": "∫1xⁿ dx = x^5/5 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 6x^4 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "6*x**5/5",
+      "explanation": "∫6xⁿ dx = 6x^5/5 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 4x^2 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "4*x**3/3",
+      "explanation": "∫4xⁿ dx = 4x^3/3 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 5x^3 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "5*x**4/4",
+      "explanation": "∫5xⁿ dx = 5x^4/4 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 6x^3 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3*x**4/2",
+      "explanation": "∫6xⁿ dx = 3x^4/2 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 7x^2 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "7*x**3/3",
+      "explanation": "∫7xⁿ dx = 7x^3/3 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 8x^4 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "8*x**5/5",
+      "explanation": "∫8xⁿ dx = 8x^5/5 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 9x^3 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "9*x**4/4",
+      "explanation": "∫9xⁿ dx = 9x^4/4 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ 4x^6 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "4*x**7/7",
+      "explanation": "∫4xⁿ dx = 4x^7/7 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales indefinidas",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la integral indefinida (no incluyas la constante C): ∫ x^2 dx",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "x**3/3",
+      "explanation": "∫1xⁿ dx = x^3/3 + C"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (6x + 2)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "72*x + 24",
+      "explanation": "f'(x) = 2(6x+2)^1 × 6 = 72x + 24"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (8x + 1)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1536*x**2 + 384*x + 24",
+      "explanation": "f'(x) = 3(8x+1)^2 × 8 = 1536x^2 + 384x + 24"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (2x + 5)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "24*x**2 + 120*x + 150",
+      "explanation": "f'(x) = 3(2x+5)^2 × 2 = 24x^2 + 120x + 150"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (5x + 2)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "50*x + 20",
+      "explanation": "f'(x) = 2(5x+2)^1 × 5 = 50x + 20"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (8x + 6)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1536*x**2 + 2304*x + 864",
+      "explanation": "f'(x) = 3(8x+6)^2 × 8 = 1536x^2 + 2304x + 864"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (4x + 5)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "32*x + 40",
+      "explanation": "f'(x) = 2(4x+5)^1 × 4 = 32x + 40"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (2x + 9)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "24*x**2 + 216*x + 486",
+      "explanation": "f'(x) = 3(2x+9)^2 × 2 = 24x^2 + 216x + 486"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (4x + 9)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "32*x + 72",
+      "explanation": "f'(x) = 2(4x+9)^1 × 4 = 32x + 72"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (2x + 3)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "24*x**2 + 72*x + 54",
+      "explanation": "f'(x) = 3(2x+3)^2 × 2 = 24x^2 + 72x + 54"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (3x + 7)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "81*x**2 + 378*x + 441",
+      "explanation": "f'(x) = 3(3x+7)^2 × 3 = 81x^2 + 378x + 441"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (2x + 1)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "8*x + 4",
+      "explanation": "f'(x) = 2(2x+1)^1 × 2 = 8x + 4"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (9x + 5)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "162*x + 90",
+      "explanation": "f'(x) = 2(9x+5)^1 × 9 = 162x + 90"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (9x + 2)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "162*x + 36",
+      "explanation": "f'(x) = 2(9x+2)^1 × 9 = 162x + 36"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (3x + 8)^3",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "81*x**2 + 432*x + 576",
+      "explanation": "f'(x) = 3(3x+8)^2 × 3 = 81x^2 + 432x + 576"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Regla de la cadena",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Calculá la derivada usando la regla de la cadena: f(x) = (3x + 5)^2",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "18*x + 30",
+      "explanation": "f'(x) = 2(3x+5)^1 × 3 = 18x + 30"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→-1) (x² - 1) / (x - -1)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -2.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x--1)(x+-1)/(x--1) = x+-1, evaluando en x=-1: -2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 3 hasta 7 de 6x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 632.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 2*x**3. F(7) - F(3) = 632"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 2 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 14 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 175.93,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×14×2 ≈ 175.93"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→1) (x² - 1) / (x - 1)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 2.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-1)(x+1)/(x-1) = x+1, evaluando en x=1: 2"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 4 hasta 10 de 1x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 312.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = x**3/3. F(10) - F(4) = 312"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 2 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 8 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 100.53,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×8×2 ≈ 100.53"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→2) (x² - 4) / (x - 2)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 4.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-2)(x+2)/(x-2) = x+2, evaluando en x=2: 4"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 2 hasta 7 de 3x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 335.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = x**3. F(7) - F(2) = 335"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 3 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 20 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 376.99,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×20×3 ≈ 376.99"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→7) (x² - 49) / (x - 7)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 14.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-7)(x+7)/(x-7) = x+7, evaluando en x=7: 14"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 3 hasta 6 de 1x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 63.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = x**3/3. F(6) - F(3) = 63"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 4 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 5 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 125.66,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×5×4 ≈ 125.66"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→6) (x² - 36) / (x - 6)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-6)(x+6)/(x-6) = x+6, evaluando en x=6: 12"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 3 hasta 4 de 4x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 49.333333333333336,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 4*x**3/3. F(4) - F(3) = 148/3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 4 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 19 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 477.52,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×19×4 ≈ 477.52"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→-6) (x² - 36) / (x - -6)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -12.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x--6)(x+-6)/(x--6) = x+-6, evaluando en x=-6: -12"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 0 hasta 3 de 4x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 36.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 4*x**3/3. F(3) - F(0) = 36"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 2 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 16 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 201.06,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×16×2 ≈ 201.06"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→0) (x² - 0) / (x - 0)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 0.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-0)(x+0)/(x-0) = x+0, evaluando en x=0: 0"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 1 hasta 3 de 4x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 34.666666666666664,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 4*x**3/3. F(3) - F(1) = 104/3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 2 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 4 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 50.27,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×4×2 ≈ 50.27"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→8) (x² - 64) / (x - 8)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 16.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-8)(x+8)/(x-8) = x+8, evaluando en x=8: 16"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 2 hasta 4 de 3x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 56.0,
+      "tolerance": 0.001,
+      "explanation": "F(x) = x**3. F(4) - F(2) = 56"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 5 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 18 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 565.49,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×18×5 ≈ 565.49"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→3) (x² - 9) / (x - 3)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x-3)(x+3)/(x-3) = x+3, evaluando en x=3: 6"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 3 hasta 7 de 2x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 210.66666666666666,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 2*x**3/3. F(7) - F(3) = 632/3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 1 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 14 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 87.96,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×14×1 ≈ 87.96"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Límites",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá el límite: lim(x→-8) (x² - 64) / (x - -8)",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -16.0,
+      "tolerance": 0.001,
+      "explanation": "Factorizando: (x--8)(x+-8)/(x--8) = x+-8, evaluando en x=-8: -16"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Integrales definidas",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "Calculá la integral definida: ∫ desde 3 hasta 7 de 4x² dx",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 421.3333333333333,
+      "tolerance": 0.001,
+      "explanation": "F(x) = 4*x**3/3. F(7) - F(3) = 1264/3"
+    }
+  },
+  {
+    "area": "calculo",
+    "topic": "Razones de cambio",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "El radio de un círculo crece a razón de 3 cm/s. Calculá la razón de cambio del área (en cm²/s) cuando el radio mide 11 cm (usá π ≈ 3.1416).",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 207.35,
+      "tolerance": 0.5,
+      "explanation": "A = πr² → dA/dt = 2πr(dr/dt) = 2π×11×3 ≈ 207.35"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [23, 25, 21, 8, 22, 1, 21, 22, 26]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.78,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 169/9 = 18.78"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [13, 1, 19, 17, 24, 5]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 15.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [25, 38, 5, 24, 28, 18, 4, 18, 7]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.56,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 167/9 = 18.56"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [19, 10, 16, 18, 28, 33]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.5,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [13, 24, 28, 2, 26, 36, 36, 14]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 22.38,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 179/8 = 22.38"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [4, 27, 29, 40, 9, 19]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 23.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [4, 36, 9, 11, 31, 27, 22, 19, 20]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 19.89,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 179/9 = 19.89"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [17, 26, 16, 20, 31, 36, 26, 8]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 23.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [11, 5, 14, 33, 32, 36, 15]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 20.86,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 146/7 = 20.86"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [22, 29, 28, 9, 36, 13, 16, 6, 12]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 16,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [36, 6, 21, 16, 24, 17, 37, 13]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 21.25,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 170/8 = 21.25"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [27, 25, 27, 34, 14, 25]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 26.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [22, 4, 32, 18, 37, 24, 9, 33]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 22.38,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 179/8 = 22.38"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [6, 18, 16, 25, 26, 29, 28]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 25,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [2, 9, 3, 28, 31, 38, 32, 1]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.0,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 144/8 = 18.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [26, 34, 30, 29, 16, 7]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 27.5,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [10, 10, 34, 7, 30, 6, 36]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 19.0,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 133/7 = 19.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [1, 9, 15, 37, 3, 20]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 12.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [17, 34, 28, 8, 7, 5, 20]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 17.0,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 119/7 = 17.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [25, 17, 15, 39, 1, 1, 35]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 17,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [30, 18, 21, 16, 31, 34, 16, 36]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 25.25,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 202/8 = 25.25"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [2, 27, 20, 4, 2, 13, 32]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 13,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [6, 17, 15, 28, 24, 15, 32, 3, 22]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.0,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 162/9 = 18.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [24, 26, 13, 1, 19, 33, 5, 14, 32]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 19,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [20, 13, 15, 30, 15, 17, 19]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 18.43,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 129/7 = 18.43"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [40, 32, 40, 12, 15, 32]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 32.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [4, 39, 10, 26, 4, 14, 2, 39, 10]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 16.44,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 148/9 = 16.44"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [4, 4, 12, 26, 29, 21, 8, 6, 11]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 11,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [13, 12, 34, 30, 3, 20, 25, 24]. Calculá la media.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 20.12,
+      "tolerance": 0.01,
+      "explanation": "Media = suma/cantidad = 161/8 = 20.12"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Medidas de tendencia central",
+    "level": "universitario",
+    "difficulty": "easy",
+    "statement": "Dado el conjunto de datos: [29, 11, 7, 1, 6, 18, 6, 23]. Calculá la mediana.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 9.0,
+      "tolerance": 0.01,
+      "explanation": "Mediana = valor central de los datos ordenados."
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [4, 18, 25, 7, 13, 12, 25, 10]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 53.44,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 14.25. Varianza = Σ(x-media)²/n ≈ 53.44"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [3, 2, 23, 16, 7, 12, 18, 15]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6.96,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 6.96"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [11, 12, 24, 16, 1, 21]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 55.81,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 14.17. Varianza = Σ(x-media)²/n ≈ 55.81"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [8, 21, 25, 13, 2, 13, 2, 15]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 7.71,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 7.71"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [2, 9, 7, 24, 3]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 62.8,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 9.0. Varianza = Σ(x-media)²/n ≈ 62.8"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [12, 9, 11, 20, 2, 9, 24]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6.82,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 6.82"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [9, 10, 1, 24, 25, 20, 21]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 70.78,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 15.71. Varianza = Σ(x-media)²/n ≈ 70.78"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [1, 8, 4, 16, 23]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 8.06,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 8.06"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [25, 13, 9, 14, 16, 5, 16, 6]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 36.5,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 13.0. Varianza = Σ(x-media)²/n ≈ 36.5"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [24, 10, 23, 25, 5]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 8.26,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 8.26"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [11, 11, 15, 12, 20, 3]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 26.0,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 12.0. Varianza = Σ(x-media)²/n ≈ 26.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [13, 25, 6, 8, 14, 3]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 7.14,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 7.14"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [16, 18, 18, 11, 6]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 21.76,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 13.8. Varianza = Σ(x-media)²/n ≈ 21.76"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [4, 3, 9, 20, 3, 7, 4, 14]. Calculá la desviación estándar poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 5.74,
+      "tolerance": 0.1,
+      "explanation": "Desv. estándar = √varianza ≈ 5.74"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Varianza y desviación estándar",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Dado el conjunto de datos: [23, 15, 6, 8, 5, 14, 15, 20]. Calculá la varianza poblacional.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 36.94,
+      "tolerance": 0.1,
+      "explanation": "Media ≈ 13.25. Varianza = Σ(x-media)²/n ≈ 36.94"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza un dado justo. ¿Cuál es la probabilidad de obtener un número mayor que 2? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "2/3",
+      "explanation": "Casos favorables = 4 de 6 → P = 4/6 = 2/3"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza una moneda 10 veces seguidas. ¿Cuál es la probabilidad de obtener 10 caras seguidas? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/1024",
+      "explanation": "P = (1/2)^10 = 1/1024"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "De un mazo de 52 cartas se extrae una al azar. ¿Cuál es la probabilidad de que sea una figura (J, Q o K)? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3/13",
+      "explanation": "Hay 12 figuras de 52 cartas → P = 12/52 = 3/13"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza un dado justo. ¿Cuál es la probabilidad de obtener un número mayor que 1? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "5/6",
+      "explanation": "Casos favorables = 5 de 6 → P = 5/6 = 5/6"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza una moneda 6 veces seguidas. ¿Cuál es la probabilidad de obtener 6 caras seguidas? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/64",
+      "explanation": "P = (1/2)^6 = 1/64"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "De un mazo de 52 cartas se extrae una al azar. ¿Cuál es la probabilidad de que sea una figura (J, Q o K)? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3/13",
+      "explanation": "Hay 12 figuras de 52 cartas → P = 12/52 = 3/13"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza un dado justo. ¿Cuál es la probabilidad de obtener un número mayor que 3? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/2",
+      "explanation": "Casos favorables = 3 de 6 → P = 3/6 = 1/2"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza una moneda 7 veces seguidas. ¿Cuál es la probabilidad de obtener 7 caras seguidas? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/128",
+      "explanation": "P = (1/2)^7 = 1/128"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "De un mazo de 52 cartas se extrae una al azar. ¿Cuál es la probabilidad de que sea una figura (J, Q o K)? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3/13",
+      "explanation": "Hay 12 figuras de 52 cartas → P = 12/52 = 3/13"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza un dado justo. ¿Cuál es la probabilidad de obtener un número mayor que 4? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/3",
+      "explanation": "Casos favorables = 2 de 6 → P = 2/6 = 1/3"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza una moneda 5 veces seguidas. ¿Cuál es la probabilidad de obtener 5 caras seguidas? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/32",
+      "explanation": "P = (1/2)^5 = 1/32"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "De un mazo de 52 cartas se extrae una al azar. ¿Cuál es la probabilidad de que sea una figura (J, Q o K)? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3/13",
+      "explanation": "Hay 12 figuras de 52 cartas → P = 12/52 = 3/13"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza un dado justo. ¿Cuál es la probabilidad de obtener un número mayor que 5? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/6",
+      "explanation": "Casos favorables = 1 de 6 → P = 1/6 = 1/6"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "Se lanza una moneda 3 veces seguidas. ¿Cuál es la probabilidad de obtener 3 caras seguidas? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "1/8",
+      "explanation": "P = (1/2)^3 = 1/8"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Probabilidad básica",
+    "level": "universitario",
+    "difficulty": "medium",
+    "statement": "De un mazo de 52 cartas se extrae una al azar. ¿Cuál es la probabilidad de que sea una figura (J, Q o K)? (como fracción simplificada)",
+    "exercise_type": "expression",
+    "answer_data": {
+      "value": "3/13",
+      "explanation": "Hay 12 figuras de 52 cartas → P = 12/52 = 3/13"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 6 personas de un grupo de 11, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 462,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 11!/(6!×5!) = 462"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 6 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 720,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 6 elementos = 6! = 720"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 82 y desviación estándar 13, calculá el puntaje z correspondiente a x = 69.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (69-82)/13 = -1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 14 personas de un grupo de 15, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 15,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 15!/(14!×1!) = 15"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 4 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 24,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 4 elementos = 4! = 24"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 91 y desviación estándar 12, calculá el puntaje z correspondiente a x = 67.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -2.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (67-91)/12 = -2.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 2 personas de un grupo de 6, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 15,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 6!/(2!×4!) = 15"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 10 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 3628800,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 10 elementos = 10! = 3628800"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 64 y desviación estándar 12, calculá el puntaje z correspondiente a x = 76.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (76-64)/12 = 1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 3 personas de un grupo de 5, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 10,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 5!/(3!×2!) = 10"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 3 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 3 elementos = 3! = 6"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 62 y desviación estándar 14, calculá el puntaje z correspondiente a x = 48.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (48-62)/14 = -1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 4 personas de un grupo de 6, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 15,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 6!/(4!×2!) = 15"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 11 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 39916800,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 11 elementos = 11! = 39916800"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 61 y desviación estándar 12, calculá el puntaje z correspondiente a x = 73.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (73-61)/12 = 1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 2 personas de un grupo de 15, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 105,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 15!/(2!×13!) = 105"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 13 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 6227020800,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 13 elementos = 13! = 6227020800"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 88 y desviación estándar 14, calculá el puntaje z correspondiente a x = 102.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (102-88)/14 = 1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 2 personas de un grupo de 8, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 28,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 8!/(2!×6!) = 28"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 8 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 40320,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 8 elementos = 8! = 40320"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 71 y desviación estándar 7, calculá el puntaje z correspondiente a x = 57.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -2.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (57-71)/7 = -2.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 4 personas de un grupo de 8, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 70,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 8!/(4!×4!) = 70"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 12 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 479001600,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 12 elementos = 12! = 479001600"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 96 y desviación estándar 15, calculá el puntaje z correspondiente a x = 81.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (81-96)/15 = -1.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 7 personas de un grupo de 11, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 330,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 11!/(7!×4!) = 330"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 5 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 120,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 5 elementos = 5! = 120"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 89 y desviación estándar 9, calculá el puntaje z correspondiente a x = 71.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -2.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (71-89)/9 = -2.0"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas se pueden elegir 10 personas de un grupo de 12, sin importar el orden?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 66,
+      "tolerance": 0,
+      "explanation": "C(n,r) = n!/(r!(n-r)!) = 12!/(10!×2!) = 66"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Combinatoria",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "¿De cuántas formas distintas se pueden ordenar 9 libros diferentes en una estantería?",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": 362880,
+      "tolerance": 0,
+      "explanation": "Permutaciones de 9 elementos = 9! = 362880"
+    }
+  },
+  {
+    "area": "estadistica",
+    "topic": "Distribución normal",
+    "level": "universitario",
+    "difficulty": "hard",
+    "statement": "En una distribución normal con media 56 y desviación estándar 11, calculá el puntaje z correspondiente a x = 45.",
+    "exercise_type": "numeric",
+    "answer_data": {
+      "value": -1.0,
+      "tolerance": 0.01,
+      "explanation": "z = (x-media)/desv.estándar = (45-56)/11 = -1.0"
+    }
+  }
+]
