@@ -472,7 +472,7 @@ export default function StatisticsLab() {
         {activeTab === "birthday" && (
           <div className="form-card">
             <h2>🎂 La paradoja del cumpleaños</h2>
-            <p>¿Cuántas personas hacen falta en una sala para que sea más probable que no que dos compartan cumpleaños? Menos de lo que parece.</p>
+            <p>¿Cuántas personas hacen falta en una sala para que sea más probable que dos compartan cumpleaños? Menos de lo que parece.</p>
             <form onSubmit={handleBirthday} className="form-group">
               <div className="form-field">
                 <label>Personas en el grupo</label>
