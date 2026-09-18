@@ -1002,3 +1002,109 @@ class AgentResponse(BaseModel):
     steps: list[AgentStep]
     final_answer: str | None
     interpretation: str
+
+class MatchProbability(BaseModel):
+    matches: int
+    probability: float
+ 
+ 
+class LotteryRequest(BaseModel):
+    pool_size: int = 45  # de cuántos números se elige (ej: del 1 al 45)
+    numbers_to_pick: int = 6  # cuántos números elegís
+    num_trials: int = 10000
+ 
+ 
+class LotteryResponse(BaseModel):
+    pool_size: int
+    numbers_to_pick: int
+    exact_jackpot_probability: float
+    jackpot_probability_display: str  # ej: "1 en 8.145.060"
+    match_distribution: list[MatchProbability]  # P(acertar exactamente j) para j=0..k
+    num_trials: int
+    observed_jackpots: int
+    convergence: list[ConvergencePoint]
+    interpretation: str
+ 
+ 
+# ---------- Paradoja del cumpleaños ----------
+ 
+class BirthdayParadoxRequest(BaseModel):
+    group_size: int = 23
+    days_in_year: int = 365
+    num_trials: int = 5000
+ 
+ 
+class BirthdayParadoxResponse(BaseModel):
+    group_size: int
+    days_in_year: int
+    exact_probability: float
+    num_trials: int
+    observed_matches: int
+    observed_frequency: float
+    convergence: list[ConvergencePoint]
+    interpretation: str
+ 
+ 
+# ---------- Monty Hall ----------
+ 
+class MontyHallRequest(BaseModel):
+    num_doors: int = 3
+    num_trials: int = 5000
+ 
+ 
+class MontyHallResponse(BaseModel):
+    num_doors: int
+    exact_stay_probability: float
+    exact_switch_probability: float
+    num_trials: int
+    observed_stay_frequency: float
+    observed_switch_frequency: float
+    convergence_stay: list[ConvergencePoint]
+    convergence_switch: list[ConvergencePoint]
+    interpretation: str
+ 
+ 
+# ---------- Manos de póker ----------
+ 
+class PokerHandRequest(BaseModel):
+    target_hand: str = "flush"
+    num_trials: int = 20000
+ 
+ 
+class PokerHandResponse(BaseModel):
+    target_hand: str
+    target_hand_label: str
+    exact_probability: float
+    exact_probability_display: str
+    num_trials: int
+    observed_count: int
+    observed_frequency: float
+    convergence: list[ConvergencePoint]
+    interpretation: str
+ 
+ 
+# ---------- Ruleta ----------
+ 
+class RouletteConvergencePoint(BaseModel):
+    spin: int
+    average_net_per_bet: float
+ 
+ 
+class RouletteRequest(BaseModel):
+    wheel_type: str = "european"  # "european" (37 casilleros) o "american" (38 casilleros)
+    bet_type: str = "red_black"  # "straight" | "red_black" | "even_odd" | "dozen"
+    bet_amount: float = 1.0
+    num_spins: int = 2000
+ 
+ 
+class RouletteResponse(BaseModel):
+    wheel_type: str
+    bet_type: str
+    win_probability: float
+    payout_multiplier: float
+    expected_value_per_unit: float
+    house_edge_percent: float
+    num_spins: int
+    final_balance: float
+    convergence: list[RouletteConvergencePoint]
+    interpretation: str
