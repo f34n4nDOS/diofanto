@@ -46,6 +46,7 @@ async def whiteboard_socket(websocket: WebSocket, room_code: str, role: str = "v
     """
     room = whiteboard_manager.get_or_create_room(room_code)
     await room.connect(websocket, role)
+    await room.broadcast_all({"type": "viewer-count", "count": room.viewer_count})
 
     try:
         while True:
@@ -54,4 +55,5 @@ async def whiteboard_socket(websocket: WebSocket, room_code: str, role: str = "v
                 await room.broadcast(data, sender=websocket)
     except WebSocketDisconnect:
         room.disconnect(websocket)
+        await room.broadcast_all({"type": "viewer-count", "count": room.viewer_count})
         whiteboard_manager.remove_room_if_empty(room_code)
