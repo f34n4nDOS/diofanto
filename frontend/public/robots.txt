@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /register
+
+Disallow: /dashboard
+Disallow: /exercises
+Disallow: /exercises/*
+Disallow: /profile
+Disallow: /reset-password
+Disallow: /forgot-password
+Disallow: /api/
+
+Sitemap: https://diofanto.xyz/sitemap.xml
